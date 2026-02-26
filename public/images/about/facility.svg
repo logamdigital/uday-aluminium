@@ -1,0 +1,40 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="facility" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8eaed;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#c0c5ce;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a1f2e;stop-opacity:0.8" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#facility)"/>
+
+  <!-- Factory building -->
+  <rect x="100" y="150" width="600" height="180" fill="#ffffff" stroke="#1a1f2e" stroke-width="3"/>
+  <rect x="200" y="120" width="200" height="30" fill="#ff6b35"/>
+  <rect x="450" y="100" width="150" height="50" fill="#c0c5ce" stroke="#1a1f2e" stroke-width="2"/>
+
+  <!-- Windows -->
+  <rect x="140" y="180" width="40" height="30" fill="#c0c5ce" stroke="#1a1f2e" stroke-width="1"/>
+  <rect x="200" y="180" width="40" height="30" fill="#c0c5ce" stroke="#1a1f2e" stroke-width="1"/>
+  <rect x="260" y="180" width="40" height="30" fill="#c0c5ce" stroke="#1a1f2e" stroke-width="1"/>
+  <rect x="460" y="180" width="40" height="30" fill="#c0c5ce" stroke="#1a1f2e" stroke-width="1"/>
+  <rect x="520" y="180" width="40" height="30" fill="#c0c5ce" stroke="#1a1f2e" stroke-width="1"/>
+  <rect x="580" y="180" width="40" height="30" fill="#c0c5ce" stroke="#1a1f2e" stroke-width="1"/>
+
+  <!-- Smokestacks -->
+  <rect x="320" y="60" width="20" height="90" fill="#8b8b8b"/>
+  <rect x="360" y="70" width="15" height="80" fill="#8b8b8b"/>
+
+  <!-- Smoke -->
+  <circle cx="330" cy="50" r="8" fill="#c0c5ce" opacity="0.6"/>
+  <circle cx="340" cy="40" r="6" fill="#c0c5ce" opacity="0.4"/>
+  <circle cx="368" cy="60" r="6" fill="#c0c5ce" opacity="0.5"/>
+
+  <!-- Loading dock -->
+  <rect x="650" y="250" width="50" height="80" fill="#ff6b35" opacity="0.8"/>
+
+  <!-- Ground -->
+  <rect x="0" y="330" width="800" height="70" fill="#c0c5ce" opacity="0.3"/>
+
+  <text x="400" y="370" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#1a1f2e">UDAY ALUMINIUM MANUFACTURING FACILITY</text>
+</svg>

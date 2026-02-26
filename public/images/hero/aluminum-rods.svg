@@ -1,0 +1,31 @@
+<svg width="1200" height="700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#c0c5ce;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#e8eaed;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#1a1f2e;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#ff6b35;stop-opacity:0.6" />
+    </linearGradient>
+    <linearGradient id="rod" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.8" />
+      <stop offset="50%" style="stop-color:#c0c5ce;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b8b8b;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="700" fill="url(#grad2)"/>
+
+  <!-- Aluminum rods -->
+  <rect x="100" y="200" width="800" height="20" rx="10" fill="url(#rod)"/>
+  <rect x="150" y="240" width="700" height="20" rx="10" fill="url(#rod)" opacity="0.9"/>
+  <rect x="200" y="280" width="600" height="20" rx="10" fill="url(#rod)" opacity="0.8"/>
+  <rect x="120" y="320" width="750" height="20" rx="10" fill="url(#rod)" opacity="0.7"/>
+  <rect x="180" y="360" width="650" height="20" rx="10" fill="url(#rod)" opacity="0.6"/>
+  <rect x="250" y="400" width="500" height="20" rx="10" fill="url(#rod)" opacity="0.5"/>
+
+  <!-- Decorative elements -->
+  <circle cx="1000" cy="150" r="40" fill="#ff6b35" opacity="0.4"/>
+  <circle cx="950" cy="550" r="60" fill="#c0c5ce" opacity="0.3"/>
+
+  <text x="600" y="500" font-family="Arial, sans-serif" font-size="48" font-weight="bold" text-anchor="middle" fill="#1a1f2e" opacity="0.8">ALUMINUM RODS</text>
+  <text x="600" y="540" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#1a1f2e" opacity="0.6">Premium Quality Materials</text>
+</svg>

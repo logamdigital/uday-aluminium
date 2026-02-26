@@ -1,0 +1,11 @@
+<svg width="120" height="120" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="60" cy="60" r="55" fill="#ffffff" stroke="#1a1f2e" stroke-width="3"/>
+  <circle cx="60" cy="60" r="45" fill="none" stroke="#0066cc" stroke-width="2"/>
+
+  <text x="60" y="38" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#1a1f2e">AS</text>
+  <text x="60" y="58" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#0066cc">9100</text>
+  <text x="60" y="75" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#1a1f2e">Rev D</text>
+
+  <!-- Airplane symbol -->
+  <path d="M 30 85 L 45 80 L 50 85 L 70 80 L 90 85 L 70 90 L 50 95 L 45 90 Z" fill="#0066cc" opacity="0.8"/>
+</svg>

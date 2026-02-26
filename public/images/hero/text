@@ -1,0 +1,912 @@
+
+❯ Plan to implement                                                                                                                     
+      │                                                                                                                             
+  │                                                                                                                                     
+        │                                                                                                                             
+  │ Plan: Products Page Restructure — No Blue, Simplified Cards, Separate Detail Pages                                                  
+        │                                                                                                                           
+  │                                                                                                                                 
+        │                                                                                                                           
+  │ Context                                                                                                                         
+        │                                                                                                                           
+  │                                                                                                                                 
+        │                                                                                                                           
+  │ The products page currently uses bg-brand-primary (#1a1f2e dark navy) which reads as blue and clashes with the theme. The       
+  product    │                                                                                                                      
+  │ cards show too much detail on first view (accordion with properties, applications, alloys). The user wants individual detail    
+  pages   │                                                                                                                         
+  │ for each series instead.                                                                                                        
+        │                                                                                                                           
+  │                                                                                                                                 
+        │                                                                                                                           
+  │ Also, ProductsShowcase.jsx on the home page has explicit text-blue-600 bg-blue-50 in its PropertyBadge.                         
+        │                                                                                                                           
+  │                                                                                                                                 
+        │                                                                                                                           
+  │ Changes Overview                                                                                                                
+        │                                                                                                                           
+  │                                                                                                                                 
+        │                                                                                                                           
+  │ 1. Fix all blue colors across the codebase                                                                                      
+        │                                                                                                                           
+  │                                                                                                                                 
+        │                                                                                                                           
+  │ src/app/products/page.js                                                                                                        
+        │                                                                                                                           
+  │ - Hero section: change bg-brand-primary → bg-brand-light (#f5f7fa) with dark text                                               
+        │                                                                                                                           
+  │ - Hero title: text-white → text-brand-primary, subtitle: text-gray-300 → text-gray-500                                          
+        │                                                                                                                           
+  │ - Hero outline button: border-white/20 text-white → border-brand-primary/15 text-brand-primary                                  
+        │                                                                                                                           
+  │ - Comparison table header: bg-brand-primary → bg-gray-900                                                                       
+        │                                                                                                                           
+  │ - Bottom CTA: bg-brand-primary → bg-gray-900                                                                                    
+        │                                                                                                                           
+  │                                                                                                                                 
+        │                                                                                                                           
+  │ src/components/home/ProductsShowcase.jsx                                                                                        
+        │                                                                                                                           
+  │ - Line 63: PropertyBadge "Good": "text-blue-600 bg-blue-50" → "Good": "text-brand-accent bg-brand-accent/10"                    
+        │                                                                                                                           
+  │                                                                                                                                 
+        │                                                                                                                           
+  │ 2. Simplify product cards on /products (listing page)                                                                           
+        │                                                                                                                           
+  │                                                                                                                                 
+        │                                                                                                                           
+  │ Remove all accordion/expand logic. Replace with a clean 4-column grid of minimal cards inspired by the home page ProductCard    
+        │                                                                                                                           
+  │ component:                                                                                                                      
+        │                                                                                                                           
+  │ - Image band with series badge + heat treatable icon                                                                            
+        │                                                                                                                           
+  │ - Title, subtitle                                                                                                               
+        │                                                                                                                           
+  │ - Strength bar + 2 property badges (corrosion, weld)                                                                            
+        │                                                                                                                           
+  │ - "View Details →" link to /products/[series.id]                                                                                
+        │                                                                                                                           
+  │                                                                                                                                 
+        │                                                                                                                           
+  │ Remove imports: AnimatePresence, ChevronDown, AlertTriangle, CheckCircle, Wrench, Boxes, Factory                                
+        │                                                                                                                           
+  │ Remove state: expandedSeries, toggleSeries, hash navigation useEffect                                                           
+        │                                                                                                                           
+  │ Change grid: lg:grid-cols-2 → sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4                                                      
+        │                                                                                                                           
+  │                                                                                                                                 
+        │                                                                                                                           
+  │ 3. Create individual detail pages at /products/[slug]                                                                           
+        │                                                                                                                           
+  │                                                                                                                                 
+        │                                                                                                                           
+  │ src/app/products/[slug]/page.js (server component)                                                                              
+        │                                                                                                                           
+  │ - generateStaticParams() for all 8 series                                                                                       
+        │                                                                                                                           
+  │ - generateMetadata() for SEO                                                                                                    
+        │                                                                                                                           
+  │ - Data lookup + notFound() for invalid slugs                                                                                    
+        │                                                                                                                           
+  │ - Renders SeriesDetailContent client component                                                                                  
+        │                                                                                                                           
+  │                                                                                                                                 
+        │                                                                                                                           
+  │ src/app/products/[slug]/SeriesDetailContent.js (client component)                                                               
+        │                                                                                                                           
+  │ Sections:                                                                                                                       
+        │                                                                                                                           
+  │ 1. Breadcrumb: Products > Series Name                                                                                           
+        │                                                                                                                           
+  │ 2. Hero: Light bg (bg-brand-light), 2-col layout — left: badge, name, subtitle, mainProperty, CTA buttons / right: large series 
+        │                                                                                                                           
+  │ image                                                                                                                           
+        │                                                                                                                           
+  │ 3. Properties & Ratings: White bg, rating bars + colored badges for strength/corrosion/weldability, heat treatable row          
+        │                                                                                                                           
+  │ 4. Applications: bg-gray-50, 3-col grid with check icons                                                                        
+        │                                                                                                                           
+  │ 5. Common Alloys: White bg, large alloy chips (bg-gray-900 not brand-primary)                                                   
+        │                                                                                                                           
+  │ 6. Warning callout: Conditional, amber styling                                                                                  
+        │                                                                                                                           
+  │ 7. CTA + Navigation: bg-gray-900 dark section, Request Quote + All Series buttons, prev/next series links                       
+        │                                                                                                                           
+  │                                                                                                                                 
+        │                                                                                                                           
+  │ 4. Update links across codebase                                                                                                 
+        │                                                                                                                           
+  │                                                                                                                                 
+        │                                                                                                                           
+  │ src/components/home/ProductsShowcase.jsx line 152:                                                                              
+        │                                                                                                                           
+  │ - href={/products#${series.id}} → href={/products/${series.id}}                                                                 
+        │                                                                                                                           
+  │                                                                                                                                 
+        │                                                                                                                           
+  │ src/components/layout/Footer.jsx lines 14-18:                                                                                   
+        │                                                                                                                           
+  │ - /products#1xxx → /products/1xxx (same for all series links)                                                                   
+        │                                                                                                                           
+  │                                                                                                                                 
+        │                                                                                                                           
+  │ 5. Extract shared helpers (optional, keep inline for simplicity)                                                                
+        │                                                                                                                           
+  │                                                                                                                                 
+        │                                                                                                                           
+  │ getRatingColor, strengthLevel, and RatingBar are used in both the listing page and detail page. Keep them duplicated in both    
+  files   │                                                                                                                         
+  │ (small code, <30 lines each) to avoid adding new dependency files for such simple utilities.                                    
+        │                                                                                                                           
+  │                                                                                                                                 
+        │                                                                                                                           
+  │ Files to Create                                                                                                                 
+        │                                                                                                                           
+  │                                                                                                                                 
+        │                                                                                                                           
+  │ - /src/app/products/[slug]/page.js                                                                                              
+        │                                                                                                                           
+  │ - /src/app/products/[slug]/SeriesDetailContent.js                                                                               
+        │                                                                                                                           
+  │                                                                                                                                 
+        │                                                                                                                           
+  │ Files to Modify                                                                                                                 
+        │                                                                                                                           
+  │                                                                                                                                 
+        │                                                                                                                           
+  │ - /src/app/products/page.js — major rewrite (light hero, simplified cards, no accordion)                                        
+        │                                                                                                                           
+  │ - /src/components/home/ProductsShowcase.jsx — fix blue color + update link href                                                 
+        │                                                                                                                           
+  │ - /src/components/layout/Footer.jsx — update product link hrefs                                                                 
+        │                                                                                                                           
+  │                                                                                                                                 
+        │                                                                                                                           
+  │ Verification                                                                                                                    
+        │                                                                                                                           
+  │                                                                                                                                 
+        │                                                                                                                           
+  │ 1. Run npx next build to confirm compilation                                                                                    
+        │                                                                                                                           
+  │ 2. Check /products page renders with light hero, 4-col card grid, no blue                                                       
+        │                                                                                                                           
+  │ 3. Check /products/1xxx through /products/8xxx detail pages render correctly                                                    
+        │                                                                                                                           
+  │ 4. Check home page ProductsShowcase cards link to /products/[id] instead of #                                                   
+        │                                                                                                                           
+  │ 5. Check footer links go to /products/[id]                                                                                      
+        │                                                                                                                           
+  │ 6. Grep for "blue" across all modified files to confirm zero blue colors                                                        
+        │                                                                                                                           
+  ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+  ──────╯                                                                                                                           
+                                                                                                                                    
+  ⏺ I'll start by reading the existing files to understand the current code structure before making changes.                        
+                                                                                                                                    
+  ⏺ Now let me read all the files I need to modify.                                                                                 
+                                                                                                                                    
+  ⏺ Read 3 files (ctrl+o to expand)                                                                                                 
+                                                                                                                                    
+  ⏺ Let me find the actual file structure first.                                                                                    
+                                                                                                                                    
+  ⏺ Searched for 1 pattern, read 3 files (ctrl+o to expand)                                                                         
+                                                                                                                                    
+  ⏺ The project is nested in uday-aluminium/. Let me read the files now.                                                            
+                                                                                                                                    
+  ⏺ Read 3 files (ctrl+o to expand)                                                                                                 
+                                                                                                                                    
+  ⏺ Now let me also read the product data to understand the series structure.                                                       
+                                                                                                                                    
+  ⏺ Read 1 file (ctrl+o to expand)                                                                                                  
+                                                                                                                                    
+  ⏺ Now I have all the context. Let me implement all changes. I'll work on multiple files in parallel.                              
+                                                                                                                                    
+  ⏺ Let me rewrite the products page with light hero + simplified cards, fix the showcase, fix the footer, and create the detail    
+  pages all                                                                                                                         
+     at once.                                                                                                                       
+                                                                                                                                    
+  ⏺ Write(uday-aluminium/src/app/products/page.js)                                                                                  
+    ⎿  Added 81 lines, removed 359 lines                                                                                            
+         1  "use client";                                                                                                           
+         2                                                                                                                          
+         3  import { motion, useInView, AnimatePresence } from "framer-motion";                                                     
+         4 -import { useRef, useState, useEffect } from "react";                                                                    
+         4 +import { useRef, useState } from "react";                                                                               
+         5  import Image from "next/image";                                                                                         
+         6  import Link from "next/link";                                                                                           
+         7  import {                                                                                                                
+         8 -  ChevronDown,                                                                                                          
+         8    Download,                                                                                                             
+         9    ArrowRight,                                                                                                           
+        10 -  AlertTriangle,                                                                                                        
+        11 -  CheckCircle,                                                                                                          
+        10    Search,                                                                                                               
+        11    Flame,                                                                                                                
+        12    BarChart3,                                                                                                            
+        13    Shield,                                                                                                               
+        14 -  Wrench,                                                                                                               
+        15 -  Boxes,                                                                                                                
+        16 -  Factory,                                                                                                              
+        14  } from "lucide-react";                                                                                                  
+        15  import { Button } from "@/components/ui/button";                                                                        
+        16  import { productSeries } from "@/data/productSeries";                                                                   
+       ...                                                                                                                          
+        37    { id: "high-strength", label: "High Strength" },                                                                      
+        38  ];                                                                                                                      
+        39                                                                                                                          
+        40 -// On-theme rating colors — no blue, only brand-accent/emerald/amber/red                                                
+        40  const getRatingColor = (rating) => {                                                                                    
+        41    switch (rating) {                                                                                                     
+        42      case "Excellent":                                                                                                   
+       ...                                                                                                                          
+        60    }                                                                                                                     
+        61  };                                                                                                                      
+        62                                                                                                                          
+        63 -// Strength level mapping for visual bar                                                                                
+        63  const strengthLevel = {                                                                                                 
+        64    Low: 1,                                                                                                               
+        65    "Low-Medium": 2,                                                                                                      
+       ...                                                                                                                          
+        79          <div                                                                                                            
+        80            key={i}                                                                                                       
+        81            className={`h-1.5 rounded-full transition-all duration-500 ${                                                 
+        82 -            i < filled                                                                                                  
+        83 -              ? "w-4 bg-brand-accent"                                                                                   
+        84 -              : "w-3 bg-gray-200"                                                                                       
+        82 +            i < filled ? "w-4 bg-brand-accent" : "w-3 bg-gray-200"                                                      
+        83            }`}                                                                                                           
+        84          />                                                                                                              
+        85        ))}                                                                                                               
+       ...                                                                                                                          
+        90  }                                                                                                                       
+        91                                                                                                                          
+        92  export default function ProductsPage() {                                                                                
+        93 -  const [expandedSeries, setExpandedSeries] = useState(null);                                                           
+        93    const [showComparison, setShowComparison] = useState(false);                                                          
+        94    const [searchTerm, setSearchTerm] = useState("");                                                                     
+        95    const [filterType, setFilterType] = useState("all");                                                                  
+       ...                                                                                                                          
+        108    const seriesInView = useInView(seriesRef, { once: true, margin: "-100px" });                                         
+        109    const ctaInView = useInView(ctaRef, { once: true, margin: "-100px" });                                               
+        110                                                                                                                         
+        111 -  const toggleSeries = (seriesId) => {                                                                                 
+        112 -    setExpandedSeries(expandedSeries === seriesId ? null : seriesId);                                                  
+        113 -  };                                                                                                                   
+        114 -                                                                                                                       
+        115 -  // Handle hash navigation                                                                                            
+        116 -  useEffect(() => {                                                                                                    
+        117 -    const hash = window.location.hash.replace("#", "");                                                                
+        118 -    if (hash) {                                                                                                        
+        119 -      setTimeout(() => {                                                                                               
+        120 -        const el = document.getElementById(hash);                                                                      
+        121 -        if (el) {                                                                                                      
+        122 -          el.scrollIntoView({ behavior: "smooth", block: "center" });                                                  
+        123 -          setExpandedSeries(hash);                                                                                     
+        124 -        }                                                                                                              
+        125 -      }, 500);                                                                                                         
+        126 -    }                                                                                                                  
+        127 -  }, []);                                                                                                              
+        128 -                                                                                                                       
+        111    const filteredSeries = productSeries.filter((series) => {                                                            
+        112      const matchesSearch =                                                                                              
+        113        series.name.toLowerCase().includes(searchTerm.toLowerCase()) ||                                                  
+       ...                                                                                                                          
+        147        {/* ── Hero Section ── */}                                                                                       
+        148        <section                                                                                                         
+        149          ref={heroRef}                                                                                                  
+        150 -        className="relative bg-brand-primary overflow-hidden py-20 sm:py-28 lg:py-36"                                  
+        150 +        className="relative bg-brand-light overflow-hidden py-20 sm:py-28 lg:py-36"                                    
+        151        >                                                                                                                
+        152          {/* Grid pattern overlay */}                                                                                   
+        153          <div                                                                                                           
+        154            className="absolute inset-0 opacity-[0.04]"                                                                  
+        155            style={{                                                                                                     
+        156              backgroundImage:                                                                                           
+        157 -              "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255    
+            -,0.1) 1px, transparent 1px)",                                                                                          
+        157 +              "linear-gradient(rgba(26,31,46,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(26,31,46          
+            +,0.1) 1px, transparent 1px)",                                                                                          
+        158              backgroundSize: "60px 60px",                                                                               
+        159            }}                                                                                                           
+        160          />                                                                                                             
+       ...                                                                                                                          
+        181                initial="hidden"                                                                                         
+        182                animate={heroInView ? "visible" : "hidden"}                                                              
+        183                custom={1}                                                                                               
+        184 -              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white                             
+            - leading-tight tracking-tight mb-4 sm:mb-6"                                                                            
+        184 +              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-brand-primary                     
+            + leading-tight tracking-tight mb-4 sm:mb-6"                                                                            
+        185              >                                                                                                          
+        186                Complete Aluminium{" "}                                                                                  
+        187                <span className="text-brand-accent">Series Range</span>                                                  
+       ...                                                                                                                          
+        192                initial="hidden"                                                                                         
+        193                animate={heroInView ? "visible" : "hidden"}                                                              
+        194                custom={2}                                                                                               
+        195 -              className="text-sm sm:text-base lg:text-lg text-gray-300                                                 
+            - leading-relaxed font-light max-w-2xl mx-auto mb-8 sm:mb-10"                                                           
+        195 +              className="text-sm sm:text-base lg:text-lg text-gray-500                                                 
+            + leading-relaxed font-light max-w-2xl mx-auto mb-8 sm:mb-10"                                                           
+        196              >                                                                                                          
+        197                From pure aluminium to aerospace-grade alloys — explore our                                              
+        198                comprehensive range across all 8 series, engineered for every                                            
+       ...                                                                                                                          
+        217                <Button                                                                                                  
+        218                  size="lg"                                                                                              
+        219                  variant="outline"                                                                                      
+        220 -                className="border-white/20 text-white hover:bg-white/10                                                
+            - px-6 sm:px-8 py-3 text-sm sm:text-base font-semibold rounded-xl transition-all duration-300"                          
+        220 +                className="border-brand-primary/15 text-brand-primary hover:bg-brand-primary hover:text-white          
+            + px-6 sm:px-8 py-3 text-sm sm:text-base font-semibold rounded-xl transition-all duration-300"                          
+        221                  asChild                                                                                                
+        222                >                                                                                                        
+        223                  <Link href="/contact">                                                                                 
+       ...                                                                                                                          
+        304                <div className="overflow-x-auto rounded-2xl border border-gray-100 shadow-lg shadow-gray-100/50">        
+        305                  <table className="w-full">                                                                             
+        306                    <thead>                                                                                              
+        307 -                    <tr className="bg-brand-primary">                                                                  
+        307 +                    <tr className="bg-gray-900">                                                                       
+        308                        <th className="text-left p-4 text-white text-xs sm:text-sm font-semibold first:rounded-tl-2xl">  
+        309                          Series                                                                                         
+        310                        </th>                                                                                            
+       ...                                                                                                                          
+        334                          }`}                                                                                            
+        335                        >                                                                                                
+        336                          <td className="p-4">                                                                           
+        337 -                          <button                                                                                      
+        338 -                            onClick={() => {                                                                           
+        339 -                              setShowComparison(false);                                                                
+        340 -                              setTimeout(() => {                                                                       
+        341 -                                const el = document.getElementById(series.id);                                         
+        342 -                                if (el) {                                                                              
+        343 -                                  el.scrollIntoView({                                                                  
+        344 -                                    behavior: "smooth",                                                                
+        345 -                                    block: "center",                                                                   
+        346 -                                  });                                                                                  
+        347 -                                  setExpandedSeries(series.id);                                                        
+        348 -                                }                                                                                      
+        349 -                              }, 400);                                                                                 
+        350 -                            }}                                                                                         
+        337 +                          <Link                                                                                        
+        338 +                            href={`/products/${series.id}`}                                                            
+        339                              className="font-semibold text-brand-primary hover:text-brand-accent transition-colors      
+             text-sm"                                                                                                               
+        340                            >                                                                                            
+        341                              {series.name}                                                                              
+        342 -                          </button>                                                                                    
+        342 +                          </Link>                                                                                      
+        343                          </td>                                                                                          
+        344                          <td className="p-4">                                                                           
+        345                            <span                                                                                        
+       ...                                                                                                                          
+        459                custom={2}                                                                                               
+        460                className="text-sm sm:text-base lg:text-lg text-gray-500 leading-relaxed font-light"                     
+        461              >                                                                                                          
+        462 -              Click any series to dive deep into properties, common alloys, and                                        
+        462 +              Select any series to view detailed properties, common alloys, and                                        
+        463                applications tailored for your industry.                                                                 
+        464              </motion.p>                                                                                                
+        465            </div>                                                                                                       
+        466                                                                                                                         
+        467 -          {/* Cards Grid — 2 col on lg */}                                                                             
+        468 -          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5">                                             
+        467 +          {/* Cards Grid — 4 col on xl */}                                                                             
+        468 +          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">               
+        469              {filteredSeries.map((series, index) => (                                                                   
+        470                <motion.div                                                                                              
+        471                  key={series.id}                                                                                        
+        472 -                id={series.id}                                                                                         
+        472                  variants={fadeUp}                                                                                      
+        473                  initial="hidden"                                                                                       
+        474                  animate={seriesInView ? "visible" : "hidden"}                                                          
+        475                  custom={3 + index}                                                                                     
+        476 -                className={expandedSeries === series.id ? "lg:col-span-2" : ""}                                        
+        476                >                                                                                                        
+        477 -                <div                                                                                                   
+        478 -                  className={`group relative rounded-2xl overflow-hidden transition-all duration-500 ${                
+        479 -                    expandedSeries === series.id                                                                       
+        480 -                      ? "bg-white border-2 border-brand-accent/20 shadow-2xl shadow-brand-accent/10"                   
+        481 -                      : "bg-white border border-gray-100 hover:border-brand-accent/20 hover:shadow-xl                  
+            -hover:shadow-brand-accent/5"                                                                                           
+        482 -                  }`}                                                                                                  
+        483 -                >                                                                                                      
+        484 -                  {/* ── Card Header — Image + Info ── */}                                                             
+        485 -                  <button                                                                                              
+        486 -                    onClick={() => toggleSeries(series.id)}                                                            
+        487 -                    className="w-full text-left"                                                                       
+        488 -                  >                                                                                                    
+        489 -                    <div className="relative">                                                                         
+        490 -                      {/* Top image band */}                                                                           
+        491 -                      <div className="relative h-32 sm:h-36 overflow-hidden">                                          
+        492 -                        <Image                                                                                         
+        493 -                          src={series.image}                                                                           
+        494 -                          alt={series.name}                                                                            
+        495 -                          fill                                                                                         
+        496 -                          className="object-cover group-hover:scale-105 transition-transform duration-700"             
+        497 -                        />                                                                                             
+        498 -                        {/* Dark gradient overlay */}                                                                  
+        499 -                        <div className="absolute inset-0 bg-gradient-to-r from-brand-primary/90 via-brand-primary/70   
+            -to-brand-primary/40" />                                                                                                
+        477 +                <Link href={`/products/${series.id}`} className="block h-full">                                        
+        478 +                  <div className="group relative bg-white border border-gray-100 rounded-2xl overflow-hidden           
+            +hover:border-brand-accent/20 hover:shadow-xl hover:shadow-brand-accent/5 transition-all duration-500 h-full">          
+        479 +                    {/* Top image band */}                                                                             
+        480 +                    <div className="relative h-36 sm:h-40 overflow-hidden">                                            
+        481 +                      <Image                                                                                           
+        482 +                        src={series.image}                                                                             
+        483 +                        alt={series.name}                                                                              
+        484 +                        fill                                                                                           
+        485 +                        className="object-cover group-hover:scale-105 transition-transform duration-700"               
+        486 +                      />                                                                                               
+        487 +                      <div className="absolute inset-0 bg-gradient-to-r from-brand-primary/90 via-brand-primary/70     
+            +to-brand-primary/40" />                                                                                                
+        488                                                                                                                         
+        489 -                        {/* Content over image */}                                                                     
+        490 -                        <div className="absolute inset-0 flex items-center justify-between p-4 sm:p-6">                
+        491 -                          <div className="flex-1 min-w-0">                                                             
+        492 -                            <div className="flex items-center gap-2 mb-2 flex-wrap">                                   
+        493 -                              <span className="bg-brand-accent text-white px-2.5 py-0.5 rounded-lg text-[11px]         
+            -sm:text-xs font-bold tracking-wider">                                                                                  
+        494 -                                {series.id.toUpperCase()}                                                              
+        495 -                              </span>                                                                                  
+        496 -                              {series.heatTreatable === true && (                                                      
+        497 -                                <span className="flex items-center gap-1 bg-white/15 backdrop-blur-sm px-2 py-0.5      
+            -rounded-lg">                                                                                                           
+        498 -                                  <Flame className="w-3 h-3 text-brand-accent" />                                      
+        499 -                                  <span className="text-[10px] font-medium text-white/90">                             
+        500 -                                    Heat Treatable                                                                     
+        501 -                                  </span>                                                                              
+        489 +                      <div className="absolute inset-0 flex items-end p-4 sm:p-5">                                     
+        490 +                        <div className="flex-1 min-w-0">                                                               
+        491 +                          <div className="flex items-center gap-2 mb-2 flex-wrap">                                     
+        492 +                            <span className="bg-brand-accent text-white px-2.5 py-0.5 rounded-lg text-[11px]           
+            +sm:text-xs font-bold tracking-wider">                                                                                  
+        493 +                              {series.id.toUpperCase()}                                                                
+        494 +                            </span>                                                                                    
+        495 +                            {series.heatTreatable === true && (                                                        
+        496 +                              <span className="flex items-center gap-1 bg-white/15 backdrop-blur-sm px-2 py-0.5        
+            +rounded-lg">                                                                                                           
+        497 +                                <Flame className="w-3 h-3 text-brand-accent" />                                        
+        498 +                                <span className="text-[10px] font-medium text-white/90">                               
+        499 +                                  Heat Treatable                                                                       
+        500                                  </span>                                                                                
+        501 -                              )}                                                                                       
+        502 -                            </div>                                                                                     
+        503 -                            <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-0.5">                
+        504 -                              {series.name}                                                                            
+        505 -                            </h3>                                                                                      
+        506 -                            <p className="text-xs sm:text-sm text-white/60 font-light">                                
+        507 -                              {series.subtitle}                                                                        
+        508 -                            </p>                                                                                       
+        501 +                              </span>                                                                                  
+        502 +                            )}                                                                                         
+        503                            </div>                                                                                       
+        504 -                                                                                                                       
+        505 -                          {/* Chevron */}                                                                              
+        506 -                          <motion.div                                                                                  
+        507 -                            animate={{                                                                                 
+        508 -                              rotate:                                                                                  
+        509 -                                expandedSeries === series.id ? 180 : 0,                                                
+        510 -                            }}                                                                                         
+        511 -                            transition={{ duration: 0.3 }}                                                             
+        512 -                            className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/10 backdrop-blur-sm flex          
+            -items-center justify-center flex-shrink-0 ml-3"                                                                        
+        513 -                          >                                                                                            
+        514 -                            <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-white" />                               
+        515 -                          </motion.div>                                                                                
+        504 +                          <h3 className="text-lg sm:text-xl font-bold text-white mb-0.5">                              
+        505 +                            {series.name}                                                                              
+        506 +                          </h3>                                                                                        
+        507 +                          <p className="text-xs sm:text-sm text-white/60 font-light">                                  
+        508 +                            {series.subtitle}                                                                          
+        509 +                          </p>                                                                                         
+        510                          </div>                                                                                         
+        511                        </div>                                                                                           
+        512 +                    </div>                                                                                             
+        513                                                                                                                         
+        514 -                      {/* Property strip below image */}                                                               
+        515 -                      <div className="px-4 sm:px-6 py-3 sm:py-4 bg-gray-50/80 border-b border-gray-100">               
+        516 -                        <div className="flex items-center justify-between gap-3 flex-wrap">                            
+        517 -                          {/* Rating pills */}                                                                         
+        518 -                          <div className="flex items-center gap-2 flex-wrap">                                          
+        519 -                            {[                                                                                         
+        520 -                              {                                                                                        
+        521 -                                icon: BarChart3,                                                                       
+        522 -                                label: "Strength",                                                                     
+        523 -                                value: series.strength,                                                                
+        524 -                              },                                                                                       
+        525 -                              {                                                                                        
+        526 -                                icon: Shield,                                                                          
+        527 -                                label: "Corrosion",                                                                    
+        528 -                                value: series.corrosion,                                                               
+        529 -                              },                                                                                       
+        530 -                              {                                                                                        
+        531 -                                icon: Wrench,                                                                          
+        532 -                                label: "Weld",                                                                         
+        533 -                                value: series.weldability,                                                             
+        534 -                              },                                                                                       
+        535 -                            ].map((prop) => (                                                                          
+        536 -                              <div                                                                                     
+        537 -                                key={prop.label}                                                                       
+        538 -                                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg border text-[10px]        
+            -sm:text-xs font-medium ${getRatingColor(                                                                               
+        539 -                                  prop.value                                                                           
+        540 -                                )}`}                                                                                   
+        541 -                              >                                                                                        
+        542 -                                <prop.icon className="w-3 h-3" />                                                      
+        543 -                                <span className="hidden sm:inline opacity-60">                                         
+        544 -                                  {prop.label}:                                                                        
+        545 -                                </span>                                                                                
+        546 -                                <span className="font-semibold">                                                       
+        547 -                                  {prop.value}                                                                         
+        548 -                                </span>                                                                                
+        549 -                              </div>                                                                                   
+        550 -                            ))}                                                                                        
+        551 -                          </div>                                                                                       
+        514 +                    {/* Card body */}                                                                                  
+        515 +                    <div className="p-4 sm:p-5">                                                                       
+        516 +                      {/* Strength bar */}                                                                             
+        517 +                      <div className="flex items-center justify-between mb-3">                                         
+        518 +                        <span className="text-[10px] sm:text-xs text-gray-400">                                        
+        519 +                          Strength: {series.strength}                                                                  
+        520 +                        </span>                                                                                        
+        521 +                        <RatingBar value={series.strength} />                                                          
+        522 +                      </div>                                                                                           
+        523                                                                                                                         
+        524 -                          {/* Strength bar */}                                                                         
+        525 -                          <div className="hidden sm:flex items-center gap-2">                                          
+        526 -                            <span className="text-[10px] text-gray-400">                                               
+        527 -                              Strength                                                                                 
+        528 -                            </span>                                                                                    
+        529 -                            <RatingBar value={series.strength} />                                                      
+        530 -                          </div>                                                                                       
+        531 -                        </div>                                                                                         
+        532 -                                                                                                                       
+        533 -                        {/* Alloy chips */}                                                                            
+        534 -                        <div className="flex items-center gap-1.5 mt-2.5">                                             
+        535 -                          {series.examples.map((ex) => (                                                               
+        536 -                            <span                                                                                      
+        537 -                              key={ex}                                                                                 
+        538 -                              className="text-[10px] sm:text-xs bg-brand-accent/8 text-brand-accent/80 px-2 py-0.5     
+            -rounded-md font-mono font-medium"                                                                                      
+        539 -                            >                                                                                          
+        540 -                              {ex}                                                                                     
+        541 -                            </span>                                                                                    
+        542 -                          ))}                                                                                          
+        543 -                          <span className="text-[10px] text-gray-300 ml-1">                                            
+        544 -                            &bull;                                                                                     
+        524 +                      {/* Property badges */}                                                                          
+        525 +                      <div className="flex flex-wrap gap-2 mb-4">                                                      
+        526 +                        <span                                                                                          
+        527 +                          className={`flex items-center gap-1.5 px-2 py-1 rounded-lg border text-[10px] sm:text-xs     
+            +font-medium ${getRatingColor(                                                                                          
+        528 +                            series.corrosion                                                                           
+        529 +                          )}`}                                                                                         
+        530 +                        >                                                                                              
+        531 +                          <Shield className="w-3 h-3" />                                                               
+        532 +                          <span className="font-semibold">                                                             
+        533 +                            {series.corrosion}                                                                         
+        534                            </span>                                                                                      
+        535 -                          <span className="text-[10px] text-gray-400">                                                 
+        536 -                            {series.applications.length} applications                                                  
+        537 -                          </span>                                                                                      
+        538 -                        </div>                                                                                         
+        535 +                        </span>                                                                                        
+        536 +                        <span                                                                                          
+        537 +                          className={`flex items-center gap-1.5 px-2 py-1 rounded-lg border text-[10px] sm:text-xs     
+            +font-medium ${getRatingColor(                                                                                          
+        538 +                            series.weldability                                                                         
+        539 +                          )}`}                                                                                         
+        540 +                        >                                                                                              
+        541 +                          Weld: {series.weldability}                                                                   
+        542 +                        </span>                                                                                        
+        543                        </div>                                                                                           
+        544 -                    </div>                                                                                             
+        545 -                  </button>                                                                                            
+        544                                                                                                                         
+        545 -                  {/* ── Expanded Content ── */}                                                                       
+        546 -                  <AnimatePresence>                                                                                    
+        547 -                    {expandedSeries === series.id && (                                                                 
+        548 -                      <motion.div                                                                                      
+        549 -                        initial={{ opacity: 0, height: 0 }}                                                            
+        550 -                        animate={{ opacity: 1, height: "auto" }}                                                       
+        551 -                        exit={{ opacity: 0, height: 0 }}                                                               
+        552 -                        transition={{ duration: 0.35, ease: "easeInOut" }}                                             
+        553 -                        className="overflow-hidden"                                                                    
+        554 -                      >                                                                                                
+        555 -                        <div className="p-4 sm:p-6 lg:p-8">                                                            
+        556 -                          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">                       
+        557 -                            {/* Col 1: Properties */}                                                                  
+        558 -                            <div className="space-y-5">                                                                
+        559 -                              {/* Main Property */}                                                                    
+        560 -                              <div>                                                                                    
+        561 -                                <div className="flex items-center gap-2 mb-3">                                         
+        562 -                                  <div className="w-7 h-7 rounded-lg bg-brand-accent/10 flex items-center              
+            -justify-center">                                                                                                       
+        563 -                                    <Boxes className="w-3.5 h-3.5 text-brand-accent" />                                
+        564 -                                  </div>                                                                               
+        565 -                                  <h4 className="text-xs sm:text-sm font-semibold text-brand-primary uppercase         
+            -tracking-wide">                                                                                                        
+        566 -                                    Properties                                                                         
+        567 -                                  </h4>                                                                                
+        568 -                                </div>                                                                                 
+        569 -                                <div className="flex items-start gap-3">                                               
+        570 -                                  <div className="w-0.5 shrink-0 self-stretch rounded-full bg-gradient-to-b            
+            -from-brand-accent to-brand-accent/0" />                                                                                
+        571 -                                  <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">                     
+        572 -                                    {series.mainProperty}                                                              
+        573 -                                  </p>                                                                                 
+        574 -                                </div>                                                                                 
+        575 -                              </div>                                                                                   
+        576 -                                                                                                                       
+        577 -                              {/* Detailed ratings */}                                                                 
+        578 -                              <div className="space-y-2">                                                              
+        579 -                                {[                                                                                     
+        580 -                                  {                                                                                    
+        581 -                                    label: "Strength",                                                                 
+        582 -                                    value: series.strength,                                                            
+        583 -                                  },                                                                                   
+        584 -                                  {                                                                                    
+        585 -                                    label: "Corrosion Resistance",                                                     
+        586 -                                    value: series.corrosion,                                                           
+        587 -                                  },                                                                                   
+        588 -                                  {                                                                                    
+        589 -                                    label: "Weldability",                                                              
+        590 -                                    value: series.weldability,                                                         
+        591 -                                  },                                                                                   
+        592 -                                ].map((prop) => (                                                                      
+        593 -                                  <div                                                                                 
+        594 -                                    key={prop.label}                                                                   
+        595 -                                    className="flex items-center justify-between py-2 border-b border-gray-50          
+            -last:border-0"                                                                                                         
+        596 -                                  >                                                                                    
+        597 -                                    <span className="text-xs text-gray-400">                                           
+        598 -                                      {prop.label}                                                                     
+        599 -                                    </span>                                                                            
+        600 -                                    <div className="flex items-center gap-2">                                          
+        601 -                                      <RatingBar value={prop.value} />                                                 
+        602 -                                      <span                                                                            
+        603 -                                        className={`text-[10px] sm:text-xs font-semibold px-2 py-0.5 rounded-md        
+            -border ${getRatingColor(                                                                                               
+        604 -                                          prop.value                                                                   
+        605 -                                        )}`}                                                                           
+        606 -                                      >                                                                                
+        607 -                                        {prop.value}                                                                   
+        608 -                                      </span>                                                                          
+        609 -                                    </div>                                                                             
+        610 -                                  </div>                                                                               
+        611 -                                ))}                                                                                    
+        612 -                                <div className="flex items-center justify-between py-2">                               
+        613 -                                  <span className="text-xs text-gray-400">                                             
+        614 -                                    Heat Treatable                                                                     
+        615 -                                  </span>                                                                              
+        616 -                                  {series.heatTreatable === true ? (                                                   
+        617 -                                    <div className="flex items-center gap-1.5 bg-brand-accent/10 px-2.5 py-1           
+            -rounded-md border border-brand-accent/20">                                                                             
+        618 -                                      <Flame className="w-3 h-3 text-brand-accent" />                                  
+        619 -                                      <span className="text-xs font-semibold text-brand-accent">                       
+        620 -                                        Yes                                                                            
+        621 -                                      </span>                                                                          
+        622 -                                    </div>                                                                             
+        623 -                                  ) : (                                                                                
+        624 -                                    <span className="text-xs font-medium text-gray-400 bg-gray-50 px-2.5 py-1          
+            -rounded-md border border-gray-100">                                                                                    
+        625 -                                      {series.heatTreatable === false                                                  
+        626 -                                        ? "No"                                                                         
+        627 -                                        : "Varies"}                                                                    
+        628 -                                    </span>                                                                            
+        629 -                                  )}                                                                                   
+        630 -                                </div>                                                                                 
+        631 -                              </div>                                                                                   
+        632 -                                                                                                                       
+        633 -                              {/* Warning */}                                                                          
+        634 -                              {series.warnings && (                                                                    
+        635 -                                <div className="flex items-start gap-2.5 p-3 bg-amber-50/60 border                     
+            -border-amber-100/80 rounded-xl">                                                                                       
+        636 -                                  <AlertTriangle className="h-3.5 w-3.5 text-amber-500 mt-0.5 flex-shrink-0" />        
+        637 -                                  <p className="text-[11px] sm:text-xs text-amber-600 leading-relaxed">                
+        638 -                                    {series.warnings}                                                                  
+        639 -                                  </p>                                                                                 
+        640 -                                </div>                                                                                 
+        641 -                              )}                                                                                       
+        642 -                            </div>                                                                                     
+        643 -                                                                                                                       
+        644 -                            {/* Col 2: Applications */}                                                                
+        645 -                            <div>                                                                                      
+        646 -                              <div className="flex items-center gap-2 mb-3">                                           
+        647 -                                <div className="w-7 h-7 rounded-lg bg-brand-accent/10 flex items-center                
+            -justify-center">                                                                                                       
+        648 -                                  <Factory className="w-3.5 h-3.5 text-brand-accent" />                                
+        649 -                                </div>                                                                                 
+        650 -                                <h4 className="text-xs sm:text-sm font-semibold text-brand-primary uppercase           
+            -tracking-wide">                                                                                                        
+        651 -                                  Applications                                                                         
+        652 -                                </h4>                                                                                  
+        653 -                              </div>                                                                                   
+        654 -                              <div className="space-y-1.5">                                                            
+        655 -                                {series.applications.map((app, idx) => (                                               
+        656 -                                  <div                                                                                 
+        657 -                                    key={idx}                                                                          
+        658 -                                    className="flex items-center gap-2 py-2 px-3 rounded-lg bg-gray-50/80              
+            -hover:bg-brand-accent/5 transition-colors duration-300"                                                                
+        659 -                                  >                                                                                    
+        660 -                                    <CheckCircle className="h-3 w-3 text-emerald-500 flex-shrink-0" />                 
+        661 -                                    <span className="text-xs sm:text-sm text-gray-600">                                
+        662 -                                      {app}                                                                            
+        663 -                                    </span>                                                                            
+        664 -                                  </div>                                                                               
+        665 -                                ))}                                                                                    
+        666 -                              </div>                                                                                   
+        667 -                            </div>                                                                                     
+        668 -                                                                                                                       
+        669 -                            {/* Col 3: Alloys + CTA */}                                                                
+        670 -                            <div className="space-y-5">                                                                
+        671 -                              {/* Common Alloys */}                                                                    
+        672 -                              <div>                                                                                    
+        673 -                                <div className="flex items-center gap-2 mb-3">                                         
+        674 -                                  <div className="w-7 h-7 rounded-lg bg-brand-accent/10 flex items-center              
+            -justify-center">                                                                                                       
+        675 -                                    <Boxes className="w-3.5 h-3.5 text-brand-accent" />                                
+        676 -                                  </div>                                                                               
+        677 -                                  <h4 className="text-xs sm:text-sm font-semibold text-brand-primary uppercase         
+            -tracking-wide">                                                                                                        
+        678 -                                    Common Alloys                                                                      
+        679 -                                  </h4>                                                                                
+        680 -                                </div>                                                                                 
+        681 -                                <div className="flex flex-wrap gap-2">                                                 
+        682 -                                  {series.examples.map((example) => (                                                  
+        683 -                                    <span                                                                              
+        684 -                                      key={example}                                                                    
+        685 -                                      className="bg-brand-primary text-white px-3.5 py-2 rounded-xl font-mono text-xs  
+            - sm:text-sm font-semibold"                                                                                             
+        686 -                                    >                                                                                  
+        687 -                                      {example}                                                                        
+        688 -                                    </span>                                                                            
+        689 -                                  ))}                                                                                  
+        690 -                                </div>                                                                                 
+        691 -                              </div>                                                                                   
+        692 -                                                                                                                       
+        693 -                              {/* CTA Buttons */}                                                                      
+        694 -                              <div className="flex flex-col gap-2.5 pt-2">                                             
+        695 -                                <Button                                                                                
+        696 -                                  className="group bg-brand-accent hover:bg-brand-accent/90 text-white rounded-xl      
+            -font-semibold text-xs sm:text-sm shadow-[0_0_20px_rgba(255,107,53,0.2)] hover:shadow-[0_0_30px_rgba(255,107,53,0.4)]   
+            -transition-all duration-300 border-0"                                                                                  
+        697 -                                  asChild                                                                              
+        698 -                                >                                                                                      
+        699 -                                  <Link                                                                                
+        700 -                                    href={`/contact?series=${series.id}`}                                              
+        701 -                                  >                                                                                    
+        702 -                                    Request Quote for{" "}                                                             
+        703 -                                    {series.id.toUpperCase()}                                                          
+        704 -                                    <ArrowRight className="ml-2 h-3.5 w-3.5 group-hover:translate-x-1                  
+            -transition-transform duration-300" />                                                                                  
+        705 -                                  </Link>                                                                              
+        706 -                                </Button>                                                                              
+        707 -                                <Button                                                                                
+        708 -                                  variant="outline"                                                                    
+        709 -                                  className="border-brand-primary/15 text-brand-primary hover:bg-brand-primary         
+            -hover:text-white rounded-xl font-semibold text-xs sm:text-sm transition-all duration-300"                              
+        710 -                                  asChild                                                                              
+        711 -                                >                                                                                      
+        712 -                                  <Link href="/applications">                                                          
+        713 -                                    View Applications                                                                  
+        714 -                                    <ArrowRight className="ml-2 h-3.5 w-3.5" />                                        
+        715 -                                  </Link>                                                                              
+        716 -                                </Button>                                                                              
+        717 -                              </div>                                                                                   
+        718 -                            </div>                                                                                     
+        719 -                          </div>                                                                                       
+        720 -                        </div>                                                                                         
+        721 -                      </motion.div>                                                                                    
+        722 -                    )}                                                                                                 
+        723 -                  </AnimatePresence>                                                                                   
+        724 -                </div>                                                                                                 
+        545 +                      {/* View Details link */}                                                                        
+        546 +                      <div className="flex items-center gap-1.5 text-brand-accent font-semibold text-xs sm:text-sm     
+            +group-hover:gap-2.5 transition-all duration-300">                                                                      
+        547 +                        View Details                                                                                   
+        548 +                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform              
+            +duration-300" />                                                                                                       
+        549 +                      </div>                                                                                           
+        550 +                    </div>                                                                                             
+        551 +                  </div>                                                                                               
+        552 +                </Link>                                                                                                
+        553                </motion.div>                                                                                            
+        554              ))}                                                                                                        
+        555            </div>                                                                                                       
+       ...                                                                                                                          
+        808        {/* ── CTA Section ── */}                                                                                        
+        809        <section                                                                                                         
+        810          ref={ctaRef}                                                                                                   
+        811 -        className="relative bg-brand-primary overflow-hidden py-16 sm:py-20 lg:py-28"                                  
+        811 +        className="relative bg-gray-900 overflow-hidden py-16 sm:py-20 lg:py-28"                                       
+        812        >                                                                                                                
+        813          <div                                                                                                           
+        814            className="absolute inset-0 opacity-[0.03]"                                                                  
+                                                                                                                                    
+  ⏺ Update(uday-aluminium/src/components/home/ProductsShowcase.jsx)                                                                 
+    ⎿  Added 1 line, removed 1 line                                                                                                 
+        58  function PropertyBadge({ label, value }) {                                                                              
+        59    const colorMap = {                                                                                                    
+        60      "Excellent": "text-emerald-600 bg-emerald-50",                                                                      
+        61 -    "Good": "text-blue-600 bg-blue-50",                                                                                 
+        61 +    "Good": "text-brand-accent bg-brand-accent/10",                                                                     
+        62      "Fair": "text-amber-600 bg-amber-50",                                                                               
+        63      "Poor": "text-red-500 bg-red-50",                                                                                   
+        64      "Varies": "text-gray-500 bg-gray-100"                                                                               
+                                                                                                                                    
+  ⏺ Update(uday-aluminium/src/components/home/ProductsShowcase.jsx)                                                                 
+    ⎿  Added 1 line, removed 1 line                                                                                                 
+        149          </div>                                                                                                         
+        150                                                                                                                         
+        151          <Link                                                                                                          
+        152 -          href={`/products#${series.id}`}                                                                              
+        152 +          href={`/products/${series.id}`}                                                                              
+        153            className="inline-flex items-center gap-1.5 text-brand-accent font-semibold text-xs sm:text-sm               
+             hover:gap-2.5 transition-all duration-300 group/link"                                                                  
+        154          >                                                                                                              
+        155            Learn More                                                                                                   
+                                                                                                                                    
+  ⏺ Update(uday-aluminium/src/components/layout/Footer.jsx)                                                                         
+    ⎿  Added 5 lines, removed 5 lines                                                                                               
+        11  ];                                                                                                                      
+        12                                                                                                                          
+        13  const productLinks = [                                                                                                  
+        14 -  { name: "1xxx Pure Aluminum", href: "/products#1xxx" },                                                               
+        15 -  { name: "2xxx Al-Copper", href: "/products#2xxx" },                                                                   
+        16 -  { name: "5xxx Al-Magnesium", href: "/products#5xxx" },                                                                
+        17 -  { name: "6xxx Al-Mg-Si", href: "/products#6xxx" },                                                                    
+        18 -  { name: "7xxx Al-Zinc", href: "/products#7xxx" },                                                                     
+        14 +  { name: "1xxx Pure Aluminum", href: "/products/1xxx" },                                                               
+        15 +  { name: "2xxx Al-Copper", href: "/products/2xxx" },                                                                   
+        16 +  { name: "5xxx Al-Magnesium", href: "/products/5xxx" },                                                                
+        17 +  { name: "6xxx Al-Mg-Si", href: "/products/6xxx" },                                                                    
+        18 +  { name: "7xxx Al-Zinc", href: "/products/7xxx" },                                                                     
+        19    { name: "View All Series", href: "/products" },                                                                       
+        20  ];                                                                                                                      
+        21                                                                                                                          
+                                                                                                                                    
+  ⏺ Now let me create the detail pages.                                                                                             
+  ⎿  ⧉ Selected 780 lines from uday-aluminium/public/images/hero/text in Visual Studio Code
+
+⏺ Let me first check the product data structure and existing files to make sure I have the right context.
+
+⏺ Read 2 files (ctrl+o to expand)                                                                                                       
+   
+⏺ The [slug] directory already exists. Let me check what's in it.                                                                       
+                  
+⏺ Read 1 file (ctrl+o to expand)                                                                                                        
+                  
+⏺ The directory exists but is empty. Let me create both files now.                                                                      
+                                                                                                                                        
+⏺ Write(uday-aluminium/src/app/products/[slug]/page.js)                                                                                 
+  ⎿  Wrote 40 lines to uday-aluminium/src/app/products/[slug]/page.js                                                                   
+     import { productSeries } from "@/data/productSeries";                                                                              
+     import { notFound } from "next/navigation";                                                                                      
+     import SeriesDetailContent from "./SeriesDetailContent";                                                                           
+                  
+     export function generateStaticParams() {                                                                                           
+       return productSeries.map((series) => ({              
+         slug: series.id,                                                                                                               
+       }));                                                                                                                             
+     }                                                                                                                                  
+                                                                                                                                        
+     … +30 lines (ctrl+o to expand)                                                                                                     
+
+⏺ Write(uday-aluminium/src/app/products/[slug]/SeriesDetailContent.js)
+  ⎿  Wrote 547 lines to uday-aluminium/src/app/products/[slug]/SeriesDetailContent.js
+     "use client";                                                                                                                      
+  
+     import { motion, useInView } from "framer-motion";                                                                                 
+     import { useRef } from "react";                        
+     import Image from "next/image";
+     import Link from "next/link";
+     import {
+       ArrowRight,
+       ArrowLeft,
+       AlertTriangle,
+     … +537 lines (ctrl+o to expand)
