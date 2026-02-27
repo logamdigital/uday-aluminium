@@ -13,7 +13,7 @@ export const productSeries = [
       "Reflectors, lighting",
       "Decorative sheets"
     ],
-    image: "/images/series/1.jpeg",
+    image: "/images/series/Archive/1xxx.png",
     warnings: null,
     strength: "Low",
     corrosion: "Excellent",
@@ -51,7 +51,7 @@ export const productSeries = [
       "Truck frames",
       "Suspension components"
     ],
-    image: "/images/series/2.jpeg",
+    image: "/images/series/Archive/2xxx.png",
     warnings: "Requires surface protection in corrosive environments",
     strength: "High",
     corrosion: "Poor",
@@ -90,7 +90,7 @@ export const productSeries = [
       "Beverage cans",
       "HVAC systems"
     ],
-    image: "/images/series/3.jpeg",
+    image: "/images/series/Archive/3xxx.png",
     warnings: null,
     strength: "Low-Medium",
     corrosion: "Good",
@@ -128,7 +128,7 @@ export const productSeries = [
       "Architectural panels",
       "Forging applications"
     ],
-    image: "/images/series/4.jpeg",
+    image: "/images/series/Archive/4xxx.png",
     warnings: null,
     strength: "Medium",
     corrosion: "Good",
@@ -158,7 +158,7 @@ export const productSeries = [
     name: "5xxx Series",
     subtitle: "Aluminum-Magnesium Alloys",
     mainProperty: "Excellent corrosion resistance, good strength, excellent weldability",
-    examples: ["5052", "5083", "5086", "5454"],
+    examples: ["5083", "5086", "5154", "5454"],
     applications: [
       "Marine applications",
       "Pressure vessels",
@@ -167,7 +167,7 @@ export const productSeries = [
       "Storage tanks",
       "Shipbuilding"
     ],
-    image: "/images/series/5.jpeg",
+    image: "/images/series/Archive/5xxx.png",
     warnings: "Work hardening can occur during fabrication",
     strength: "Medium-High",
     corrosion: "Excellent",
@@ -207,7 +207,7 @@ export const productSeries = [
       "Pipe & tubing",
       "Machine parts"
     ],
-    image: "/images/series/6.jpeg",
+    image: "/images/series/Archive/6xxx.png",
     warnings: null,
     strength: "Medium-High",
     corrosion: "Good",
@@ -246,7 +246,7 @@ export const productSeries = [
       "Military applications",
       "Mold tooling"
     ],
-    image: "/images/series/7.jpeg",
+    image: "/images/series/Archive/7xxx.png",
     warnings: "Stress corrosion cracking susceptible, requires proper heat treatment",
     strength: "Very High",
     corrosion: "Fair",
@@ -284,7 +284,7 @@ export const productSeries = [
       "Lithium alloys (aerospace)",
       "Specialized industrial uses"
     ],
-    image: "/images/series/8.jpeg",
+    image: "/images/series/Archive/8xxx.png",
     warnings: "Properties vary significantly based on specific alloy",
     strength: "Varies",
     corrosion: "Varies",
@@ -312,9 +312,9 @@ export const productSeries = [
   {
     id: "wire-mesh",
     name: "Aluminium Wire Mesh",
-    subtitle: "Woven & Welded Mesh Solutions",
+    subtitle: "5154 Alloy & Powder Coated Mesh Solutions",
     mainProperty: "Lightweight woven aluminium mesh with excellent corrosion resistance, high electrical conductivity, and easy formability — one-third the weight of steel",
-    examples: ["5052 Mesh", "5056 Mesh", "6061 Mesh", "1350 Mesh"],
+    examples: ["5154 Mesh", "Powder Coated Mesh"],
     applications: [
       "Window & door insect screens",
       "Air & water filtration systems",
@@ -323,7 +323,7 @@ export const productSeries = [
       "Architectural facades & ventilation",
       "Industrial sieving & separation"
     ],
-    image: "/images/series/wire-mesh.jpeg",
+    image: "/images/series/Archive/Wire mesh.png",
     warnings: "Will corrode in contact with alkaline solutions and hydrochloric or hydrofluoric acids",
     strength: "Medium",
     corrosion: "Good",
@@ -351,10 +351,10 @@ export const productSeries = [
   },
   {
     id: "wire-rod",
-    name: "Wire Rod 6–12 mm",
-    subtitle: "Aluminium Wire Rod for Electrical & Industrial Use",
-    mainProperty: "High electrical conductivity (up to 63% IACS), lightweight at 2.71 g/cm³, excellent surface finish with natural oxide protection — ideal for power transmission and downstream wire drawing",
-    examples: ["EC1350 Rod", "6101 Rod", "6201 Rod"],
+    name: "AL Alloy Wire Rods",
+    subtitle: "6201, 6061 & AL59 — Overhead Conductor Rods",
+    mainProperty: "High-strength aluminium alloy wire rods for overhead conductors — 6201, 6061 and AL59 grades deliver superior tensile strength and conductivity for long-span transmission lines",
+    examples: ["6201 Rod", "6061 Rod", "AL59 Rod", "EC1350 Rod", "6101 Rod"],
     applications: [
       "Electrical cables & conductors",
       "Overhead transmission lines",
@@ -363,7 +363,7 @@ export const productSeries = [
       "Cold heading & forging stock",
       "Downstream wire drawing"
     ],
-    image: "/images/series/wire-rod.jpeg",
+    image: "/images/series/Archive/alloy wire road.png",
     warnings: "Diameter tolerance of ±0.5 mm — verify specifications for precision applications",
     strength: "Medium",
     corrosion: "Good",
@@ -425,155 +425,6 @@ export const productSeries = [
   },
 
   /* ── Individual Wire Mesh Products ── */
-  {
-    id: "5052-mesh",
-    name: "5052 Mesh",
-    subtitle: "AlMg2.5 — General Purpose Wire Mesh",
-    mainProperty: "Excellent corrosion resistance in marine and atmospheric environments, good formability, and high fatigue strength — the most widely used aluminium mesh alloy",
-    examples: ["5052"],
-    applications: [
-      "Window & door insect screens",
-      "Air & water filtration",
-      "Marine boat panels",
-      "Architectural facades",
-      "HVAC ventilation grilles",
-      "General industrial mesh"
-    ],
-    image: "/images/series/wire-mesh.jpeg",
-    warnings: null,
-    strength: "Medium",
-    corrosion: "Excellent",
-    weldability: "Good",
-    heatTreatable: false,
-    process: [
-      { step: 1, title: "Wire Drawing", description: "5052 rods drawn through progressive tungsten-carbide dies, reducing diameter in stages to the specified wire size (0.1–5 mm)." },
-      { step: 2, title: "Annealing", description: "Drawn wire is annealed to relieve work hardening, improve flexibility for weaving, and achieve a bright, oxide-free surface finish." },
-      { step: 3, title: "Weaving / Welding", description: "For woven mesh: warp and weft wires interlaced on a mechanical loom. For welded mesh: wires resistance-welded at intersections." },
-      { step: 4, title: "Tensioning & Flattening", description: "Mesh stretched on a tensioning frame to ensure flat, uniform aperture dimensions and eliminate waviness from the weaving process." },
-      { step: 5, title: "Cutting & Edge Finishing", description: "Rolls slit to standard widths on rotary shears; edges trimmed and selvedged or bound to prevent wire unravelling." },
-      { step: 6, title: "QC & Packaging", description: "Aperture, wire diameter, and mesh count verified by optical measurement; salt-spray corrosion test samples taken; rolls labelled and packaged." }
-    ],
-    chemicalComposition: {
-      standard: "EN 573-3 / AA",
-      note: "Max % unless range shown. Balance: Al.",
-      columns: ["Si", "Fe", "Cu", "Mn", "Mg", "Cr", "Zn", "Ti"],
-      alloys: [
-        { alloy: "5052", chemSymbol: "AlMg2.5", si: "0.25", fe: "0.40", cu: "0.10", mn: "0.10", mg: "2.2–2.8", cr: "0.15–0.35", zn: "0.10", ti: "—" }
-      ]
-    }
-  },
-  {
-    id: "5056-mesh",
-    name: "5056 Mesh",
-    subtitle: "AlMg5Cr — High-Magnesium Wire Mesh",
-    mainProperty: "Highest strength among non-heat-treatable aluminium mesh alloys, with excellent corrosion resistance — ideal for heavy-duty industrial and marine mesh applications",
-    examples: ["5056"],
-    applications: [
-      "Heavy-duty industrial sieving",
-      "Offshore & marine structures",
-      "Aerospace heat exchangers",
-      "Chemical processing screens",
-      "Security mesh panels",
-      "High-load filtration systems"
-    ],
-    image: "/images/series/wire-mesh.jpeg",
-    warnings: null,
-    strength: "Medium-High",
-    corrosion: "Excellent",
-    weldability: "Good",
-    heatTreatable: false,
-    process: [
-      { step: 1, title: "Wire Drawing", description: "5056 rods drawn through progressive tungsten-carbide dies, reducing diameter in stages to the specified wire size (0.1–5 mm)." },
-      { step: 2, title: "Annealing", description: "Drawn wire is annealed to relieve work hardening, improve flexibility for weaving, and achieve a bright, oxide-free surface finish." },
-      { step: 3, title: "Weaving / Welding", description: "For woven mesh: warp and weft wires interlaced on a mechanical loom. For welded mesh: wires resistance-welded at intersections." },
-      { step: 4, title: "Tensioning & Flattening", description: "Mesh stretched on a tensioning frame to ensure flat, uniform aperture dimensions and eliminate waviness from the weaving process." },
-      { step: 5, title: "Cutting & Edge Finishing", description: "Rolls slit to standard widths on rotary shears; edges trimmed and selvedged or bound to prevent wire unravelling." },
-      { step: 6, title: "QC & Packaging", description: "Aperture, wire diameter, and mesh count verified by optical measurement; salt-spray corrosion test samples taken; rolls labelled and packaged." }
-    ],
-    chemicalComposition: {
-      standard: "EN 573-3 / AA",
-      note: "Max % unless range shown. Balance: Al.",
-      columns: ["Si", "Fe", "Cu", "Mn", "Mg", "Cr", "Zn", "Ti"],
-      alloys: [
-        { alloy: "5056", chemSymbol: "AlMg5Cr", si: "0.30", fe: "0.40", cu: "0.10", mn: "0.05–0.20", mg: "4.5–5.6", cr: "0.05–0.20", zn: "0.10", ti: "—" }
-      ]
-    }
-  },
-  {
-    id: "6061-mesh",
-    name: "6061 Mesh",
-    subtitle: "AlMg1SiCu — Heat-Treatable Structural Mesh",
-    mainProperty: "Good strength and corrosion resistance with heat-treatable response — versatile structural mesh suitable for welded assemblies and demanding mechanical applications",
-    examples: ["6061"],
-    applications: [
-      "Structural mesh panels",
-      "Aerospace enclosures",
-      "Welded industrial frames",
-      "Architectural screens",
-      "Automotive grilles",
-      "Defence & security panels"
-    ],
-    image: "/images/series/wire-mesh.jpeg",
-    warnings: null,
-    strength: "Medium-High",
-    corrosion: "Good",
-    weldability: "Good",
-    heatTreatable: true,
-    process: [
-      { step: 1, title: "Wire Drawing", description: "6061 rods drawn through progressive tungsten-carbide dies, reducing diameter in stages to the specified wire size (0.1–5 mm)." },
-      { step: 2, title: "Annealing", description: "Drawn wire is annealed to relieve work hardening, improve flexibility for weaving, and achieve a bright, oxide-free surface finish." },
-      { step: 3, title: "Weaving / Welding", description: "For woven mesh: warp and weft wires interlaced on a mechanical loom. For welded mesh: wires resistance-welded at intersections." },
-      { step: 4, title: "Tensioning & Flattening", description: "Mesh stretched on a tensioning frame to ensure flat, uniform aperture dimensions and eliminate waviness from the weaving process." },
-      { step: 5, title: "Cutting & Edge Finishing", description: "Rolls slit to standard widths on rotary shears; edges trimmed and selvedged or bound to prevent wire unravelling." },
-      { step: 6, title: "QC & Packaging", description: "Aperture, wire diameter, and mesh count verified by optical measurement; salt-spray corrosion test samples taken; rolls labelled and packaged." }
-    ],
-    chemicalComposition: {
-      standard: "EN 573-3 / AA",
-      note: "Max % unless range shown. Balance: Al.",
-      columns: ["Si", "Fe", "Cu", "Mn", "Mg", "Cr", "Zn", "Ti"],
-      alloys: [
-        { alloy: "6061", chemSymbol: "AlMg1SiCu", si: "0.40–0.80", fe: "0.70", cu: "0.15–0.40", mn: "0.15", mg: "0.80–1.2", cr: "0.04–0.35", zn: "0.25", ti: "0.15" }
-      ]
-    }
-  },
-  {
-    id: "1350-mesh",
-    name: "1350 Mesh",
-    subtitle: "E-Al99.5 — High-Conductivity Electrical Mesh",
-    mainProperty: "Highest electrical conductivity of all aluminium mesh grades (61% IACS), excellent corrosion resistance and formability — the standard choice for electrical and EMI shielding mesh",
-    examples: ["1350"],
-    applications: [
-      "EMI & RF shielding screens",
-      "Electrical enclosure vents",
-      "Heat exchanger mesh",
-      "Window screens",
-      "Decorative & lighting panels",
-      "Food & pharmaceutical screens"
-    ],
-    image: "/images/series/wire-mesh.jpeg",
-    warnings: null,
-    strength: "Low",
-    corrosion: "Excellent",
-    weldability: "Excellent",
-    heatTreatable: false,
-    process: [
-      { step: 1, title: "Wire Drawing", description: "1350 rods drawn through progressive tungsten-carbide dies, reducing diameter in stages to the specified wire size (0.1–5 mm)." },
-      { step: 2, title: "Annealing", description: "Drawn wire is annealed to relieve work hardening, improve flexibility for weaving, and achieve a bright, oxide-free surface finish." },
-      { step: 3, title: "Weaving / Welding", description: "For woven mesh: warp and weft wires interlaced on a mechanical loom. For welded mesh: wires resistance-welded at intersections." },
-      { step: 4, title: "Tensioning & Flattening", description: "Mesh stretched on a tensioning frame to ensure flat, uniform aperture dimensions and eliminate waviness from the weaving process." },
-      { step: 5, title: "Cutting & Edge Finishing", description: "Rolls slit to standard widths on rotary shears; edges trimmed and selvedged or bound to prevent wire unravelling." },
-      { step: 6, title: "QC & Packaging", description: "Aperture, wire diameter, and mesh count verified by optical measurement; salt-spray corrosion test samples taken; rolls labelled and packaged." }
-    ],
-    chemicalComposition: {
-      standard: "EN 573-3 / AA",
-      note: "Max % unless range shown. Balance: Al.",
-      columns: ["Si", "Fe", "Cu", "Mn", "Mg", "Cr", "Zn", "Ti"],
-      alloys: [
-        { alloy: "1350", chemSymbol: "E-Al99.5", si: "0.10", fe: "0.40", cu: "0.05", mn: "0.01", mg: "—", cr: "—", zn: "0.05", ti: "0.03" }
-      ]
-    }
-  },
-
   /* ── Individual Wire Rod Products ── */
   {
     id: "ec1350-rod",
@@ -589,7 +440,7 @@ export const productSeries = [
       "EMI shielding wire",
       "Downstream wire drawing"
     ],
-    image: "/images/series/wire-rod.jpeg",
+    image: "/images/series/Archive/ec1350 rod.png",
     warnings: null,
     strength: "Low",
     corrosion: "Excellent",
@@ -626,7 +477,7 @@ export const productSeries = [
       "Industrial power distribution",
       "Alloy conductor steel reinforced (ACSR)"
     ],
-    image: "/images/series/wire-rod.jpeg",
+    image: "/images/series/Archive/6101 rod.png",
     warnings: null,
     strength: "Medium",
     corrosion: "Good",
@@ -649,6 +500,322 @@ export const productSeries = [
       ]
     }
   },
+  /* ── 5154 Mesh & Powder Coated Mesh ── */
+  {
+    id: "5154-mesh",
+    name: "5154 Alloy Wire Mesh",
+    subtitle: "AlMg3.5 — Marine & Industrial Wire Mesh",
+    mainProperty: "5154 aluminium alloy wire mesh combines excellent saltwater corrosion resistance with good strength — the preferred alloy for marine, offshore and general industrial screening applications",
+    examples: ["5154"],
+    applications: [
+      "Marine & offshore screening panels",
+      "Industrial filtration & sieving",
+      "Window & door insect screens",
+      "Architectural facades & ventilation",
+      "Agricultural & food processing mesh",
+      "Chemical processing screens"
+    ],
+    image: "/images/series/Archive/5154 alloy wire mesh.png",
+    warnings: null,
+    strength: "Medium",
+    corrosion: "Excellent",
+    weldability: "Good",
+    heatTreatable: false,
+    process: [
+      { step: 1, title: "Wire Drawing", description: "5154 rods drawn through progressive tungsten-carbide dies, reducing diameter in stages to the specified wire size (0.1–5 mm)." },
+      { step: 2, title: "Annealing", description: "Drawn wire annealed to relieve work hardening, improve flexibility for weaving, and achieve a bright, oxide-free surface finish." },
+      { step: 3, title: "Weaving / Welding", description: "For woven mesh: warp and weft wires interlaced on a mechanical loom. For welded mesh: wires resistance-welded at intersections." },
+      { step: 4, title: "Tensioning & Flattening", description: "Mesh stretched on a tensioning frame to ensure flat, uniform aperture dimensions and eliminate waviness from the weaving process." },
+      { step: 5, title: "Cutting & Edge Finishing", description: "Rolls slit to standard widths on rotary shears; edges trimmed and selvedged or bound to prevent wire unravelling." },
+      { step: 6, title: "QC & Packaging", description: "Aperture, wire diameter, and mesh count verified by optical measurement; salt-spray corrosion test samples taken; rolls labelled and packaged." }
+    ],
+    chemicalComposition: {
+      standard: "EN 573-3 / AA",
+      note: "Max % unless range shown. Balance: Al.",
+      columns: ["Si", "Fe", "Cu", "Mn", "Mg", "Cr", "Zn", "Ti"],
+      alloys: [
+        { alloy: "5154", chemSymbol: "AlMg3.5", si: "0.25", fe: "0.40", cu: "0.10", mn: "0.10", mg: "3.1–3.9", cr: "0.15–0.35", zn: "0.20", ti: "0.20" }
+      ]
+    }
+  },
+  {
+    id: "powder-coated-mesh",
+    name: "Powder Coated Wire Mesh",
+    subtitle: "Colour-Coated Aluminium Mesh",
+    mainProperty: "Powder coated aluminium wire mesh offers enhanced aesthetics combined with superior corrosion and UV resistance — ideal for architectural, decorative and outdoor screening applications requiring a durable colour finish",
+    examples: ["5154 Coated", "6061 Coated"],
+    applications: [
+      "Architectural facades & cladding",
+      "Window & door screens (colour matched)",
+      "Outdoor furniture & garden screens",
+      "Security grilles & panels",
+      "HVAC ventilation covers",
+      "Decorative interior partitions"
+    ],
+    image: "/images/series/Archive/powder coted wire mesh.png",
+    warnings: "Avoid sharp abrasives to protect the coating surface",
+    strength: "Medium",
+    corrosion: "Excellent",
+    weldability: "Fair",
+    heatTreatable: false,
+    process: [
+      { step: 1, title: "Wire Drawing & Mesh Weaving", description: "Aluminium wire drawn and woven or welded into mesh panels as per standard specifications." },
+      { step: 2, title: "Surface Cleaning", description: "Mesh panels degreased and cleaned with alkaline wash to remove oils, oxides and surface contaminants before coating." },
+      { step: 3, title: "Chemical Pre-treatment", description: "Chromate or chrome-free conversion coating applied to enhance adhesion and provide a corrosion-inhibiting base layer." },
+      { step: 4, title: "Powder Application", description: "Electrostatically charged powder paint is sprayed onto the mesh, ensuring uniform coverage on all wire surfaces and intersections." },
+      { step: 5, title: "Curing Oven", description: "Coated mesh passes through a curing oven at 180–200 °C for 15–20 minutes, fusing the powder into a smooth, hard film." },
+      { step: 6, title: "Inspection & Packaging", description: "Coating thickness (60–80 μm), adhesion, and colour uniformity checked per panel; salt spray tested; rolls or sheets packaged for dispatch." }
+    ],
+    chemicalComposition: {
+      standard: "EN 573-3 / AA",
+      note: "Substrate alloy. Max % unless range shown. Balance: Al.",
+      columns: ["Si", "Fe", "Cu", "Mn", "Mg", "Cr", "Zn", "Ti"],
+      alloys: [
+        { alloy: "5154", chemSymbol: "AlMg3.5", si: "0.25", fe: "0.40", cu: "0.10", mn: "0.10", mg: "3.1–3.9", cr: "0.15–0.35", zn: "0.20", ti: "0.20" }
+      ]
+    }
+  },
+
+  /* ── Welding Wire ── */
+  {
+    id: "welding-wire",
+    name: "Aluminium Welding Wire",
+    subtitle: "MIG / TIG Aluminium Welding Wire",
+    mainProperty: "Precision-drawn aluminium welding wires for MIG and TIG applications — consistent chemistry and tight diameter tolerances ensure smooth arc transfer, low spatter and high-quality weld deposits",
+    examples: ["ER4043", "ER5356", "ER1100", "ER4047"],
+    applications: [
+      "MIG / TIG welding of aluminium structures",
+      "Automotive body & chassis welding",
+      "Marine & shipbuilding repairs",
+      "Aerospace component fabrication",
+      "Pressure vessel & tank welding",
+      "General aluminium fabrication shops"
+    ],
+    image: "/images/series/Archive/al welding wire.png",
+    warnings: "Store in dry conditions; use within recommended shelf life to prevent oxide pick-up",
+    strength: "Medium",
+    corrosion: "Good",
+    weldability: "Excellent",
+    heatTreatable: false,
+    process: [
+      { step: 1, title: "Alloy Preparation", description: "High-purity aluminium ingots and alloying additions (Si, Mg) are batched to tight composition targets required by AWS A5.10 / EN ISO 18273." },
+      { step: 2, title: "Continuous Casting", description: "Molten alloy continuously cast into rod; rapid solidification ensures a fine grain structure ideal for subsequent cold drawing." },
+      { step: 3, title: "Multi-pass Wire Drawing", description: "Rod progressively drawn through tungsten-carbide dies to final wire diameter (0.8–3.2 mm) in multiple cold-drawing passes with intermediate anneals." },
+      { step: 4, title: "Surface Cleaning", description: "Wire surfaces cleaned and lubricated with weld-compatible drawing oil; bright, oxide-free finish verified before spooling." },
+      { step: 5, title: "Spooling", description: "Wire precision-wound onto plastic or steel spools in standard weights (0.5–15 kg) with controlled traverse for tangle-free payoff during welding." },
+      { step: 6, title: "QC & Certification", description: "Chemistry verified by OES; tensile, elongation, and diameter checked per lot; AWS / ISO compliance certificates issued with every shipment." }
+    ],
+    chemicalComposition: {
+      standard: "AWS A5.10 / EN ISO 18273",
+      note: "Max % unless range shown. Balance: Al.",
+      columns: ["Si", "Fe", "Cu", "Mn", "Mg", "Cr", "Zn", "Ti"],
+      alloys: [
+        { alloy: "ER4043", chemSymbol: "AlSi5",   si: "4.5–6.0", fe: "0.80", cu: "0.30", mn: "0.05", mg: "0.05",    cr: "—",    zn: "0.10", ti: "0.20" },
+        { alloy: "ER5356", chemSymbol: "AlMg5Cr", si: "0.25",    fe: "0.40", cu: "0.10", mn: "0.05–0.20", mg: "4.5–5.5", cr: "0.05–0.20", zn: "0.10", ti: "0.06–0.20" },
+        { alloy: "ER1100", chemSymbol: "Al99.0",  si: "Si+Fe: 0.95", fe: "—", cu: "0.05–0.20", mn: "0.05", mg: "—", cr: "—", zn: "0.10", ti: "—" }
+      ]
+    }
+  },
+
+  /* ── Rivet Wire ── */
+  {
+    id: "rivet-wire",
+    name: "Rivet Wire",
+    subtitle: "Aluminium Wire for Rivet Manufacturing",
+    mainProperty: "Close-tolerance aluminium wire for rivet cold-heading — consistent roundness, surface finish and mechanical properties ensure defect-free rivet heads and reliable fastener performance",
+    examples: ["1100 Rivet", "5056 Rivet", "2017 Rivet"],
+    applications: [
+      "Aircraft & aerospace rivets",
+      "Automotive body panel fasteners",
+      "Construction & structural rivets",
+      "Electronics & appliance assembly",
+      "Marine-grade rivets",
+      "General cold-heading applications"
+    ],
+    image: "/images/series/Archive/rivet wire.png",
+    warnings: null,
+    strength: "Low-Medium",
+    corrosion: "Good",
+    weldability: "Good",
+    heatTreatable: false,
+    process: [
+      { step: 1, title: "Rod Preparation", description: "Aluminium rods of the required alloy (1100, 5056, 2017) are selected and pre-inspected for surface and composition." },
+      { step: 2, title: "Multi-pass Wire Drawing", description: "Rods progressively drawn through diamond-grade dies to final rivet wire diameter with intermediate anneals to restore ductility." },
+      { step: 3, title: "Precision Annealing", description: "Final anneal at controlled temperature ensures the soft, ductile condition required for cold-heading without cracking." },
+      { step: 4, title: "Surface Finishing", description: "Wire surfaces bright-finished and lubricated; diameter and roundness verified to close tolerances (±0.01 mm)." },
+      { step: 5, title: "Coiling & Spooling", description: "Wire coiled or spooled to customer-specified coil weights for automated cold-heading machines and rivet presses." },
+      { step: 6, title: "QC & Dispatch", description: "Tensile strength, elongation and hardness verified; diameter and surface inspected per ISO 6892 / ASTM B316. Full material certificates issued." }
+    ],
+    chemicalComposition: {
+      standard: "EN 573-3 / AA",
+      note: "Max % unless range shown. Balance: Al.",
+      columns: ["Si", "Fe", "Cu", "Mn", "Mg", "Cr", "Zn", "Ti"],
+      alloys: [
+        { alloy: "1100",  chemSymbol: "Al99.0",  si: "Si+Fe: 0.95", fe: "—", cu: "0.05–0.20", mn: "0.05", mg: "—",       cr: "—",          zn: "0.10", ti: "—"   },
+        { alloy: "5056",  chemSymbol: "AlMg5Cr", si: "0.30",         fe: "0.40", cu: "0.10",  mn: "0.05–0.20", mg: "4.5–5.6", cr: "0.05–0.20", zn: "0.10", ti: "—" }
+      ]
+    }
+  },
+
+  /* ── 5154 Braiding Wire ── */
+  {
+    id: "braiding-wire",
+    name: "5154 Braiding Wire",
+    subtitle: "AlMg3.5 — Aluminium Braiding Wire",
+    mainProperty: "5154 alloy braiding wire with excellent corrosion resistance and flexibility — ideal for cable sheathing, flexible conduits, marine rope-laying and specialised braiding applications",
+    examples: ["5154"],
+    applications: [
+      "Cable & wire rope braiding / sheathing",
+      "Flexible aluminium conduit braiding",
+      "Marine rope and strand applications",
+      "Electrical cable armouring",
+      "Textile machine braiding",
+      "Protective sleeving & screening"
+    ],
+    image: "/images/series/Archive/5154 baiding .png",
+    warnings: null,
+    strength: "Medium",
+    corrosion: "Excellent",
+    weldability: "Good",
+    heatTreatable: false,
+    process: [
+      { step: 1, title: "Rod Preparation", description: "5154 alloy rods are selected for high Mg content (3.1–3.9%) ensuring good strength and corrosion resistance in the finished wire." },
+      { step: 2, title: "Multi-pass Drawing", description: "Rods drawn progressively to fine braiding wire diameters (0.1–1.0 mm) through tungsten-carbide dies with controlled inter-pass annealing." },
+      { step: 3, title: "Precision Annealing", description: "Final soft anneal delivers the flexibility and elongation needed for smooth braiding at high machine speeds without wire breakage." },
+      { step: 4, title: "Surface Treatment", description: "Wire surface cleaned and lubricated to minimise friction on braiding machine carriers and ensure consistent payoff tension." },
+      { step: 5, title: "Bobbin / Spool Winding", description: "Fine braiding wire wound onto precision bobbins in standard sizes compatible with major braiding machine platforms." },
+      { step: 6, title: "QC & Packaging", description: "Diameter (±0.005 mm), tensile, elongation and surface finish verified; corrosion resistance checked; bobbins labelled and packed for dispatch." }
+    ],
+    chemicalComposition: {
+      standard: "EN 573-3 / AA",
+      note: "Max % unless range shown. Balance: Al.",
+      columns: ["Si", "Fe", "Cu", "Mn", "Mg", "Cr", "Zn", "Ti"],
+      alloys: [
+        { alloy: "5154", chemSymbol: "AlMg3.5", si: "0.25", fe: "0.40", cu: "0.10", mn: "0.10", mg: "3.1–3.9", cr: "0.15–0.35", zn: "0.20", ti: "0.20" }
+      ]
+    }
+  },
+
+  /* ── Anchor Wire ── */
+  {
+    id: "anchor-wire",
+    name: "Anchor Wire",
+    subtitle: "High-Tensile Guy & Anchor Strand Wire",
+    mainProperty: "High-tensile aluminium anchor and guy wire for tower guying, mast anchoring and overhead line dead-end applications — lighter than galvanised steel with excellent long-term corrosion resistance",
+    examples: ["AL59", "6201", "1350"],
+    applications: [
+      "Transmission tower guying & anchoring",
+      "Telecom mast & antenna guy wires",
+      "Overhead line dead-end & stay wires",
+      "Marine mooring assists",
+      "Construction guy strands",
+      "Wind turbine anchor strands"
+    ],
+    image: "/images/series/Archive/Aluminium Anchor Wire coil.png",
+    warnings: null,
+    strength: "High",
+    corrosion: "Excellent",
+    weldability: "Good",
+    heatTreatable: true,
+    process: [
+      { step: 1, title: "Rod Selection", description: "High-strength alloy rods (AL59, 6201) selected for optimum tensile-to-weight ratio required by IEC 61089 / ASTM B398 standards." },
+      { step: 2, title: "Wire Drawing", description: "Rods drawn to the required strand wire diameter (2–5 mm) through progressive die passes maintaining close diameter tolerance." },
+      { step: 3, title: "Heat Treatment", description: "T81 artificial aging at 150–170 °C develops peak tensile strength (min 300 MPa) while retaining adequate elongation for stranding." },
+      { step: 4, title: "Stranding", description: "Individual wires are machine-stranded in helical layers (7-wire, 19-wire, or custom lay) to produce the finished anchor strand." },
+      { step: 5, title: "Tension Testing", description: "Finished strand subjected to proof-load testing to verify minimum breaking load; individual wire tensile, elongation and torsion checked." },
+      { step: 6, title: "Coiling & Dispatch", description: "Strand coiled to specified reel or coil size; full test certificates per IEC 61089 / BS EN 50182 issued with every consignment." }
+    ],
+    chemicalComposition: {
+      standard: "IEC 61089 / EN 573-3",
+      note: "Max % unless range shown. Balance: Al.",
+      columns: ["Si", "Fe", "Cu", "Mn", "Mg", "Cr", "Zn", "Ti"],
+      alloys: [
+        { alloy: "AL59",  chemSymbol: "AlMgSi",      si: "0.40–0.70", fe: "0.35", cu: "0.10", mn: "0.10", mg: "0.50–0.90", cr: "0.10",       zn: "0.10", ti: "0.10" },
+        { alloy: "6201",  chemSymbol: "AlMg0.6Si0.9", si: "0.50–0.90", fe: "0.50", cu: "0.10", mn: "0.03", mg: "0.60–0.90", cr: "0.03",       zn: "0.10", ti: "—"   }
+      ]
+    }
+  },
+
+  /* ── Zinc Rods & Wires ── */
+  {
+    id: "zinc-rods-wires",
+    name: "Zinc Rods & Wires",
+    subtitle: "Pure Zinc for Thermal Spray & Anodes",
+    mainProperty: "High-purity zinc rods and wires (Zn ≥99.9%) for arc-spray thermal coating, sacrificial anodes and galvanising applications — consistent purity ensures uniform coating adhesion and maximum cathodic protection",
+    examples: ["Zn99.9", "Zn99.5"],
+    applications: [
+      "Arc-spray thermal zinc coating",
+      "Sacrificial anode wire for marine structures",
+      "Galvanising bath replenishment wire",
+      "Corrosion protection of steel structures",
+      "Rebar zinc coating (bridges, tunnels)",
+      "Industrial thermal spray applications"
+    ],
+    image: "/images/series/Archive/Zinc rods and wires stacked.png",
+    warnings: "Handle with adequate ventilation — zinc fume hazard during thermal spraying",
+    strength: "Low",
+    corrosion: "Excellent",
+    weldability: "Fair",
+    heatTreatable: false,
+    process: [
+      { step: 1, title: "High-Purity Zinc Ingot", description: "Special high-grade (SHG) zinc ingots (Zn ≥99.99%) are sourced and certified by independent chemical analysis." },
+      { step: 2, title: "Melting & Casting", description: "Ingots melted at 420–450 °C in an induction furnace; melt filtered to remove dross; continuously cast into wire rod or billet form." },
+      { step: 3, title: "Wire Drawing", description: "Zinc rods drawn through lubricated dies at controlled temperature to final wire diameter (1.6–4.0 mm for spray wire; 5–25 mm for rods)." },
+      { step: 4, title: "Straightening & Cutting", description: "Rods straightened on a rotary straightener; cut to standard lengths (500 mm, 1000 mm) and end-faced for smooth spray-gun feed." },
+      { step: 5, title: "Wire Coiling", description: "Fine wire coiled onto plastic or metal spools compatible with major arc-spray and flame-spray equipment systems." },
+      { step: 6, title: "QC & Certification", description: "Zinc purity verified by ICP-OES per EN 1179 / ASTM B6; diameter and surface inspected; batch certificates and safety data sheets issued." }
+    ],
+    chemicalComposition: {
+      standard: "EN 1179 / ASTM B6",
+      note: "Min Zn% shown. Balance: trace impurities.",
+      columns: ["Zn", "Pb", "Cd", "Fe", "Cu", "Sn", "Al", "—"],
+      alloys: [
+        { alloy: "Zn99.99 (SHG)", chemSymbol: "Zn", zn: "≥99.99", pb: "0.003", cd: "0.003", fe: "0.002", cu: "0.001", sn: "0.001", al: "0.001", "—": "—" },
+        { alloy: "Zn99.9",        chemSymbol: "Zn", zn: "≥99.9",  pb: "0.05",  cd: "0.01",  fe: "0.02",  cu: "0.01",  sn: "0.01",  al: "0.01",  "—": "—" }
+      ]
+    }
+  },
+
+  /* ── Zinc-Mg Wires ── */
+  {
+    id: "zinc-mg-wire",
+    name: "Zinc-Mg Alloy Wire",
+    subtitle: "ZnMg — Advanced Coating Wire",
+    mainProperty: "Zinc-magnesium alloy wire for thermal spray coating delivers 3–5× better corrosion protection than pure zinc coatings — the advanced choice for long-life protection of steel infrastructure",
+    examples: ["ZnMg1", "ZnMg2"],
+    applications: [
+      "Long-life bridge & infrastructure coating",
+      "Offshore & marine steel protection",
+      "Highway barrier & guardrail coating",
+      "Power transmission tower coating",
+      "Pipeline arc-spray corrosion protection",
+      "Ports, wharves & coastal structure protection"
+    ],
+    image: "/images/series/Archive/Zinc-Mg Alloy Wire spool.png",
+    warnings: "Magnesium additions increase reactivity — store away from moisture; use appropriate PPE during spraying",
+    strength: "Low-Medium",
+    corrosion: "Outstanding",
+    weldability: "Fair",
+    heatTreatable: false,
+    process: [
+      { step: 1, title: "Alloy Batching", description: "High-purity zinc and magnesium are batched in precise ratios (1–2 wt% Mg) to achieve target corrosion performance without embrittlement." },
+      { step: 2, title: "Alloying & Casting", description: "Mg added to molten zinc at 450–480 °C under controlled atmosphere to prevent Mg oxidation; alloy continuously cast into rod." },
+      { step: 3, title: "Wire Drawing", description: "Alloy rod drawn to final spray wire diameter (1.6–3.2 mm) through lubricated dies; controlled pass schedules prevent cracking from Mg-induced brittleness." },
+      { step: 4, title: "Quality Verification", description: "Mg content verified by ICP; wire bendability and surface finish checked — smooth, crack-free surface is essential for reliable arc-spray gun feeding." },
+      { step: 5, title: "Spooling", description: "Wire wound onto standard spray-gun compatible spools (15–25 kg); tension controlled to prevent coil unwinding during handling." },
+      { step: 6, title: "Certification & Dispatch", description: "Chemical analysis, tensile, and coating performance data issued per batch; safety data sheet and application guidelines supplied with each consignment." }
+    ],
+    chemicalComposition: {
+      standard: "Proprietary / EN 14919",
+      note: "Nominal composition. Balance: Zn.",
+      columns: ["Zn", "Mg", "Pb", "Cd", "Fe", "Cu", "Al", "—"],
+      alloys: [
+        { alloy: "ZnMg1", chemSymbol: "ZnMg1", zn: "Balance", mg: "~1.0", pb: "0.003", cd: "0.003", fe: "0.002", cu: "0.001", al: "—", "—": "—" },
+        { alloy: "ZnMg2", chemSymbol: "ZnMg2", zn: "Balance", mg: "~2.0", pb: "0.003", cd: "0.003", fe: "0.002", cu: "0.001", al: "—", "—": "—" }
+      ]
+    }
+  },
+
   {
     id: "6201-rod",
     name: "6201 Rod",
@@ -663,7 +830,7 @@ export const productSeries = [
       "High-tension power lines",
       "Downstream fine wire drawing"
     ],
-    image: "/images/series/wire-rod.jpeg",
+    image: "/images/series/Archive/6201 Aluminium Rod.png",
     warnings: "Stress corrosion sensitivity in T8 temper — follow recommended storage and installation guidelines",
     strength: "Medium-High",
     corrosion: "Good",
@@ -685,6 +852,119 @@ export const productSeries = [
         { alloy: "6201", chemSymbol: "AlMg0.6Si0.9", si: "0.50–0.90", fe: "0.50", cu: "0.10", mn: "0.03", mg: "0.60–0.90", cr: "0.03", zn: "0.10", ti: "—" }
       ]
     }
+  },
+  {
+    id: "al59-rod",
+    name: "AL59 Rod",
+    subtitle: "AlMgSi — Overhead Conductor Grade Rod",
+    mainProperty: "AL59 alloy rod meets IEC 62004 requirements for overhead conductor strands — optimised Mg and Si balance delivers minimum 59% IACS conductivity combined with 160 MPa tensile strength for medium and long-span lines",
+    examples: ["AL59"],
+    applications: [
+      "AAAC (All Aluminium Alloy Conductor) strands",
+      "Medium & long-span overhead transmission lines",
+      "Self-supporting aerial bundled cables",
+      "Distribution line conductors",
+      "Anchor wire & guy strands",
+      "Downstream conductor wire drawing"
+    ],
+    image: "/images/series/Archive/AL59 Aluminium Rod.png",
+    warnings: null,
+    strength: "Medium",
+    corrosion: "Good",
+    weldability: "Good",
+    heatTreatable: true,
+    process: [
+      { step: 1, title: "Billet Preparation", description: "AL59 billets preheated to 490–520 °C; Mg/Si ratio precisely controlled per IEC 62004 to achieve the 59% IACS conductivity target." },
+      { step: 2, title: "Continuous Casting & Rolling (CCR)", description: "Molten alloy cast via twin-belt caster and immediately hot-rolled in-line; rapid processing retains alloying elements in solid solution." },
+      { step: 3, title: "Hot Rolling", description: "Multi-stand mill reduces rod to 9.5–12 mm at 420–470 °C; rolling schedule optimised for conductivity and mechanical property balance." },
+      { step: 4, title: "Quench & T1 Temper", description: "Controlled water quench after the final roll pass delivers T1 temper and locks Mg₂Si in solution for subsequent aging." },
+      { step: 5, title: "Artificial Aging", description: "Aged to T6 or T81 temper per IEC 62004 — minimum 160 MPa tensile and 59% IACS conductivity verified on every production coil." },
+      { step: 6, title: "Inspection & Dispatch", description: "Tensile strength, elongation, and electrical conductivity measured per coil to IEC 62004. Full traceability certificates issued." }
+    ],
+    chemicalComposition: {
+      standard: "IEC 62004",
+      note: "Max % unless range shown. Balance: Al.",
+      columns: ["Si", "Fe", "Cu", "Mn", "Mg", "Cr", "Zn", "Ti"],
+      alloys: [
+        { alloy: "AL59", chemSymbol: "AlMgSi", si: "0.40–0.70", fe: "0.35", cu: "0.10", mn: "0.10", mg: "0.50–0.90", cr: "0.10", zn: "0.10", ti: "0.10" }
+      ]
+    }
+  }
+];
+
+/* ── Homepage Products (curated product categories for homepage showcase) ── */
+export const homepageProducts = [
+  {
+    id: "al-alloy-wires",
+    name: "Aluminium & AL Alloy Wires",
+    subtitle: "Pure Al & Alloy Wire Solutions",
+    description: "Premium aluminium and aluminium alloy wires for electrical, industrial and specialised applications across all standard grades.",
+    image: "/images/series/Archive/alloy wire road.png",
+    link: "/products",
+    tag: "Core Product"
+  },
+  {
+    id: "wire-mesh-home",
+    name: "5154 Alloy Wire Mesh",
+    subtitle: "5154 Alloy & Powder Coated",
+    description: "High-strength 5154 aluminium wire mesh and powder coated mesh for filtration, screening and architectural applications.",
+    image: "/images/series/Archive/5154 alloy wire mesh.png",
+    link: "/products/wire-mesh",
+    tag: "Wire Mesh"
+  },
+  {
+    id: "overhead-rods",
+    name: "AL Alloy Wire Rods",
+    subtitle: "6201 · 6061 · AL59 — Overhead Conductors",
+    description: "Aluminium alloy wire rods for overhead conductors — 6201, 6061 and AL59 grades for long-span power transmission lines.",
+    image: "/images/series/Archive/6201 Aluminium Rod.png",
+    link: "/products/wire-rod",
+    tag: "Conductor Rods"
+  },
+  {
+    id: "welding-wire-home",
+    name: "Welding Wire",
+    subtitle: "MIG / TIG Aluminium Welding Wire",
+    description: "Aluminium MIG and TIG welding wires (ER4043, ER5356) with consistent chemistry for clean, spatter-free welds.",
+    image: "/images/series/Archive/al welding wire.png",
+    link: "/products/welding-wire",
+    tag: "Welding"
+  },
+  {
+    id: "rivet-wire-home",
+    name: "Rivet Wire",
+    subtitle: "Wire for Rivet Manufacturing",
+    description: "Close-tolerance aluminium wire for cold-heading of rivets and fasteners — aerospace, automotive and construction grades.",
+    image: "/images/series/Archive/rivet wire.png",
+    link: "/products/rivet-wire",
+    tag: "Fasteners"
+  },
+  {
+    id: "braiding-wire-home",
+    name: "5154 Braiding Wire",
+    subtitle: "Aluminium Braiding & Sheathing Wire",
+    description: "Fine 5154 alloy braiding wire for cable sheathing, flexible conduits and marine rope applications.",
+    image: "/images/series/Archive/5154 baiding .png",
+    link: "/products/braiding-wire",
+    tag: "Braiding"
+  },
+  {
+    id: "anchor-wire-home",
+    name: "Anchor Wire",
+    subtitle: "High-Tensile Guy & Anchor Strand",
+    description: "High-tensile aluminium anchor and guy wire for transmission towers, telecom masts and overhead line anchoring.",
+    image: "/images/series/Archive/Aluminium Anchor Wire coil.png",
+    link: "/products/anchor-wire",
+    tag: "Structural"
+  },
+  {
+    id: "zinc-home",
+    name: "Zinc Rods & Wires",
+    subtitle: "Zinc & Zinc-Mg Coating Wire",
+    description: "Pure zinc and zinc-magnesium alloy rods and wires for thermal spray coating and sacrificial anode protection.",
+    image: "/images/series/Archive/Zinc rods and wires stacked.png",
+    link: "/products/zinc-rods-wires",
+    tag: "Zinc Products"
   }
 ];
 

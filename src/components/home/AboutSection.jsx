@@ -82,8 +82,8 @@ export default function AboutSection() {
             custom={1}
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-brand-primary leading-tight tracking-tight mb-4 sm:mb-6"
           >
-            Pioneering Aluminium
-            <span className="text-brand-accent"> Innovation</span>
+            Aluminium &amp; AL Alloy
+            <span className="text-brand-accent"> Wires Manufacturer</span>
           </motion.h2>
 
           <motion.p
@@ -93,9 +93,9 @@ export default function AboutSection() {
             custom={2}
             className="text-sm sm:text-base lg:text-lg text-gray-500 leading-relaxed font-light"
           >
-            Since our establishment, Uday Aluminium has been at the forefront of
-            aluminium manufacturing, setting industry standards for quality and
-            innovation across all 8 aluminium series.
+            Uday Aluminium is a leading manufacturer of aluminium and aluminium alloy wires,
+            wire mesh, wire rods, welding wire, braiding wire, anchor wire, and zinc coating wires —
+            supplying industries across India and worldwide.
           </motion.p>
         </div>
 
@@ -113,21 +113,21 @@ export default function AboutSection() {
               <div className="flex items-start gap-4">
                 <div className="w-1 shrink-0 self-stretch rounded-full bg-gradient-to-b from-brand-accent to-brand-accent/0" />
                 <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                  With state-of-the-art furnace facilities and rigorous quality
-                  control processes, we ensure that every aluminium rod and
-                  product meets the highest international standards. Our
-                  comprehensive range spans from pure aluminium (1xxx) to
-                  specialized aerospace-grade alloys (7xxx).
+                  With state-of-the-art drawing and manufacturing facilities and
+                  rigorous quality control processes, we ensure that every wire,
+                  mesh and rod product meets the highest international standards.
+                  Our range covers pure aluminium through high-strength alloy grades
+                  including 5154 mesh, 6201/6061/AL59 overhead conductor rods,
+                  welding wire, rivet wire, braiding wire, anchor wire, and zinc coating wires.
                 </p>
               </div>
               <div className="flex items-start gap-4">
                 <div className="w-1 shrink-0 self-stretch rounded-full bg-gradient-to-b from-brand-accent to-brand-accent/0" />
                 <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                  At Uday Aluminium, we don&apos;t just supply aluminium — we
-                  provide engineered solutions that drive innovation and
-                  efficiency across diverse industrial applications worldwide.
-                  Our commitment to excellence has made us a trusted partner
-                  across 50+ countries.
+                  At Uday Aluminium, we don&apos;t just supply wire products — we
+                  provide precision-engineered solutions trusted by cable manufacturers,
+                  construction companies, OEMs and fabricators worldwide. Our commitment
+                  to quality has made us a reliable partner across diverse industries.
                 </p>
               </div>
             </div>

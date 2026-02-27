@@ -12,11 +12,11 @@ const seriesProducts = productSeries.filter((s) =>
 );
 
 const meshProducts = productSeries.filter((s) =>
-  ["5052-mesh", "5056-mesh", "6061-mesh", "1350-mesh"].includes(s.id)
+  ["5154-mesh", "powder-coated-mesh"].includes(s.id)
 );
 
 const rodProductItems = productSeries.filter((s) =>
-  ["ec1350-rod", "6101-rod", "6201-rod"].includes(s.id)
+  ["6201-rod", "6061", "al59-rod", "ec1350-rod", "6101-rod"].includes(s.id)
 );
 
 export default function Header() {
@@ -53,7 +53,7 @@ export default function Header() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const showSolid = !isHome || scrolled;
+  const showSolid = true;
   const isProductsActive =
     pathname.startsWith("/products") || pathname.startsWith("/form-of-supply");
 
@@ -69,7 +69,7 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center group shrink-0">
           <Image
-            src="/images/hero/logo.png"
+            src="/images/hero/Final Logo New.svg"
             alt="Uday Aluminium"
             width={160}
             height={64}
