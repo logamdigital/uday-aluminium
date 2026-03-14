@@ -132,8 +132,8 @@ export default function WhyChooseUs() {
             custom={2}
             className="text-sm sm:text-base lg:text-lg text-gray-500 leading-relaxed font-light"
           >
-            Discover what sets us apart as your trusted aluminum solutions
-            partner — from raw materials to finished alloys.
+            Discover what sets us apart as your trusted aluminium alloy solutions
+            partner — from raw materials to finished alloy products.
           </motion.p>
         </div>
 

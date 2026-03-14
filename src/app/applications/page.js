@@ -30,100 +30,99 @@ const fadeUp = {
 
 const filterCategories = [
   { id: "all", label: "All Applications" },
-  { id: "aerospace", label: "Aerospace" },
-  { id: "automotive", label: "Automotive" },
-  { id: "marine", label: "Marine" },
+  { id: "electrical", label: "Electrical & Power" },
   { id: "construction", label: "Construction" },
-  { id: "electrical", label: "Electrical" },
+  { id: "automotive", label: "Automotive" },
+  { id: "industrial", label: "Industrial" },
 ];
 
 const applications = [
   {
-    id: "aircraft-structures",
-    title: "Aircraft Structures",
-    category: "aerospace",
-    series: ["2xxx", "7xxx"],
+    id: "overhead-conductors",
+    title: "Overhead Power Conductors",
+    category: "electrical",
+    series: ["1xxx", "6xxx", "8xxx"],
     description:
-      "High-strength aluminum alloys for fuselage, wings, and structural components requiring exceptional strength-to-weight ratios.",
-    benefits: ["Ultra-high strength", "Lightweight design", "Fatigue resistance"],
-    icon: Plane,
+      "Aluminium alloy wires for ACSR, AAC, and AAAC overhead conductors used in power transmission and distribution networks.",
+    benefits: ["High conductivity", "Lightweight", "Corrosion resistant"],
+    icon: Zap,
     featured: true,
   },
   {
-    id: "automotive-body",
-    title: "Automotive Body Panels",
-    category: "automotive",
-    series: ["5xxx", "6xxx"],
+    id: "electrical-cables",
+    title: "Electrical Cables & Wiring",
+    category: "electrical",
+    series: ["1xxx", "8xxx"],
     description:
-      "Lightweight aluminum panels for car bodies, providing excellent formability and crash performance.",
-    benefits: ["Weight reduction", "Corrosion resistance", "Recyclability"],
-    icon: Car,
+      "High-purity aluminium alloy stranded wires for power cables, control cables, and electrical installations.",
+    benefits: ["Excellent conductivity", "Flexible stranding", "Long service life"],
+    icon: Zap,
     featured: true,
   },
   {
-    id: "marine-hulls",
-    title: "Marine Hull Construction",
-    category: "marine",
-    series: ["5xxx", "6xxx"],
-    description:
-      "Saltwater-resistant aluminum alloys for ship hulls, decking, and superstructures.",
-    benefits: ["Saltwater resistance", "High strength", "Easy welding"],
-    icon: Ship,
-    featured: false,
-  },
-  {
-    id: "building-frames",
-    title: "Architectural Framing",
+    id: "wire-mesh",
+    title: "Structural Wire Mesh",
     category: "construction",
-    series: ["6xxx", "3xxx"],
+    series: ["5xxx"],
     description:
-      "Structural aluminum extrusions for building frames, curtain walls, and architectural elements.",
-    benefits: ["Weather resistance", "Low maintenance", "Design versatility"],
+      "Welded aluminium alloy wire mesh for concrete reinforcement, fencing, safety barriers, and architectural cladding.",
+    benefits: ["Corrosion resistant", "Lightweight", "Easy installation"],
     icon: Building,
     featured: true,
   },
   {
-    id: "electrical-conductors",
-    title: "Electrical Conductors",
-    category: "electrical",
-    series: ["1xxx", "8xxx"],
+    id: "anchor-wires",
+    title: "Anchor & Fastening Wires",
+    category: "construction",
+    series: ["1xxx", "5xxx"],
     description:
-      "High-purity aluminum for power transmission lines, bus bars, and electrical components.",
-    benefits: ["High conductivity", "Cost effective", "Lightweight"],
-    icon: Zap,
+      "Precision-drawn aluminium alloy anchor wires for tie-downs, tensioning, and structural fastening in civil engineering.",
+    benefits: ["High tensile strength", "Corrosion resistance", "Consistent diameter"],
+    icon: Building,
     featured: false,
   },
   {
-    id: "food-packaging",
-    title: "Food & Beverage Packaging",
-    category: "food",
-    series: ["1xxx", "3xxx"],
+    id: "welding-wire",
+    title: "Automotive Welding Wire",
+    category: "automotive",
+    series: ["4xxx", "5xxx"],
     description:
-      "Food-grade aluminum for cans, foils, and packaging applications requiring safety and barrier properties.",
-    benefits: ["Food safety", "Barrier properties", "Recyclability"],
-    icon: Utensils,
+      "Aluminium alloy MIG/TIG welding wires for body panels, chassis components, and lightweight vehicle structures.",
+    benefits: ["Porosity-free welds", "Low spatter", "High deposition rate"],
+    icon: Car,
     featured: false,
   },
   {
-    id: "chemical-equipment",
-    title: "Chemical Processing Equipment",
-    category: "chemical",
-    series: ["1xxx", "3xxx", "5xxx"],
+    id: "braiding-wire",
+    title: "Braiding Wire for Harnesses",
+    category: "automotive",
+    series: ["1xxx", "6xxx"],
     description:
-      "Corrosion-resistant aluminum for chemical processing equipment, storage tanks, and piping.",
-    benefits: ["Chemical resistance", "Temperature stability", "Easy fabrication"],
-    icon: FlaskRound,
+      "Fine aluminium alloy braiding wires used in cable shielding, automotive harnesses, and flexible conduit applications.",
+    benefits: ["Uniform diameter", "Smooth surface", "Excellent flexibility"],
+    icon: Car,
     featured: false,
   },
   {
-    id: "sports-equipment",
-    title: "Sports Equipment",
-    category: "sports",
-    series: ["6xxx", "7xxx"],
+    id: "industrial-mesh",
+    title: "Industrial Wire Mesh",
+    category: "industrial",
+    series: ["5xxx", "3xxx"],
     description:
-      "High-performance aluminum alloys for bicycles, sports gear, and recreational applications.",
-    benefits: ["Lightweight", "Durability", "Design flexibility"],
+      "Heavy-duty aluminium alloy mesh for industrial filtration, screening, ventilation grills, and equipment guards.",
+    benefits: ["Chemical resistance", "Durable", "Customisable mesh sizes"],
     icon: Trophy,
+    featured: false,
+  },
+  {
+    id: "furnace-rods",
+    title: "Furnace Rods & Alloy Rods",
+    category: "industrial",
+    series: ["1xxx", "6xxx", "8xxx"],
+    description:
+      "Aluminium alloy rods for furnace charging, casting, and raw material feed in downstream processing and re-melting operations.",
+    benefits: ["Consistent composition", "Low impurities", "Optimised for melting"],
+    icon: FlaskRound,
     featured: false,
   },
 ];
@@ -193,7 +192,7 @@ export default function ApplicationsPage() {
               custom={1}
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-brand-primary leading-tight tracking-tight mb-4 sm:mb-6"
             >
-              Aluminium{" "}
+              Aluminium Alloy{" "}
               <span className="text-brand-accent">Applications</span>
             </motion.h1>
 
@@ -204,8 +203,9 @@ export default function ApplicationsPage() {
               custom={2}
               className="text-sm sm:text-base lg:text-lg text-gray-500 leading-relaxed font-light max-w-2xl mx-auto mb-8 sm:mb-10"
             >
-              Discover the diverse applications of our aluminium alloys across
-              industries, from aerospace to automotive, marine to construction.
+              Discover the diverse applications of our aluminium alloy products —
+              from electrical power conductors to construction mesh, automotive
+              welding wire to industrial rods.
             </motion.p>
 
             <motion.div

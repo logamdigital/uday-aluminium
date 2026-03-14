@@ -37,8 +37,8 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
-              Leading manufacturer and supplier of high-quality aluminum alloys across 8 different series.
-              Committed to excellence in quality, service, and innovation since our establishment.
+              Leading aluminium alloy manufacturer and supplier of high-quality wires, rods, and mesh across multiple alloy series.
+              Committed to excellence in quality, service, and innovation.
             </p>
 
             {/* Social Media */}

@@ -12,8 +12,8 @@ const features = [
     icon: Shield,
   },
   {
-    title: "Global Reach",
-    desc: "Exporting to 50+ countries across 6 continents",
+    title: "Growing Reach",
+    desc: "Supplying quality aluminium alloy products across India and international markets",
     icon: Globe,
   },
   {
@@ -22,8 +22,8 @@ const features = [
     icon: Users,
   },
   {
-    title: "Award Winning",
-    desc: "Recognized for excellence in aluminium manufacturing",
+    title: "Quality Assured",
+    desc: "Committed to excellence in aluminium alloy manufacturing at every production stage",
     icon: Award,
   },
 ];

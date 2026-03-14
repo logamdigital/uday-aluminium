@@ -32,10 +32,10 @@ const fadeUp = {
 };
 
 const industryStats = [
-  { number: "50+", label: "Industries Served" },
-  { number: "30+", label: "Countries Served" },
-  { number: "25+", label: "Years Experience" },
-  { number: "99.8%", label: "Client Satisfaction" },
+  { number: "100%", label: "Quality Focus" },
+  { number: "ISO", label: "Certified Process" },
+  { number: "24/7", label: "Technical Support" },
+  { number: "8+", label: "Product Series" },
 ];
 
 const caseStudies = [
@@ -158,9 +158,9 @@ export default function IndustriesPage() {
               custom={2}
               className="text-sm sm:text-base lg:text-lg text-gray-500 leading-relaxed font-light max-w-2xl mx-auto mb-8 sm:mb-10"
             >
-              Trusted aluminium solutions across diverse industries, from
-              aerospace and automotive to marine and construction. Decades of
-              expertise delivering excellence.
+              Reliable aluminium alloy solutions across diverse industries, from
+              electrical and power to construction and automotive. Focused on
+              quality and consistent supply.
             </motion.p>
 
             <motion.div
