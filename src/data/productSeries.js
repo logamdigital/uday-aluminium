@@ -949,7 +949,7 @@ export const homepageProducts = [
     name: "5154 Alloy Wire Mesh",
     subtitle: "5154 Alloy & Powder Coated",
     description: "High-strength 5154 aluminium wire mesh and powder coated mesh for filtration, screening and architectural applications.",
-    image: "/images/series/Archive/wire mesh.png",
+    image: "/images/series/Archive/wire-mesh.png",
     link: "/products/wire-mesh",
     tag: "Wire Mesh"
   },
