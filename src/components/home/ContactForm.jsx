@@ -252,7 +252,7 @@ export default function ContactForm() {
                 {submitStatus === "success" && (
                   <div className="p-4 bg-emerald-50 border border-emerald-100 rounded-xl">
                     <p className="text-emerald-700 text-xs sm:text-sm">
-                      Thank you! Your message has been sent. We'll respond
+                      Thank you! Your message has been sent. We&apos;ll respond
                       within 24 hours.
                     </p>
                   </div>

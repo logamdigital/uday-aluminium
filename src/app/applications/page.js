@@ -465,7 +465,7 @@ export default function ApplicationsPage() {
             custom={1}
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight mb-4 sm:mb-6"
           >
-            Don't See Your{" "}
+            Don&apos;t See Your{" "}
             <span className="text-brand-accent">Application</span>?
           </motion.h2>
 

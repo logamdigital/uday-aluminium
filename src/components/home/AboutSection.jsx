@@ -44,7 +44,7 @@ export default function AboutSection() {
   return (
     <section
       ref={ref}
-      className="relative py-16 sm:py-20 lg:py-28 bg-white overflow-hidden"
+      className="relative py-16 sm:py-10 lg:py-12 bg-white overflow-hidden"
     >
       {/* Subtle dot pattern */}
       <div

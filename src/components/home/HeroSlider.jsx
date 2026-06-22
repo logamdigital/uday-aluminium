@@ -50,7 +50,7 @@ const slides = [
     cta: { primary: "Explore Products", secondary: "Request a Quote" },
   },
   {
-    image: "/images/hero/hero-slide-2.png",
+    image: "/images/hero/hero-slider-3.jpeg",
     mobileImage: "/images/hero/image copy.png",
     alt: "Aluminium Coils Global Delivery",
     badge: "Committed to Quality Alloys",

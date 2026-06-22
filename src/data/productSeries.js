@@ -672,7 +672,7 @@ export const productSeries = [
       "Textile machine braiding",
       "Protective sleeving & screening"
     ],
-    image: "/images/series/Archive/5154 baiding .png",
+    image: "/images/series/Archive/braiding wire.jpeg",
     warnings: null,
     strength: "Medium",
     corrosion: "Excellent",
@@ -691,6 +691,47 @@ export const productSeries = [
       note: "Max % unless range shown. Balance: Al.",
       columns: ["Si", "Fe", "Cu", "Mn", "Mg", "Cr", "Zn", "Ti"],
       alloys: [
+        { alloy: "5154", chemSymbol: "AlMg3.5", si: "0.25", fe: "0.40", cu: "0.10", mn: "0.10", mg: "3.1–3.9", cr: "0.15–0.35", zn: "0.20", ti: "0.20" }
+      ]
+    }
+  },
+
+  /* ── Fine Wire ── */
+  {
+    id: "fine-wire",
+    name: "Fine Wire",
+    subtitle: "Precision Drawn Aluminium Fine Wire",
+    mainProperty: "Precision-drawn aluminium fine wire held to tight diameter tolerance — suited to specialised electrical, electronic and industrial applications requiring fine-gauge consistency",
+    examples: ["1350", "1100", "5154"],
+    applications: [
+      "Fine-gauge electrical winding wire",
+      "Electronic component leads & bonding wire",
+      "Filter mesh & micro-screening wire",
+      "Specialised textile & braiding cores",
+      "Sensor & instrumentation wiring",
+      "Precision spring & coil applications"
+    ],
+    image: "/images/series/Archive/fine wire.png",
+    warnings: null,
+    strength: "Low-Medium",
+    corrosion: "Excellent",
+    weldability: "Good",
+    heatTreatable: false,
+    process: [
+      { step: 1, title: "Rod Selection", description: "High-purity or alloy rod stock (1350, 1100, 5154) selected to match the conductivity, strength and corrosion needs of the fine-wire application." },
+      { step: 2, title: "Multi-pass Fine Drawing", description: "Rod is progressively drawn through a series of diamond and tungsten-carbide dies down to fine gauges (as low as 0.05 mm) with precise tension control." },
+      { step: 3, title: "Inter-pass Annealing", description: "Controlled in-line annealing between drawing passes relieves work hardening and prevents wire breakage at the finest gauges." },
+      { step: 4, title: "Final Anneal", description: "Final soft or half-hard anneal sets the required temper, balancing tensile strength with the elongation needed for downstream processing." },
+      { step: 5, title: "Surface & Diameter Inspection", description: "Laser micrometer scanning verifies diameter tolerance (±0.002 mm) and surface finish along the full wire length." },
+      { step: 6, title: "Spooling & Packaging", description: "Wire is precision-spooled onto bobbins or spools sized to customer requirements, tested, certified and packed for dispatch." }
+    ],
+    chemicalComposition: {
+      standard: "EN 573-3 / AA",
+      note: "Max % unless range shown. Balance: Al.",
+      columns: ["Si", "Fe", "Cu", "Mn", "Mg", "Cr", "Zn", "Ti"],
+      alloys: [
+        { alloy: "1350", chemSymbol: "Al99.5",  si: "0.10", fe: "0.40", cu: "0.05", mn: "0.01", mg: "—",        cr: "—",          zn: "0.05", ti: "0.03" },
+        { alloy: "1100", chemSymbol: "Al99.0",  si: "Si+Fe: 0.95", fe: "—", cu: "0.05–0.20", mn: "0.05", mg: "—", cr: "—",       zn: "0.10", ti: "—"   },
         { alloy: "5154", chemSymbol: "AlMg3.5", si: "0.25", fe: "0.40", cu: "0.10", mn: "0.10", mg: "3.1–3.9", cr: "0.15–0.35", zn: "0.20", ti: "0.20" }
       ]
     }
@@ -935,7 +976,7 @@ export const homepageProducts = [
     name: "Rivet Wire",
     subtitle: "Wire for Rivet Manufacturing",
     description: "Close-tolerance aluminium wire for cold-heading of rivets and fasteners — aerospace, automotive and construction grades.",
-    image: "/images/series/Archive/rivet wire.png",
+    image: "/images/series/Archive/Rivet.jpg",
     link: "/products/rivet-wire",
     tag: "Fasteners"
   },
@@ -944,9 +985,18 @@ export const homepageProducts = [
     name: "5154 Braiding Wire",
     subtitle: "Aluminium Braiding & Sheathing Wire",
     description: "Fine 5154 alloy braiding wire for cable sheathing, flexible conduits and marine rope applications.",
-    image: "/images/series/Archive/5154 baiding .png",
+    image: "/images/series/Archive/braiding wire.jpeg",
     link: "/products/braiding-wire",
     tag: "Braiding"
+  },
+  {
+    id: "fine-wire-home",
+    name: "Fine Wire",
+    subtitle: "Precision Drawn Aluminium Fine Wire",
+    description: "Precision-drawn aluminium fine wire with tight diameter tolerance for specialised industrial and electrical applications.",
+    image: "/images/series/Archive/fine wire.png",
+    link: "/products/fine-wire",
+    tag: "Fine Wire"
   },
   {
     id: "anchor-wire-home",

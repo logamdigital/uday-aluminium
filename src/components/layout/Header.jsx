@@ -37,6 +37,7 @@ export default function Header() {
 
   // Close menus on route change
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMobileOpen(false);
     setProductsOpen(false);
     setMobileProductsOpen(false);
@@ -69,11 +70,11 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center group shrink-0">
           <Image
-            src="/images/hero/Final Logo New.svg"
+            src="/images/hero/final_logo.png"
             alt="Uday Aluminium"
-            width={160}
-            height={64}
-            className="h-10 sm:h-12 lg:h-14 w-auto object-contain group-hover:scale-105 transition-transform duration-200"
+            width={210}
+            height={80}
+            className="h-12 sm:h-14 lg:h-16 w-auto object-contain group-hover:scale-105 transition-transform duration-200"
             priority
           />
         </Link>
@@ -94,6 +95,21 @@ export default function Header() {
               <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-5 h-0.5 bg-brand-accent rounded-full" />
             )}
           </Link>
+
+          {/* About
+          <Link
+            href="/about"
+            className={`relative px-3 xl:px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 whitespace-nowrap ${
+              pathname === "/about"
+                ? "text-brand-accent"
+                : "text-white/75 hover:text-white hover:bg-white/8"
+            }`}
+          >
+            About
+            {pathname === "/about" && (
+              <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-5 h-0.5 bg-brand-accent rounded-full" />
+            )}
+          </Link> */}
 
           {/* Products Mega Dropdown */}
           <div ref={dropdownRef} className="relative">
@@ -281,6 +297,19 @@ export default function Header() {
               }`}
             >
               Home
+            </Link>
+
+            {/* About */}
+            <Link
+              href="/about"
+              onClick={() => setMobileOpen(false)}
+              className={`px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200 ${
+                pathname === "/about"
+                  ? "text-brand-accent bg-brand-accent/10"
+                  : "text-white/70 hover:text-white hover:bg-white/6"
+              }`}
+            >
+              About
             </Link>
 
             {/* Mobile Products Accordion */}
