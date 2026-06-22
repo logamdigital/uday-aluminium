@@ -323,7 +323,7 @@ export const productSeries = [
       "Architectural facades & ventilation",
       "Industrial sieving & separation"
     ],
-    image: "/images/series/Archive/Wire mesh.png",
+    image: "/images/series/Archive/5154 alloy wire mesh.png",
     warnings: "Will corrode in contact with alkaline solutions and hydrochloric or hydrofluoric acids",
     strength: "Medium",
     corrosion: "Good",
@@ -672,7 +672,7 @@ export const productSeries = [
       "Textile machine braiding",
       "Protective sleeving & screening"
     ],
-    image: "/images/series/Archive/braiding wire.jpeg",
+    image: "/images/series/Archive/braiding.jpeg",
     warnings: null,
     strength: "Medium",
     corrosion: "Excellent",
@@ -711,7 +711,7 @@ export const productSeries = [
       "Sensor & instrumentation wiring",
       "Precision spring & coil applications"
     ],
-    image: "/images/series/Archive/fine wire.png",
+    image: "/images/series/Archive/fine wire.jpg",
     warnings: null,
     strength: "Low-Medium",
     corrosion: "Excellent",
@@ -949,7 +949,7 @@ export const homepageProducts = [
     name: "5154 Alloy Wire Mesh",
     subtitle: "5154 Alloy & Powder Coated",
     description: "High-strength 5154 aluminium wire mesh and powder coated mesh for filtration, screening and architectural applications.",
-    image: "/images/series/Archive/5154 alloy wire mesh.png",
+    image: "/images/series/Archive/wire mesh.png",
     link: "/products/wire-mesh",
     tag: "Wire Mesh"
   },
@@ -994,7 +994,7 @@ export const homepageProducts = [
     name: "Fine Wire",
     subtitle: "Precision Drawn Aluminium Fine Wire",
     description: "Precision-drawn aluminium fine wire with tight diameter tolerance for specialised industrial and electrical applications.",
-    image: "/images/series/Archive/fine wire.png",
+    image: "/images/series/Archive/fine wire.jpg",
     link: "/products/fine-wire",
     tag: "Fine Wire"
   },
