@@ -19,6 +19,15 @@ const rodProductItems = productSeries.filter((s) =>
   ["6201-rod", "6061", "al59-rod", "ec1350-rod", "6101-rod"].includes(s.id)
 );
 
+const commercialProducts = [
+  { id: "aluminium-busbars", name: "Aluminium Busbars" },
+  { id: "ec-grade-aluminium-wire", name: "EC Grade Aluminium Wire" },
+  { id: "aluminium-alloy-wires", name: "Aluminium Alloy Wires" },
+  { id: "aluminium-rods", name: "Aluminium Rods" },
+  { id: "aluminium-wire-mesh-fine-wires", name: "Wire Mesh & Fine Wires" },
+  { id: "cable-conductors", name: "Cable Conductors" },
+];
+
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -135,6 +144,26 @@ export default function Header() {
             {/* Mega Menu Panel */}
             {productsOpen && (
               <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[820px] bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 z-50">
+                {/* Shop by Product — commercial-name pages */}
+                <div className="mb-5 pb-5 border-b border-gray-100">
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3 px-1">
+                    Shop by Product
+                  </p>
+                  <div className="grid grid-cols-3 gap-1">
+                    {commercialProducts.map((p) => (
+                      <Link
+                        key={p.id}
+                        href={`/products/${p.id}`}
+                        className="flex items-center px-3 py-2 rounded-xl hover:bg-brand-accent/6 transition-colors"
+                      >
+                        <p className="text-xs font-semibold text-brand-primary truncate leading-tight">
+                          {p.name}
+                        </p>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+
                 <div className="grid grid-cols-4 gap-5">
                   {/* Columns 1–2: Aluminium Series */}
                   <div className="col-span-2">
@@ -337,6 +366,23 @@ export default function Header() {
                 }`}
               >
                 <div className="ml-3 mt-1 space-y-4 pb-2 border-l border-white/10 pl-3">
+                  {/* Shop by Product */}
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-white/40 px-2 mb-1">
+                      Shop by Product
+                    </p>
+                    {commercialProducts.map((p) => (
+                      <Link
+                        key={p.id}
+                        href={`/products/${p.id}`}
+                        onClick={() => setMobileOpen(false)}
+                        className="flex items-center px-2 py-2 rounded-lg text-sm text-white/70 hover:text-white hover:bg-white/6 transition-colors"
+                      >
+                        {p.name}
+                      </Link>
+                    ))}
+                  </div>
+
                   {/* Series */}
                   <div>
                     <p className="text-[10px] font-bold uppercase tracking-widest text-white/40 px-2 mb-1">

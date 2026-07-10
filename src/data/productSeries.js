@@ -311,6 +311,7 @@ export const productSeries = [
   },
   {
     id: "wire-mesh",
+    meshSpecs: true,
     name: "Aluminium Wire Mesh",
     subtitle: "5154 Alloy & Powder Coated Mesh Solutions",
     mainProperty: "Lightweight woven aluminium mesh with excellent corrosion resistance, high electrical conductivity, and easy formability — one-third the weight of steel",
@@ -351,6 +352,7 @@ export const productSeries = [
   },
   {
     id: "wire-rod",
+    alloyWireSpecs: true,
     name: "AL Alloy Wire Rods",
     subtitle: "6201, 6061 & AL59 — Overhead Conductor Rods",
     mainProperty: "High-strength aluminium alloy wire rods for overhead conductors — 6201, 6061 and AL59 grades deliver superior tensile strength and conductivity for long-span transmission lines",
@@ -428,6 +430,7 @@ export const productSeries = [
   /* ── Individual Wire Rod Products ── */
   {
     id: "ec1350-rod",
+    alloyWireSpecs: true,
     name: "EC1350 Rod",
     subtitle: "E-Al99.5 — Electrical Conductor Grade Wire Rod",
     mainProperty: "Minimum 61% IACS electrical conductivity, ultra-low impurity levels, and excellent drawability — the global standard for overhead transmission lines and electrical cable manufacture",
@@ -465,6 +468,7 @@ export const productSeries = [
   },
   {
     id: "6101-rod",
+    alloyWireSpecs: true,
     name: "6101 Rod",
     subtitle: "AlMgSi0.5 — Heat-Treated Conductor Wire Rod",
     mainProperty: "Combines high electrical conductivity (55% IACS) with significantly better strength than EC1350 through Mg₂Si precipitation hardening — ideal for self-supporting overhead conductors",
@@ -859,6 +863,7 @@ export const productSeries = [
 
   {
     id: "6201-rod",
+    alloyWireSpecs: true,
     name: "6201 Rod",
     subtitle: "AlMg0.6Si0.9 — High-Strength Conductor Wire Rod",
     mainProperty: "Higher Mg and Si content than 6101 delivers greater tensile strength (300 MPa T81) at 52% IACS — used where long-span overhead lines demand superior mechanical performance",
@@ -896,6 +901,7 @@ export const productSeries = [
   },
   {
     id: "al59-rod",
+    alloyWireSpecs: true,
     name: "AL59 Rod",
     subtitle: "AlMgSi — Overhead Conductor Grade Rod",
     mainProperty: "AL59 alloy rod meets IEC 62004 requirements for overhead conductor strands — optimised Mg and Si balance delivers minimum 59% IACS conductivity combined with 160 MPa tensile strength for medium and long-span lines",
@@ -949,7 +955,7 @@ export const homepageProducts = [
     name: "5154 Alloy Wire Mesh",
     subtitle: "5154 Alloy & Powder Coated",
     description: "High-strength 5154 aluminium wire mesh and powder coated mesh for filtration, screening and architectural applications.",
-    image: "/images/series/Archive/wire-mesh.png",
+    image: "/images/series/Archive/wire mesh.png",
     link: "/products/wire-mesh",
     tag: "Wire Mesh"
   },
