@@ -8,7 +8,17 @@ import * as z from "zod";
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { productSeries } from "@/data/productSeries";
+import { getUtmParams, getPageContext } from "@/lib/tracking";
+
+const PRODUCT_INTEREST_OPTIONS = [
+  "Aluminium Busbars",
+  "EC Grade Aluminium Wire",
+  "Aluminium Alloy Wires",
+  "Aluminium Rods",
+  "Aluminium Wire Mesh & Fine Wires",
+  "Cable Conductors",
+  "General Inquiry",
+];
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -45,8 +55,31 @@ export default function ContactForm() {
   const onSubmit = async (data) => {
     setIsSubmitting(true);
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      console.log("Form data:", data);
+      const utm = getUtmParams();
+      const { pageUrl, referrer } = getPageContext();
+
+      const response = await fetch("/api/submit-form", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          Source: "Homepage",
+          Name: data.name,
+          Email: data.email,
+          Phone: data.phone,
+          "Product Interest": data.productInterest,
+          Message: data.message,
+          "UTM Source": utm.utm_source,
+          "UTM Medium": utm.utm_medium,
+          "UTM Campaign": utm.utm_campaign,
+          "UTM Term": utm.utm_term,
+          "UTM Content": utm.utm_content,
+          "Page URL": pageUrl,
+          Referrer: referrer,
+        }),
+      });
+
+      if (!response.ok) throw new Error("Submission failed");
+
       setSubmitStatus("success");
       reset();
     } catch (error) {
@@ -210,14 +243,12 @@ export default function ContactForm() {
                         : "border-gray-200"
                     }`}
                   >
-                    <option value="">Select a product series</option>
-                    {productSeries.map((series) => (
-                      <option key={series.id} value={series.id}>
-                        {series.name} - {series.subtitle}
+                    <option value="">Select a product</option>
+                    {PRODUCT_INTEREST_OPTIONS.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
                       </option>
                     ))}
-                    <option value="custom">Custom Requirements</option>
-                    <option value="general">General Inquiry</option>
                   </select>
                   {errors.productInterest && (
                     <p className="text-red-500 text-xs mt-1">

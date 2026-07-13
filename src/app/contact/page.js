@@ -26,6 +26,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { productSeries } from "@/data/productSeries";
+import { getUtmParams, getPageContext } from "@/lib/tracking";
 
 const formSchema = z.object({
   firstName: z.string().min(2, "First name must be at least 2 characters"),
@@ -123,9 +124,41 @@ function ContactPageInner() {
   const onSubmit = async (data) => {
     setIsSubmitting(true);
     try {
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      console.log("Form data:", { ...data, file: selectedFile });
+      const utm = getUtmParams();
+      const { pageUrl, referrer } = getPageContext();
+
+      const response = await fetch("/api/submit-form", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          Source: "Contact Page",
+          "First Name": data.firstName,
+          "Last Name": data.lastName,
+          Email: data.email,
+          Phone: data.phone,
+          Company: data.company,
+          "Job Title": data.jobTitle,
+          Industry: data.industry,
+          "Product Interest": data.productInterest,
+          "Inquiry Type": data.inquiryType,
+          "Estimated Quantity": data.quantity,
+          Timeline: data.timeline,
+          Specifications: data.specifications,
+          Message: data.message,
+          "Preferred Contact": data.preferredContact,
+          "Attached File Name": selectedFile?.name || "",
+          "UTM Source": utm.utm_source,
+          "UTM Medium": utm.utm_medium,
+          "UTM Campaign": utm.utm_campaign,
+          "UTM Term": utm.utm_term,
+          "UTM Content": utm.utm_content,
+          "Page URL": pageUrl,
+          Referrer: referrer,
+        }),
+      });
+
+      if (!response.ok) throw new Error("Submission failed");
+
       setSubmitStatus("success");
       reset();
       setSelectedFile(null);

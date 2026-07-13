@@ -8,6 +8,7 @@ import * as z from "zod";
 import { Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { getUtmParams, getPageContext } from "@/lib/tracking";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -43,8 +44,31 @@ export default function ProductInquiryForm({ productName }) {
   const onSubmit = async (data) => {
     setIsSubmitting(true);
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      console.log("Product inquiry:", { product: productName, ...data });
+      const utm = getUtmParams();
+      const { pageUrl, referrer } = getPageContext();
+
+      const response = await fetch("/api/submit-form", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          Source: productName,
+          Name: data.name,
+          Email: data.email,
+          Phone: data.phone,
+          "Estimated Quantity": data.quantity,
+          Message: data.message,
+          "UTM Source": utm.utm_source,
+          "UTM Medium": utm.utm_medium,
+          "UTM Campaign": utm.utm_campaign,
+          "UTM Term": utm.utm_term,
+          "UTM Content": utm.utm_content,
+          "Page URL": pageUrl,
+          Referrer: referrer,
+        }),
+      });
+
+      if (!response.ok) throw new Error("Submission failed");
+
       setSubmitStatus("success");
       reset();
     } catch (error) {
