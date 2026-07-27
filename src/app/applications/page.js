@@ -41,7 +41,7 @@ const applications = [
     id: "overhead-conductors",
     title: "Overhead Power Conductors",
     category: "electrical",
-    series: ["1xxx", "6xxx", "8xxx"],
+    products: ["EC Grade Aluminium Wire", "Aluminium Alloy Wires", "Aluminium Rods"],
     description:
       "Aluminium alloy wires for ACSR, AAC, and AAAC overhead conductors used in power transmission and distribution networks.",
     benefits: ["High conductivity", "Lightweight", "Corrosion resistant"],
@@ -52,7 +52,7 @@ const applications = [
     id: "electrical-cables",
     title: "Electrical Cables & Wiring",
     category: "electrical",
-    series: ["1xxx", "8xxx"],
+    products: ["EC Grade Aluminium Wire", "Aluminium Rods"],
     description:
       "High-purity aluminium alloy stranded wires for power cables, control cables, and electrical installations.",
     benefits: ["Excellent conductivity", "Flexible stranding", "Long service life"],
@@ -63,7 +63,7 @@ const applications = [
     id: "wire-mesh",
     title: "Structural Wire Mesh",
     category: "construction",
-    series: ["5xxx"],
+    products: ["Aluminium Wire Mesh"],
     description:
       "Welded aluminium alloy wire mesh for concrete reinforcement, fencing, safety barriers, and architectural cladding.",
     benefits: ["Corrosion resistant", "Lightweight", "Easy installation"],
@@ -74,7 +74,7 @@ const applications = [
     id: "anchor-wires",
     title: "Anchor & Fastening Wires",
     category: "construction",
-    series: ["1xxx", "5xxx"],
+    products: ["EC Grade Aluminium Wire", "Aluminium Alloy Wires"],
     description:
       "Precision-drawn aluminium alloy anchor wires for tie-downs, tensioning, and structural fastening in civil engineering.",
     benefits: ["High tensile strength", "Corrosion resistance", "Consistent diameter"],
@@ -85,7 +85,7 @@ const applications = [
     id: "welding-wire",
     title: "Automotive Welding Wire",
     category: "automotive",
-    series: ["4xxx", "5xxx"],
+    products: ["Aluminium Alloy Wires"],
     description:
       "Aluminium alloy MIG/TIG welding wires for body panels, chassis components, and lightweight vehicle structures.",
     benefits: ["Porosity-free welds", "Low spatter", "High deposition rate"],
@@ -96,7 +96,7 @@ const applications = [
     id: "braiding-wire",
     title: "Braiding Wire for Harnesses",
     category: "automotive",
-    series: ["1xxx", "6xxx"],
+    products: ["EC Grade Aluminium Wire", "Aluminium Alloy Wires"],
     description:
       "Fine aluminium alloy braiding wires used in cable shielding, automotive harnesses, and flexible conduit applications.",
     benefits: ["Uniform diameter", "Smooth surface", "Excellent flexibility"],
@@ -107,7 +107,7 @@ const applications = [
     id: "industrial-mesh",
     title: "Industrial Wire Mesh",
     category: "industrial",
-    series: ["5xxx", "3xxx"],
+    products: ["Aluminium Wire Mesh"],
     description:
       "Heavy-duty aluminium alloy mesh for industrial filtration, screening, ventilation grills, and equipment guards.",
     benefits: ["Chemical resistance", "Durable", "Customisable mesh sizes"],
@@ -118,7 +118,7 @@ const applications = [
     id: "furnace-rods",
     title: "Furnace Rods & Alloy Rods",
     category: "industrial",
-    series: ["1xxx", "6xxx", "8xxx"],
+    products: ["Aluminium Rods", "Aluminium Alloy Wires"],
     description:
       "Aluminium alloy rods for furnace charging, casting, and raw material feed in downstream processing and re-melting operations.",
     benefits: ["Consistent composition", "Low impurities", "Optimised for melting"],
@@ -296,12 +296,12 @@ export default function ApplicationsPage() {
                   </p>
 
                   <div className="flex flex-wrap gap-1.5 mb-4">
-                    {app.series.map((series) => (
+                    {app.products.map((product) => (
                       <span
-                        key={series}
-                        className="text-[10px] sm:text-xs bg-brand-accent/10 text-brand-accent px-2 py-0.5 rounded font-mono font-medium"
+                        key={product}
+                        className="text-[10px] sm:text-xs bg-brand-accent/10 text-brand-accent px-2 py-0.5 rounded font-medium"
                       >
-                        {series}
+                        {product}
                       </span>
                     ))}
                   </div>
@@ -402,12 +402,12 @@ export default function ApplicationsPage() {
                   </p>
 
                   <div className="flex flex-wrap gap-1.5">
-                    {app.series.map((series) => (
+                    {app.products.map((product) => (
                       <span
-                        key={series}
-                        className="text-[10px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded font-mono"
+                        key={product}
+                        className="text-[10px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded"
                       >
-                        {series}
+                        {product}
                       </span>
                     ))}
                   </div>
@@ -465,7 +465,7 @@ export default function ApplicationsPage() {
             custom={1}
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight mb-4 sm:mb-6"
           >
-            Don't See Your{" "}
+            Don&apos;t See Your{" "}
             <span className="text-brand-accent">Application</span>?
           </motion.h2>
 

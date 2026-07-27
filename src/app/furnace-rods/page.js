@@ -118,6 +118,7 @@ export default function FurnaceRodsPage() {
             src="/images/hero/furnace-1.svg"
             alt="Furnace Operations"
             fill
+            sizes="100vw"
             className="object-cover opacity-20"
           />
         </div>

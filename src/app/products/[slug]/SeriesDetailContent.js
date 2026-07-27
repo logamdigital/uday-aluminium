@@ -25,6 +25,32 @@ import {
   Ruler,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import StandardsTable from "@/components/shared/StandardsTable";
+import SizeApplicationTable from "@/components/shared/SizeApplicationTable";
+import TemperTable from "@/components/shared/TemperTable";
+import CertificationBlock from "@/components/shared/CertificationBlock";
+import MeshGaugeChart from "@/components/shared/MeshGaugeChart";
+import WeaveTypesBlock from "@/components/shared/WeaveTypesBlock";
+import MeshSpecSheet from "@/components/shared/MeshSpecSheet";
+import WeldingSpecTable from "@/components/shared/WeldingSpecTable";
+import {
+  standardsCompliance,
+  sizeApplicationRange,
+  temperGrades,
+  certificationDetails,
+} from "@/data/alloyWireSpecs";
+import {
+  meshOverview,
+  weaveTypes,
+  meshGaugeChart,
+  meshOverviewText,
+  meshKeyAdvantages,
+  meshAlloyGrade,
+  meshSpecRows,
+  meshTypicalApplications,
+  meshPositioning,
+} from "@/data/wireMeshSpecs";
+import { weldingSpecRows, weldingSizePackagingRows } from "@/data/weldingWireSpecs";
 
 const getRatingColor = (rating) => {
   switch (rating) {
@@ -404,6 +430,7 @@ export default function SeriesDetailContent({
             src={series.image}
             alt={series.name}
             fill
+            sizes="100vw"
             className="object-cover"
             priority
           />
@@ -630,10 +657,81 @@ export default function SeriesDetailContent({
 
           <ChemicalCompositionTable data={series.chemicalComposition} inView={extraInView} />
 
+          {series.alloyWireSpecs && (
+            <>
+              <div className="border-t border-gray-100" />
+              <StandardsTable standards={standardsCompliance} inView={extraInView} />
+
+              <div className="border-t border-gray-100" />
+              <SizeApplicationTable
+                min={sizeApplicationRange.min}
+                max={sizeApplicationRange.max}
+                rows={sizeApplicationRange.rows}
+                inView={extraInView}
+              />
+
+              <div className="border-t border-gray-100" />
+              <TemperTable rows={temperGrades} inView={extraInView} />
+
+              <div className="border-t border-gray-100" />
+              <CertificationBlock
+                mtc={certificationDetails.mtc}
+                labCerts={certificationDetails.labCerts}
+                finish={certificationDetails.finish}
+                inView={extraInView}
+              />
+            </>
+          )}
+
           {series.packagingSpecs && (
             <>
               <div className="border-t border-gray-100" />
               <PackagingSpecs specs={series.packagingSpecs} inView={extraInView} />
+            </>
+          )}
+
+          {series.weldingSpecs && (
+            <>
+              <div className="border-t border-gray-100" />
+              <WeldingSpecTable
+                specRows={weldingSpecRows}
+                sizePackagingRows={weldingSizePackagingRows}
+                inView={extraInView}
+              />
+            </>
+          )}
+
+          {series.meshSpecs && (
+            <>
+              <div className="border-t border-gray-100" />
+              <MeshSpecSheet
+                overview={meshOverviewText}
+                advantages={meshKeyAdvantages}
+                alloyGrade={meshAlloyGrade}
+                specRows={meshSpecRows}
+                applications={meshTypicalApplications}
+                positioning={meshPositioning}
+                inView={extraInView}
+              />
+
+              <div className="border-t border-gray-100" />
+              <WeaveTypesBlock types={weaveTypes} inView={extraInView} />
+
+              <div className="border-t border-gray-100" />
+              <MeshGaugeChart rows={meshGaugeChart} overview={meshOverview} inView={extraInView} />
+
+              <div className="flex items-center justify-between flex-wrap gap-3 bg-gray-50 border border-gray-100 rounded-2xl p-5">
+                <p className="text-sm text-gray-600">
+                  Looking for fine wire specifications too?
+                </p>
+                <Link
+                  href="/products/fine-wires"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-brand-accent hover:text-brand-accent/80 transition-colors"
+                >
+                  View Aluminium Fine Wires
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
             </>
           )}
         </div>

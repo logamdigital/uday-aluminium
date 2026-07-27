@@ -26,6 +26,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { productSeries } from "@/data/productSeries";
+import { getUtmParams, getPageContext } from "@/lib/tracking";
 
 const formSchema = z.object({
   firstName: z.string().min(2, "First name must be at least 2 characters"),
@@ -73,17 +74,20 @@ const contactMethods = [
   { value: "both", label: "Both Email & Phone" }
 ];
 
+const companyAddress =
+  "Survey No. 213/1, Behind Rishi Petrol Pump,\nNational Highway No. 08, At & Post: Nadiad (Tundel),\nTaluka: Nadiad, District: Kheda,\nGujarat – 387230";
+
 const officeLocations = [
   {
     name: "Head Office & Manufacturing",
-    address: "Industrial Area, Phase-2\nManufacturing District\nState, PIN - 123456",
+    address: companyAddress,
     phone: "+91 12345 67890",
-    email: "info@udayaluminium.com",
+    email: "purchase@udayaluminium.com",
     hours: "Monday - Saturday: 9:00 AM - 6:00 PM"
   },
   {
     name: "Sales & Technical Support",
-    address: "Business Complex, Tower A\nCommercial Hub\nState, PIN - 123457",
+    address: companyAddress,
     phone: "+91 09876 54321",
     email: "sales@udayaluminium.com",
     hours: "Monday - Friday: 8:30 AM - 7:00 PM"
@@ -123,9 +127,41 @@ function ContactPageInner() {
   const onSubmit = async (data) => {
     setIsSubmitting(true);
     try {
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      console.log("Form data:", { ...data, file: selectedFile });
+      const utm = getUtmParams();
+      const { pageUrl, referrer } = getPageContext();
+
+      const response = await fetch("/api/submit-form", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          Source: "Contact Page",
+          "First Name": data.firstName,
+          "Last Name": data.lastName,
+          Email: data.email,
+          Phone: data.phone,
+          Company: data.company,
+          "Job Title": data.jobTitle,
+          Industry: data.industry,
+          "Product Interest": data.productInterest,
+          "Inquiry Type": data.inquiryType,
+          "Estimated Quantity": data.quantity,
+          Timeline: data.timeline,
+          Specifications: data.specifications,
+          Message: data.message,
+          "Preferred Contact": data.preferredContact,
+          "Attached File Name": selectedFile?.name || "",
+          "UTM Source": utm.utm_source,
+          "UTM Medium": utm.utm_medium,
+          "UTM Campaign": utm.utm_campaign,
+          "UTM Term": utm.utm_term,
+          "UTM Content": utm.utm_content,
+          "Page URL": pageUrl,
+          Referrer: referrer,
+        }),
+      });
+
+      if (!response.ok) throw new Error("Submission failed");
+
       setSubmitStatus("success");
       reset();
       setSelectedFile(null);
@@ -509,7 +545,7 @@ function ContactPageInner() {
                       <div className="flex items-center p-4 bg-green-50 border border-green-200 rounded-lg">
                         <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
                         <p className="text-green-700 text-sm">
-                          Thank you! Your message has been sent successfully. We'll get back to you within 24 hours.
+                          Thank you! Your message has been sent successfully. We&apos;ll get back to you within 24 hours.
                         </p>
                       </div>
                     )}
@@ -569,8 +605,8 @@ function ContactPageInner() {
                       </div>
                       <div>
                         <h4 className="font-semibold text-brand-primary mb-1">Phone</h4>
-                        <p className="text-gray-600">+91 12345 67890</p>
-                        <p className="text-gray-600">+91 09876 54321</p>
+                        <a href="tel:+911234567890" className="block text-gray-600 hover:text-brand-accent transition-colors">+91 12345 67890</a>
+                        <a href="tel:+910987654321" className="block text-gray-600 hover:text-brand-accent transition-colors">+91 09876 54321</a>
                         <p className="text-sm text-gray-500 mt-1">24/7 Technical Support</p>
                       </div>
                     </div>
@@ -581,8 +617,8 @@ function ContactPageInner() {
                       </div>
                       <div>
                         <h4 className="font-semibold text-brand-primary mb-1">Email</h4>
-                        <p className="text-gray-600">info@udayaluminium.com</p>
-                        <p className="text-gray-600">sales@udayaluminium.com</p>
+                        <a href="mailto:purchase@udayaluminium.com" className="block text-gray-600 hover:text-brand-accent transition-colors">purchase@udayaluminium.com</a>
+                        <a href="mailto:sales@udayaluminium.com" className="block text-gray-600 hover:text-brand-accent transition-colors">sales@udayaluminium.com</a>
                         <p className="text-sm text-gray-500 mt-1">Response within 24 hours</p>
                       </div>
                     </div>
@@ -638,11 +674,11 @@ function ContactPageInner() {
                           </div>
                           <div className="flex items-center">
                             <Phone className="h-4 w-4 text-gray-500 mr-2" />
-                            <p className="text-gray-600">{office.phone}</p>
+                            <a href={`tel:${office.phone.replace(/\s+/g, "")}`} className="text-gray-600 hover:text-brand-accent transition-colors">{office.phone}</a>
                           </div>
                           <div className="flex items-center">
                             <Mail className="h-4 w-4 text-gray-500 mr-2" />
-                            <p className="text-gray-600">{office.email}</p>
+                            <a href={`mailto:${office.email}`} className="text-gray-600 hover:text-brand-accent transition-colors">{office.email}</a>
                           </div>
                           <div className="flex items-center">
                             <Clock className="h-4 w-4 text-gray-500 mr-2" />

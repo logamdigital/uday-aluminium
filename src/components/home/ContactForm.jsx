@@ -8,7 +8,17 @@ import * as z from "zod";
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { productSeries } from "@/data/productSeries";
+import { getUtmParams, getPageContext } from "@/lib/tracking";
+
+const PRODUCT_INTEREST_OPTIONS = [
+  "Aluminium Busbars",
+  "EC Grade Aluminium Wire",
+  "Aluminium Alloy Wires",
+  "Aluminium Rods",
+  "Aluminium Wire Mesh & Fine Wires",
+  "Cable Conductors",
+  "General Inquiry",
+];
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -45,8 +55,31 @@ export default function ContactForm() {
   const onSubmit = async (data) => {
     setIsSubmitting(true);
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      console.log("Form data:", data);
+      const utm = getUtmParams();
+      const { pageUrl, referrer } = getPageContext();
+
+      const response = await fetch("/api/submit-form", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          Source: "Homepage",
+          Name: data.name,
+          Email: data.email,
+          Phone: data.phone,
+          "Product Interest": data.productInterest,
+          Message: data.message,
+          "UTM Source": utm.utm_source,
+          "UTM Medium": utm.utm_medium,
+          "UTM Campaign": utm.utm_campaign,
+          "UTM Term": utm.utm_term,
+          "UTM Content": utm.utm_content,
+          "Page URL": pageUrl,
+          Referrer: referrer,
+        }),
+      });
+
+      if (!response.ok) throw new Error("Submission failed");
+
       setSubmitStatus("success");
       reset();
     } catch (error) {
@@ -210,14 +243,12 @@ export default function ContactForm() {
                         : "border-gray-200"
                     }`}
                   >
-                    <option value="">Select a product series</option>
-                    {productSeries.map((series) => (
-                      <option key={series.id} value={series.id}>
-                        {series.name} - {series.subtitle}
+                    <option value="">Select a product</option>
+                    {PRODUCT_INTEREST_OPTIONS.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
                       </option>
                     ))}
-                    <option value="custom">Custom Requirements</option>
-                    <option value="general">General Inquiry</option>
                   </select>
                   {errors.productInterest && (
                     <p className="text-red-500 text-xs mt-1">
@@ -252,7 +283,7 @@ export default function ContactForm() {
                 {submitStatus === "success" && (
                   <div className="p-4 bg-emerald-50 border border-emerald-100 rounded-xl">
                     <p className="text-emerald-700 text-xs sm:text-sm">
-                      Thank you! Your message has been sent. We'll respond
+                      Thank you! Your message has been sent. We&apos;ll respond
                       within 24 hours.
                     </p>
                   </div>
@@ -326,22 +357,28 @@ export default function ContactForm() {
                     icon: MapPin,
                     title: "Address",
                     lines: [
-                      "Industrial Area, Phase-2",
-                      "Manufacturing District",
-                      "State, PIN - 123456",
+                      "Survey No. 213/1, Behind Rishi Petrol Pump,",
+                      "National Highway No. 08, At & Post: Nadiad (Tundel),",
+                      "Taluka: Nadiad, District: Kheda,",
+                      "Gujarat – 387230",
                     ],
                   },
                   {
                     icon: Phone,
                     title: "Phone",
                     lines: ["+91 12345 67890", "+91 09876 54321"],
+                    hrefs: ["tel:+911234567890", "tel:+910987654321"],
                   },
                   {
                     icon: Mail,
                     title: "Email",
                     lines: [
-                      "info@udayaluminium.com",
+                      "purchase@udayaluminium.com",
                       "sales@udayaluminium.com",
+                    ],
+                    hrefs: [
+                      "mailto:purchase@udayaluminium.com",
+                      "mailto:sales@udayaluminium.com",
                     ],
                   },
                   {
@@ -361,14 +398,24 @@ export default function ContactForm() {
                       <h4 className="text-xs sm:text-sm font-semibold text-brand-primary mb-0.5">
                         {item.title}
                       </h4>
-                      {item.lines.map((line, idx) => (
-                        <p
-                          key={idx}
-                          className="text-xs sm:text-sm text-gray-500"
-                        >
-                          {line}
-                        </p>
-                      ))}
+                      {item.lines.map((line, idx) =>
+                        item.hrefs?.[idx] ? (
+                          <a
+                            key={idx}
+                            href={item.hrefs[idx]}
+                            className="block text-xs sm:text-sm text-gray-500 hover:text-brand-accent transition-colors"
+                          >
+                            {line}
+                          </a>
+                        ) : (
+                          <p
+                            key={idx}
+                            className="text-xs sm:text-sm text-gray-500"
+                          >
+                            {line}
+                          </p>
+                        )
+                      )}
                     </div>
                   </div>
                 ))}
