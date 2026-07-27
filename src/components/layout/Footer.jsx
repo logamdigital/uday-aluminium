@@ -6,17 +6,17 @@ const quickLinks = [
   { name: "Product Series", href: "/products" },
   { name: "Industries", href: "/industries" },
   { name: "Applications", href: "/applications" },
-  { name: "Quality Assurance", href: "/quality" },
+  { name: "Quality Assurance", href: "/#quality" },
   { name: "Contact", href: "/contact" },
 ];
 
 const productLinks = [
-  { name: "1xxx Pure Aluminum", href: "/products/1xxx" },
-  { name: "2xxx Al-Copper", href: "/products/2xxx" },
-  { name: "5xxx Al-Magnesium", href: "/products/5xxx" },
-  { name: "6xxx Al-Mg-Si", href: "/products/6xxx" },
-  { name: "7xxx Al-Zinc", href: "/products/7xxx" },
-  { name: "View All Series", href: "/products" },
+  { name: "Aluminium Busbars", href: "/products/aluminium-busbars" },
+  { name: "Aluminium Alloy Wires", href: "/products/aluminium-alloy-wires" },
+  { name: "Aluminium Rods", href: "/products/aluminium-rods" },
+  { name: "Aluminium Wire Mesh", href: "/products/aluminium-wire-mesh" },
+  { name: "Cable Conductors", href: "/products/cable-conductors" },
+  { name: "View All Products", href: "/products" },
 ];
 
 export default function Footer() {
@@ -95,9 +95,10 @@ export default function Footer() {
                 <MapPin className="h-5 w-5 text-brand-accent mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="text-sm text-gray-300">
-                    Industrial Area, Phase-2<br />
-                    Manufacturing District<br />
-                    State, PIN - 123456
+                    Survey No. 213/1, Behind Rishi Petrol Pump,<br />
+                    National Highway No. 08, At &amp; Post: Nadiad (Tundel),<br />
+                    Taluka: Nadiad, District: Kheda,<br />
+                    Gujarat – 387230
                   </p>
                 </div>
               </div>
@@ -105,14 +106,17 @@ export default function Footer() {
               <div className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-brand-accent" />
                 <div>
-                  <p className="text-sm text-gray-300">+91 12345 67890</p>
-                  <p className="text-sm text-gray-300">+91 09876 54321</p>
+                  <a href="tel:+911234567890" className="block text-sm text-gray-300 hover:text-white transition-colors">+91 12345 67890</a>
+                  <a href="tel:+910987654321" className="block text-sm text-gray-300 hover:text-white transition-colors">+91 09876 54321</a>
                 </div>
               </div>
 
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-brand-accent" />
-                <p className="text-sm text-gray-300">info@udayaluminium.com</p>
+                <div>
+                  <a href="mailto:purchase@udayaluminium.com" className="block text-sm text-gray-300 hover:text-white transition-colors">purchase@udayaluminium.com</a>
+                  <a href="mailto:sales@udayaluminium.com" className="block text-sm text-gray-300 hover:text-white transition-colors">sales@udayaluminium.com</a>
+                </div>
               </div>
 
               <div className="flex items-start space-x-3">
@@ -135,16 +139,10 @@ export default function Footer() {
           <div className="flex flex-col items-center gap-3">
             <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-0 w-full">
               <p className="text-xs sm:text-sm text-gray-300">
-                © 2025 Uday Aluminium. All rights reserved.
+                © {new Date().getFullYear()} Uday Aluminium. All rights reserved.
               </p>
               <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
-                <Link href="/privacy" className="text-xs sm:text-sm text-gray-300 hover:text-white transition-colors">
-                  Privacy Policy
-                </Link>
-                <Link href="/terms" className="text-xs sm:text-sm text-gray-300 hover:text-white transition-colors">
-                  Terms & Conditions
-                </Link>
-                <Link href="/sitemap" className="text-xs sm:text-sm text-gray-300 hover:text-white transition-colors">
+                <Link href="/sitemap.xml" className="text-xs sm:text-sm text-gray-300 hover:text-white transition-colors">
                   Sitemap
                 </Link>
               </div>

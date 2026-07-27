@@ -31,13 +31,26 @@ import TemperTable from "@/components/shared/TemperTable";
 import CertificationBlock from "@/components/shared/CertificationBlock";
 import MeshGaugeChart from "@/components/shared/MeshGaugeChart";
 import WeaveTypesBlock from "@/components/shared/WeaveTypesBlock";
+import MeshSpecSheet from "@/components/shared/MeshSpecSheet";
+import WeldingSpecTable from "@/components/shared/WeldingSpecTable";
 import {
   standardsCompliance,
   sizeApplicationRange,
   temperGrades,
   certificationDetails,
 } from "@/data/alloyWireSpecs";
-import { meshOverview, weaveTypes, meshGaugeChart } from "@/data/wireMeshSpecs";
+import {
+  meshOverview,
+  weaveTypes,
+  meshGaugeChart,
+  meshOverviewText,
+  meshKeyAdvantages,
+  meshAlloyGrade,
+  meshSpecRows,
+  meshTypicalApplications,
+  meshPositioning,
+} from "@/data/wireMeshSpecs";
+import { weldingSpecRows, weldingSizePackagingRows } from "@/data/weldingWireSpecs";
 
 const getRatingColor = (rating) => {
   switch (rating) {
@@ -417,6 +430,7 @@ export default function SeriesDetailContent({
             src={series.image}
             alt={series.name}
             fill
+            sizes="100vw"
             className="object-cover"
             priority
           />
@@ -676,8 +690,30 @@ export default function SeriesDetailContent({
             </>
           )}
 
+          {series.weldingSpecs && (
+            <>
+              <div className="border-t border-gray-100" />
+              <WeldingSpecTable
+                specRows={weldingSpecRows}
+                sizePackagingRows={weldingSizePackagingRows}
+                inView={extraInView}
+              />
+            </>
+          )}
+
           {series.meshSpecs && (
             <>
+              <div className="border-t border-gray-100" />
+              <MeshSpecSheet
+                overview={meshOverviewText}
+                advantages={meshKeyAdvantages}
+                alloyGrade={meshAlloyGrade}
+                specRows={meshSpecRows}
+                applications={meshTypicalApplications}
+                positioning={meshPositioning}
+                inView={extraInView}
+              />
+
               <div className="border-t border-gray-100" />
               <WeaveTypesBlock types={weaveTypes} inView={extraInView} />
 
@@ -689,10 +725,10 @@ export default function SeriesDetailContent({
                   Looking for fine wire specifications too?
                 </p>
                 <Link
-                  href="/products/aluminium-wire-mesh-fine-wires"
+                  href="/products/fine-wires"
                   className="inline-flex items-center gap-2 text-sm font-semibold text-brand-accent hover:text-brand-accent/80 transition-colors"
                 >
-                  View Aluminium Wire Mesh &amp; Fine Wires
+                  View Aluminium Fine Wires
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>

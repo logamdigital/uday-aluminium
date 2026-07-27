@@ -5,28 +5,16 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, Phone, ChevronDown, Package } from "lucide-react";
-import { productSeries } from "@/data/productSeries";
-
-const seriesProducts = productSeries.filter((s) =>
-  ["1xxx", "2xxx", "3xxx", "4xxx", "5xxx", "6xxx", "7xxx", "8xxx"].includes(s.id)
-);
-
-const meshProducts = productSeries.filter((s) =>
-  ["5154-mesh", "powder-coated-mesh"].includes(s.id)
-);
-
-const rodProductItems = productSeries.filter((s) =>
-  ["6201-rod", "6061", "al59-rod", "ec1350-rod", "6101-rod"].includes(s.id)
-);
+import { productPages } from "@/data/productPages";
 
 const commercialProducts = [
   { id: "aluminium-busbars", name: "Aluminium Busbars" },
-  { id: "ec-grade-aluminium-wire", name: "EC Grade Aluminium Wire" },
   { id: "aluminium-alloy-wires", name: "Aluminium Alloy Wires" },
   { id: "aluminium-rods", name: "Aluminium Rods" },
-  { id: "aluminium-wire-mesh-fine-wires", name: "Wire Mesh & Fine Wires" },
+  { id: "aluminium-wire-mesh", name: "Aluminium Wire Mesh" },
+  { id: "fine-wires", name: "Aluminium Fine Wires" },
   { id: "cable-conductors", name: "Cable Conductors" },
-];
+].map((p) => ({ ...p, image: productPages[p.id]?.image }));
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -36,6 +24,14 @@ export default function Header() {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const dropdownRef = useRef(null);
+  const [prevPathname, setPrevPathname] = useState(pathname);
+
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
+    setMobileOpen(false);
+    setProductsOpen(false);
+    setMobileProductsOpen(false);
+  }
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -43,14 +39,6 @@ export default function Header() {
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  // Close menus on route change
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setMobileOpen(false);
-    setProductsOpen(false);
-    setMobileProductsOpen(false);
-  }, [pathname]);
 
   // Close dropdown on outside click
   useEffect(() => {
@@ -143,20 +131,31 @@ export default function Header() {
 
             {/* Mega Menu Panel */}
             {productsOpen && (
-              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[820px] bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 z-50">
+              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[560px] bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 z-50">
                 {/* Shop by Product — commercial-name pages */}
                 <div className="mb-5 pb-5 border-b border-gray-100">
                   <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3 px-1">
                     Shop by Product
                   </p>
-                  <div className="grid grid-cols-3 gap-1">
+                  <div className="grid grid-cols-2 gap-2">
                     {commercialProducts.map((p) => (
                       <Link
                         key={p.id}
                         href={`/products/${p.id}`}
-                        className="flex items-center px-3 py-2 rounded-xl hover:bg-brand-accent/6 transition-colors"
+                        className="flex items-center gap-3 px-2.5 py-2.5 rounded-xl hover:bg-brand-accent/6 transition-colors"
                       >
-                        <p className="text-xs font-semibold text-brand-primary truncate leading-tight">
+                        <span className="relative w-14 h-14 rounded-xl overflow-hidden shrink-0 border border-gray-100 bg-gray-50">
+                          {p.image && (
+                            <Image
+                              src={p.image}
+                              alt=""
+                              fill
+                              sizes="56px"
+                              className="object-cover"
+                            />
+                          )}
+                        </span>
+                        <p className="text-sm font-semibold text-brand-primary leading-tight">
                           {p.name}
                         </p>
                       </Link>
@@ -164,101 +163,23 @@ export default function Header() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-4 gap-5">
-                  {/* Columns 1–2: Aluminium Series */}
-                  <div className="col-span-2">
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3 px-1">
-                      Aluminium Series
-                    </p>
-                    <div className="grid grid-cols-2 gap-1">
-                      {seriesProducts.map((s) => (
-                        <Link
-                          key={s.id}
-                          href={`/products/${s.id}`}
-                          className="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-brand-accent/6 transition-colors group"
-                        >
-                          <span className="text-[10px] font-mono font-bold text-brand-accent bg-brand-accent/10 px-2 py-0.5 rounded-md shrink-0">
-                            {s.id.toUpperCase()}
-                          </span>
-                          <div className="min-w-0">
-                            <p className="text-xs font-semibold text-brand-primary truncate leading-tight">
-                              {s.name}
-                            </p>
-                            <p className="text-[10px] text-gray-400 truncate leading-tight">
-                              {s.subtitle}
-                            </p>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Column 3: Aluminium Wire Mesh */}
-                  <div>
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3 px-1">
-                      Aluminium Wire Mesh
-                    </p>
-                    <div className="space-y-1">
-                      {meshProducts.map((s) => (
-                        <Link
-                          key={s.id}
-                          href={`/products/${s.id}`}
-                          className="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-brand-accent/6 transition-colors"
-                        >
-                          <span className="text-[10px] font-mono font-bold text-brand-accent bg-brand-accent/10 px-2 py-0.5 rounded-md shrink-0">
-                            {s.examples[0]}
-                          </span>
-                          <p className="text-xs font-semibold text-brand-primary leading-tight truncate">
-                            {s.name}
-                          </p>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Column 4: Aluminium Wire Rod + Form of Supply */}
-                  <div className="flex flex-col gap-4">
-                    <div>
-                      <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3 px-1">
-                        Aluminium Wire Rod
-                      </p>
-                      <div className="space-y-1">
-                        {rodProductItems.map((s) => (
-                          <Link
-                            key={s.id}
-                            href={`/products/${s.id}`}
-                            className="flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-brand-accent/6 transition-colors"
-                          >
-                            <span className="text-[10px] font-mono font-bold text-brand-accent bg-brand-accent/10 px-2 py-0.5 rounded-md shrink-0">
-                              {s.examples[0]}
-                            </span>
-                            <p className="text-xs font-semibold text-brand-primary leading-tight truncate">
-                              {s.name}
-                            </p>
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Form of Supply */}
-                    <div className="border-t border-gray-100 pt-3 space-y-1.5">
-                      <Link
-                        href="/form-of-supply"
-                        className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl bg-brand-primary/5 hover:bg-brand-primary/10 border border-brand-primary/8 transition-colors"
-                      >
-                        <Package className="w-3.5 h-3.5 text-brand-primary shrink-0" />
-                        <span className="text-xs font-bold text-brand-primary">
-                          Form of Supply
-                        </span>
-                      </Link>
-                      <Link
-                        href="/products"
-                        className="flex items-center px-3 py-2 text-[11px] font-medium text-gray-400 hover:text-brand-accent transition-colors"
-                      >
-                        View All Products →
-                      </Link>
-                    </div>
-                  </div>
+                {/* Form of Supply */}
+                <div className="border-t border-gray-100 pt-3 space-y-1.5">
+                  <Link
+                    href="/form-of-supply"
+                    className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl bg-brand-primary/5 hover:bg-brand-primary/10 border border-brand-primary/8 transition-colors"
+                  >
+                    <Package className="w-3.5 h-3.5 text-brand-primary shrink-0" />
+                    <span className="text-xs font-bold text-brand-primary">
+                      Form of Supply
+                    </span>
+                  </Link>
+                  <Link
+                    href="/products"
+                    className="flex items-center px-3 py-2 text-[11px] font-medium text-gray-400 hover:text-brand-accent transition-colors"
+                  >
+                    View All Products →
+                  </Link>
                 </div>
               </div>
             )}
@@ -376,69 +297,20 @@ export default function Header() {
                         key={p.id}
                         href={`/products/${p.id}`}
                         onClick={() => setMobileOpen(false)}
-                        className="flex items-center px-2 py-2 rounded-lg text-sm text-white/70 hover:text-white hover:bg-white/6 transition-colors"
+                        className="flex items-center gap-3 px-2 py-2 rounded-lg text-sm text-white/70 hover:text-white hover:bg-white/6 transition-colors"
                       >
+                        <span className="relative w-12 h-12 rounded-lg overflow-hidden shrink-0 border border-white/10 bg-white/5">
+                          {p.image && (
+                            <Image
+                              src={p.image}
+                              alt=""
+                              fill
+                              sizes="48px"
+                              className="object-cover"
+                            />
+                          )}
+                        </span>
                         {p.name}
-                      </Link>
-                    ))}
-                  </div>
-
-                  {/* Series */}
-                  <div>
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-white/40 px-2 mb-1">
-                      Aluminium Series
-                    </p>
-                    {seriesProducts.map((s) => (
-                      <Link
-                        key={s.id}
-                        href={`/products/${s.id}`}
-                        onClick={() => setMobileOpen(false)}
-                        className="flex items-center gap-2.5 px-2 py-2 rounded-lg text-sm text-white/70 hover:text-white hover:bg-white/6 transition-colors"
-                      >
-                        <span className="text-[10px] font-mono font-bold text-brand-accent bg-brand-accent/20 px-1.5 py-0.5 rounded">
-                          {s.id.toUpperCase()}
-                        </span>
-                        {s.name}
-                      </Link>
-                    ))}
-                  </div>
-
-                  {/* Aluminium Wire Mesh */}
-                  <div>
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-white/40 px-2 mb-1">
-                      Aluminium Wire Mesh
-                    </p>
-                    {meshProducts.map((s) => (
-                      <Link
-                        key={s.id}
-                        href={`/products/${s.id}`}
-                        onClick={() => setMobileOpen(false)}
-                        className="flex items-center gap-2.5 px-2 py-2 rounded-lg text-sm text-white/70 hover:text-white hover:bg-white/6 transition-colors"
-                      >
-                        <span className="text-[10px] font-mono font-bold text-brand-accent bg-brand-accent/20 px-1.5 py-0.5 rounded">
-                          {s.examples[0]}
-                        </span>
-                        {s.name}
-                      </Link>
-                    ))}
-                  </div>
-
-                  {/* Aluminium Wire Rod */}
-                  <div>
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-white/40 px-2 mb-1">
-                      Aluminium Wire Rod
-                    </p>
-                    {rodProductItems.map((s) => (
-                      <Link
-                        key={s.id}
-                        href={`/products/${s.id}`}
-                        onClick={() => setMobileOpen(false)}
-                        className="flex items-center gap-2.5 px-2 py-2 rounded-lg text-sm text-white/70 hover:text-white hover:bg-white/6 transition-colors"
-                      >
-                        <span className="text-[10px] font-mono font-bold text-brand-accent bg-brand-accent/20 px-1.5 py-0.5 rounded">
-                          {s.examples[0]}
-                        </span>
-                        {s.name}
                       </Link>
                     ))}
                   </div>

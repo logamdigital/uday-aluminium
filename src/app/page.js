@@ -10,7 +10,7 @@ import Message from "@/components/home/Message";
 export default function Home() {
   return (
     <>
-      <HeroSlider />
+      {/* <HeroSlider /> */}
       <ProductsShowcase />
       <WhyChooseUs />
       <AboutSection />

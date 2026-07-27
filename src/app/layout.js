@@ -10,6 +10,7 @@ const poppins = Poppins({
 });
 
 export const metadata = {
+  metadataBase: new URL("https://udayaluminium.com"),
   title: "Uday Aluminium - Aluminium & AL Alloy Wires Manufacturer",
   description: "Leading manufacturer of aluminium and aluminium alloy wires, wire mesh (5154, powder coated), wire rods (6201, 6061, AL59), welding wire, rivet wire, braiding wire, anchor wire, and zinc coating wires.",
   keywords: "aluminium wire manufacturer, aluminium alloy wire, 5154 wire mesh, powder coated mesh, 6201 rod, 6061 rod, AL59 overhead conductor, welding wire, rivet wire, braiding wire, anchor wire, zinc wire",
@@ -27,7 +28,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={poppins.variable}>
+    <html lang="en" className={poppins.variable} suppressHydrationWarning>
       <body className="font-sans antialiased">
         <div className="flex min-h-screen flex-col">
           <Header />

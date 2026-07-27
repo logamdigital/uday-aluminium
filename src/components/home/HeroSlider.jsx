@@ -39,7 +39,7 @@ function FloatingParticle({ delay, duration, x, y, size }) {
 // Slide data
 const slides = [
   {
-    image: "/images/hero/hero-slide-1.png",
+    image: "/images/hero/hero-slide-1.jpg",
     mobileImage: "/images/hero/image.png",
     alt: "Uday Aluminium Hot Extrusion Process",
     badge: "India\u2019s Premier Aluminium Alloy Manufacturer",

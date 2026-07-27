@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import {
   Plane,
@@ -18,9 +18,21 @@ import {
   Award,
   Globe,
   Users,
+  X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { industries } from "@/data/productSeries";
+
+const certifications = [
+  { name: "ISO 9001:2015", image: "/certificates/iso-9001-2015.jpg" },
+  { name: "ISO 14001:2015", image: "/certificates/iso-14001-2015.jpg" },
+  { name: "ISO 45001:2018", image: "/certificates/iso-45001-2018.jpg" },
+  { name: "Factory License", image: "/certificates/factory-license.jpg" },
+  {
+    name: "Udyam Registration Certificate",
+    image: "/certificates/udyam-registration-certificate.jpg",
+  },
+];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -45,7 +57,7 @@ const caseStudies = [
     challenge:
       "Lightweight, high-strength materials for next-generation aircraft design",
     solution:
-      "7xxx series aluminum with specialized heat treatment for optimal strength-to-weight ratio",
+      "High-strength aluminium-zinc alloy with specialized heat treatment for optimal strength-to-weight ratio",
     results: [
       "30% weight reduction",
       "25% improved fuel efficiency",
@@ -58,7 +70,7 @@ const caseStudies = [
     title: "Electric Vehicle Body Panels",
     challenge: "Sustainable, lightweight materials for EV manufacturing",
     solution:
-      "6xxx series aluminum with enhanced formability and crash performance",
+      "Aluminium-magnesium-silicon alloy with enhanced formability and crash performance",
     results: [
       "40% lighter than steel",
       "100% recyclable",
@@ -71,7 +83,7 @@ const caseStudies = [
     title: "Naval Vessel Hull Construction",
     challenge: "Corrosion-resistant materials for harsh marine environments",
     solution:
-      "5xxx series aluminum with superior saltwater corrosion resistance",
+      "Aluminium-magnesium alloy with superior saltwater corrosion resistance",
     results: [
       "50-year service life",
       "Reduced maintenance costs",
@@ -106,6 +118,9 @@ export default function IndustriesPage() {
   const caseInView = useInView(caseRef, { once: true, margin: "-100px" });
   const whyInView = useInView(whyRef, { once: true, margin: "-100px" });
   const ctaInView = useInView(ctaRef, { once: true, margin: "-100px" });
+  const certRef = useRef(null);
+  const certInView = useInView(certRef, { once: true, margin: "-100px" });
+  const [activeCert, setActiveCert] = useState(null);
 
   return (
     <div className="min-h-screen">
@@ -441,6 +456,71 @@ export default function IndustriesPage() {
         </div>
       </section>
 
+      {/* ── Certifications ── */}
+      <section ref={certRef} className="py-12 sm:py-16 lg:py-24 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center mb-10 sm:mb-14">
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              animate={certInView ? "visible" : "hidden"}
+              className="inline-flex items-center gap-2 mb-4 sm:mb-6"
+            >
+              <div className="h-px w-6 bg-brand-accent/60" />
+              <span className="text-xs sm:text-sm font-medium text-brand-accent tracking-widest uppercase">
+                Certifications
+              </span>
+              <div className="h-px w-6 bg-brand-accent/60" />
+            </motion.div>
+            <motion.h2
+              variants={fadeUp}
+              initial="hidden"
+              animate={certInView ? "visible" : "hidden"}
+              custom={1}
+              className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-primary leading-tight tracking-tight mb-4"
+            >
+              Quality <span className="text-brand-accent">Certified</span>
+            </motion.h2>
+            <motion.p
+              variants={fadeUp}
+              initial="hidden"
+              animate={certInView ? "visible" : "hidden"}
+              custom={2}
+              className="text-sm sm:text-base text-gray-500 leading-relaxed font-light"
+            >
+              Verified compliance and quality management credentials.
+            </motion.p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+            {certifications.map((cert, index) => (
+              <motion.button
+                key={cert.name}
+                type="button"
+                onClick={() => setActiveCert(cert)}
+                variants={fadeUp}
+                initial="hidden"
+                animate={certInView ? "visible" : "hidden"}
+                custom={3 + index}
+                className="group block w-full text-left bg-white border border-gray-100 rounded-2xl p-2 hover:border-brand-accent/20 hover:shadow-xl hover:shadow-brand-accent/5 transition-all duration-500 cursor-pointer"
+              >
+                <div className="w-full rounded-xl overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={cert.image}
+                    alt={cert.name}
+                    className="block w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <p className="text-center text-sm sm:text-base font-semibold text-brand-primary py-3">
+                  {cert.name}
+                </p>
+              </motion.button>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── CTA Section ── */}
       <section
         ref={ctaRef}
@@ -519,6 +599,45 @@ export default function IndustriesPage() {
           </motion.div>
         </div>
       </section>
+
+      {/* ── Certificate Lightbox ── */}
+      <AnimatePresence>
+        {activeCert && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setActiveCert(null)}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 sm:p-8"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative inline-flex flex-col max-w-full max-h-[85vh] bg-white rounded-2xl overflow-hidden shadow-2xl"
+            >
+              <button
+                type="button"
+                onClick={() => setActiveCert(null)}
+                aria-label="Close"
+                className="absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-gray-900/80 hover:bg-brand-accent text-white flex items-center justify-center transition-colors duration-300"
+              >
+                <X className="w-4 h-4" />
+              </button>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={activeCert.image}
+                alt={activeCert.name}
+                className="block max-w-full max-h-[calc(85vh-56px)] w-auto h-auto object-contain"
+              />
+              <p className="text-center text-sm sm:text-base font-semibold text-brand-primary py-4 border-t border-gray-100">
+                {activeCert.name}
+              </p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

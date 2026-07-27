@@ -357,22 +357,28 @@ export default function ContactForm() {
                     icon: MapPin,
                     title: "Address",
                     lines: [
-                      "Industrial Area, Phase-2",
-                      "Manufacturing District",
-                      "State, PIN - 123456",
+                      "Survey No. 213/1, Behind Rishi Petrol Pump,",
+                      "National Highway No. 08, At & Post: Nadiad (Tundel),",
+                      "Taluka: Nadiad, District: Kheda,",
+                      "Gujarat – 387230",
                     ],
                   },
                   {
                     icon: Phone,
                     title: "Phone",
                     lines: ["+91 12345 67890", "+91 09876 54321"],
+                    hrefs: ["tel:+911234567890", "tel:+910987654321"],
                   },
                   {
                     icon: Mail,
                     title: "Email",
                     lines: [
-                      "info@udayaluminium.com",
+                      "purchase@udayaluminium.com",
                       "sales@udayaluminium.com",
+                    ],
+                    hrefs: [
+                      "mailto:purchase@udayaluminium.com",
+                      "mailto:sales@udayaluminium.com",
                     ],
                   },
                   {
@@ -392,14 +398,24 @@ export default function ContactForm() {
                       <h4 className="text-xs sm:text-sm font-semibold text-brand-primary mb-0.5">
                         {item.title}
                       </h4>
-                      {item.lines.map((line, idx) => (
-                        <p
-                          key={idx}
-                          className="text-xs sm:text-sm text-gray-500"
-                        >
-                          {line}
-                        </p>
-                      ))}
+                      {item.lines.map((line, idx) =>
+                        item.hrefs?.[idx] ? (
+                          <a
+                            key={idx}
+                            href={item.hrefs[idx]}
+                            className="block text-xs sm:text-sm text-gray-500 hover:text-brand-accent transition-colors"
+                          >
+                            {line}
+                          </a>
+                        ) : (
+                          <p
+                            key={idx}
+                            className="text-xs sm:text-sm text-gray-500"
+                          >
+                            {line}
+                          </p>
+                        )
+                      )}
                     </div>
                   </div>
                 ))}

@@ -23,6 +23,56 @@ export const meshOverview = {
   orderType: "Ready Stock, Make to Order",
 };
 
+export const meshOverviewText =
+  "AA 5154 aluminum wire mesh is a woven mesh manufactured from Al-Mg alloy wire. It is selected for applications where low weight, corrosion resistance, toughness, and non-magnetic performance are required. The alloy family is used in insect screens, vent mesh, grill cloth, marine and shipboard shielding, filtration, architectural mesh, fencing, and general industrial protection.";
+
+export const meshKeyAdvantages = [
+  "Lightweight non-ferrous construction with low dead load.",
+  "Natural corrosion resistance suitable for humid and marine atmospheres.",
+  "Non-magnetic and suitable for electromagnetic-sensitive installations.",
+  "Good formability for cutting, crimping, fabrication, and installation.",
+  "Available in plain weave, welded mesh, and custom apertures.",
+  "Supplied in rolls, cut lengths, or customer-specified packaging.",
+];
+
+export const meshAlloyGrade = [
+  {
+    grade: "AA 5154",
+    alloyFamily: "5xxx series Al-Mg alloy",
+    typicalComposition:
+      "Nominal Al-Mg-Cr alloy; typically ~3.1–3.9% Mg and up to ~0.25% Cr, with the balance aluminium and controlled trace elements.",
+    typicalUse:
+      "Wire mesh for screening, shielding, filtration, fencing and industrial protection.",
+  },
+];
+
+export const meshSpecRows = [
+  { label: "Category", value: "Wire Mesh" },
+  { label: "Material", value: "Aluminium Alloy 5154 / 5154A" },
+  { label: "Mesh sizes", value: "18 × 16, 14 × 14, 18 × 18" },
+  { label: "Available widths", value: "2 ft, 2.5 ft, 3 ft, 3.5 ft, 3.75 ft, 4 ft, 4.5 ft, 5 ft" },
+  { label: "Roll length", value: "100 feet" },
+  { label: "Minimum order quantity", value: "1 roll / 100 square feet" },
+  { label: "Packaging", value: "Rolls or as per client requirement" },
+  { label: "Applications", value: "Domestic / Agricultural / Industrial" },
+];
+
+export const meshTypicalApplications = [
+  "Security screens for windows, doors and access openings.",
+  "Sifting, screening and particle separation.",
+  "Machinery guards and operator safety barriers.",
+  "Sign panels and lightweight support substrates.",
+  "Windows, hardware fittings and protective enclosures.",
+  "Poultry farms, animal enclosures, zoos and containment structures.",
+  "Power plants, factories and industrial safety applications.",
+  "House fencing, perimeter protection and ventilation systems.",
+  "Filtration, containment and architectural infill panels.",
+  "Marine, shipboard and cable shielding applications where corrosion resistance is required.",
+];
+
+export const meshPositioning =
+  "Aluminium Alloy 5154 wire mesh is best positioned as a corrosion-resistant, lightweight, non-magnetic mesh solution for screening, protection, enclosure, and industrial separation duties. It is suitable for customers seeking a durable alternative to heavier ferrous meshes in humid, coastal, or maintenance-sensitive environments.";
+
 export const weaveTypes = [
   {
     name: "Plain Weave",

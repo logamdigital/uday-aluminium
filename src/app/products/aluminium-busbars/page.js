@@ -1,4 +1,4 @@
-import ProductPageTemplate from "@/components/shared/ProductPageTemplate";
+import AluminiumBusbarsContent from "./AluminiumBusbarsContent";
 import { productPages } from "@/data/productPages";
 
 const data = productPages["aluminium-busbars"];
@@ -9,5 +9,5 @@ export const metadata = {
 };
 
 export default function AluminiumBusbarsPage() {
-  return <ProductPageTemplate data={data} />;
+  return <AluminiumBusbarsContent product={data} />;
 }

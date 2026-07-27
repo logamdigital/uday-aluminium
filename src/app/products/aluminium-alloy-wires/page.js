@@ -1,4 +1,4 @@
-import ProductPageTemplate from "@/components/shared/ProductPageTemplate";
+import AluminiumAlloyWiresContent from "./AluminiumAlloyWiresContent";
 import { productPages } from "@/data/productPages";
 
 const data = productPages["aluminium-alloy-wires"];
@@ -9,5 +9,5 @@ export const metadata = {
 };
 
 export default function AluminiumAlloyWiresPage() {
-  return <ProductPageTemplate data={data} />;
+  return <AluminiumAlloyWiresContent product={data} />;
 }

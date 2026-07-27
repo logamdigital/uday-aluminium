@@ -34,8 +34,9 @@ export default function Certifications() {
 
   return (
     <section
+      id="quality"
       ref={ref}
-      className="relative py-16 sm:py-20 lg:py-28 bg-gray-50 overflow-hidden"
+      className="relative py-16 sm:py-20 lg:py-28 bg-gray-50 overflow-hidden scroll-mt-20"
     >
       <div
         className="absolute inset-0 opacity-[0.03]"
@@ -98,9 +99,10 @@ export default function Certifications() {
             {/* Image side */}
             <div className="relative h-64 sm:h-80 lg:h-auto lg:min-h-[400px]">
               <Image
-                src="/images/hero/hero-slide-1.png"
+                src="/images/hero/hero-slide-1.jpg"
                 alt="Uday Aluminium Manufacturing Facility"
                 fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-black/10" />

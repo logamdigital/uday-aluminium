@@ -317,12 +317,12 @@ export const productSeries = [
     mainProperty: "Lightweight woven aluminium mesh with excellent corrosion resistance, high electrical conductivity, and easy formability — one-third the weight of steel",
     examples: ["5154 Mesh", "Powder Coated Mesh"],
     applications: [
-      "Window & door insect screens",
-      "Air & water filtration systems",
-      "Aerospace heat exchangers",
-      "Marine boat & dock panels",
-      "Architectural facades & ventilation",
-      "Industrial sieving & separation"
+      "Filtration & screening",
+      "Insect & window mesh",
+      "Architectural cladding mesh",
+      "Marine & offshore screening",
+      "Agricultural & food processing mesh",
+      "Industrial safety screening"
     ],
     image: "/images/series/Archive/5154 alloy wire mesh.png",
     warnings: "Will corrode in contact with alkaline solutions and hydrochloric or hydrofluoric acids",
@@ -343,6 +343,7 @@ export const productSeries = [
       note: "Max % unless range shown. Balance: Al.",
       columns: ["Si", "Fe", "Cu", "Mn", "Mg", "Cr", "Zn", "Ti"],
       alloys: [
+        { alloy: "5154", chemSymbol: "AlMg3.5",     si: "0.50", fe: "0.50", cu: "0.10", mn: "0.50",      mg: "3.10–3.90", cr: "0.25", zn: "0.20", ti: "0.20" },
         { alloy: "5052", chemSymbol: "AlMg2.5",     si: "0.25", fe: "0.40", cu: "0.10", mn: "0.10",      mg: "2.2–2.8", cr: "0.15–0.35", zn: "0.10", ti: "—"   },
         { alloy: "5056", chemSymbol: "AlMg5Cr",     si: "0.30", fe: "0.40", cu: "0.10", mn: "0.05–0.20", mg: "4.5–5.6", cr: "0.05–0.20", zn: "0.10", ti: "—"   },
         { alloy: "6061", chemSymbol: "AlMg1SiCu",   si: "0.40–0.80", fe: "0.70", cu: "0.15–0.40", mn: "0.15", mg: "0.80–1.2", cr: "0.04–0.35", zn: "0.25", ti: "0.15" },
@@ -365,7 +366,7 @@ export const productSeries = [
       "Cold heading & forging stock",
       "Downstream wire drawing"
     ],
-    image: "/images/series/Archive/alloy wire road.png",
+    image: "/images/series/Archive/alloy wire road.jpeg",
     warnings: "Diameter tolerance of ±0.5 mm — verify specifications for precision applications",
     strength: "Medium",
     corrosion: "Good",
@@ -583,10 +584,11 @@ export const productSeries = [
   /* ── Welding Wire ── */
   {
     id: "welding-wire",
+    weldingSpecs: true,
     name: "Aluminium Welding Wire",
     subtitle: "MIG / TIG Aluminium Welding Wire",
     mainProperty: "Precision-drawn aluminium welding wires for MIG and TIG applications — consistent chemistry and tight diameter tolerances ensure smooth arc transfer, low spatter and high-quality weld deposits",
-    examples: ["ER4043", "ER5356", "ER1100", "ER4047"],
+    examples: ["ER4043", "ER5356", "ER1100", "ER4047", "ER5183"],
     applications: [
       "MIG / TIG welding of aluminium structures",
       "Automotive body & chassis welding",
@@ -595,7 +597,7 @@ export const productSeries = [
       "Pressure vessel & tank welding",
       "General aluminium fabrication shops"
     ],
-    image: "/images/series/Archive/al welding wire.png",
+    image: "/images/series/Archive/al welding wire.jpeg",
     warnings: "Store in dry conditions; use within recommended shelf life to prevent oxide pick-up",
     strength: "Medium",
     corrosion: "Good",
@@ -756,7 +758,7 @@ export const productSeries = [
       "Construction guy strands",
       "Wind turbine anchor strands"
     ],
-    image: "/images/series/Archive/Aluminium Anchor Wire coil.png",
+    image: "/images/series/Archive/Aluminium Anchor Wire coil.jpeg",
     warnings: null,
     strength: "High",
     corrosion: "Excellent",
@@ -914,7 +916,7 @@ export const productSeries = [
       "Anchor wire & guy strands",
       "Downstream conductor wire drawing"
     ],
-    image: "/images/series/Archive/AL59 Aluminium Rod.png",
+    image: "/images/series/Archive/AL59 Aluminium Rod.jpeg",
     warnings: null,
     strength: "Medium",
     corrosion: "Good",
@@ -946,7 +948,7 @@ export const homepageProducts = [
     name: "Aluminium & AL Alloy Wires",
     subtitle: "Pure Al & Alloy Wire Solutions",
     description: "Premium aluminium and aluminium alloy wires for electrical, industrial and specialised applications across all standard grades.",
-    image: "/images/series/Archive/alloy wire road.png",
+    image: "/images/series/Archive/alloy wire road.jpeg",
     link: "/products",
     tag: "Core Product"
   },
@@ -955,7 +957,7 @@ export const homepageProducts = [
     name: "5154 Alloy Wire Mesh",
     subtitle: "5154 Alloy & Powder Coated",
     description: "High-strength 5154 aluminium wire mesh and powder coated mesh for filtration, screening and architectural applications.",
-    image: "/images/series/Archive/wire mesh.png",
+    image: "/images/series/Archive/wire mesh.jpeg",
     link: "/products/wire-mesh",
     tag: "Wire Mesh"
   },
@@ -964,7 +966,7 @@ export const homepageProducts = [
     name: "AL Alloy Wire Rods",
     subtitle: "6201 · 6061 · AL59 — Overhead Conductors",
     description: "Aluminium alloy wire rods for overhead conductors — 6201, 6061 and AL59 grades for long-span power transmission lines.",
-    image: "/images/series/Archive/6201 Aluminium Rod.png",
+    image: "/images/series/Archive/alloy wire road.jpeg",
     link: "/products/wire-rod",
     tag: "Conductor Rods"
   },
@@ -973,7 +975,7 @@ export const homepageProducts = [
     name: "Welding Wire",
     subtitle: "MIG / TIG Aluminium Welding Wire",
     description: "Aluminium MIG and TIG welding wires (ER4043, ER5356) with consistent chemistry for clean, spatter-free welds.",
-    image: "/images/series/Archive/al welding wire.png",
+    image: "/images/series/Archive/al welding wire.jpeg",
     link: "/products/welding-wire",
     tag: "Welding"
   },
@@ -982,7 +984,7 @@ export const homepageProducts = [
     name: "Rivet Wire",
     subtitle: "Wire for Rivet Manufacturing",
     description: "Close-tolerance aluminium wire for cold-heading of rivets and fasteners — aerospace, automotive and construction grades.",
-    image: "/images/series/Archive/Rivet.jpg",
+    image: "/images/series/Archive/Rivet-wire.jpg",
     link: "/products/rivet-wire",
     tag: "Fasteners"
   },
@@ -1009,7 +1011,7 @@ export const homepageProducts = [
     name: "Anchor Wire",
     subtitle: "High-Tensile Guy & Anchor Strand",
     description: "High-tensile aluminium anchor and guy wire for transmission towers, telecom masts and overhead line anchoring.",
-    image: "/images/series/Archive/Aluminium Anchor Wire coil.png",
+    image: "/images/series/Archive/Aluminium Anchor Wire coil.jpeg",
     link: "/products/anchor-wire",
     tag: "Structural"
   },
@@ -1029,7 +1031,7 @@ export const industries = [
     id: "aerospace",
     name: "Aerospace & Defense",
     icon: "Plane",
-    relevantSeries: ["2xxx", "7xxx", "6xxx"],
+    relevantSeries: ["Al-Cu Alloys", "Al-Zn Alloys", "Al-Mg-Si Alloys"],
     keyBenefits: ["High strength-to-weight ratio", "Fatigue resistance", "Precision manufacturing"],
     image: "/images/industries/aerospace.jpg"
   },
@@ -1037,7 +1039,7 @@ export const industries = [
     id: "automotive",
     name: "Automotive",
     icon: "Car",
-    relevantSeries: ["5xxx", "6xxx", "2xxx"],
+    relevantSeries: ["Al-Mg Alloys", "Al-Mg-Si Alloys", "Al-Cu Alloys"],
     keyBenefits: ["Weight reduction", "Crash performance", "Corrosion resistance"],
     image: "/images/industries/automotive.jpg"
   },
@@ -1045,7 +1047,7 @@ export const industries = [
     id: "marine",
     name: "Marine & Shipbuilding",
     icon: "Ship",
-    relevantSeries: ["5xxx", "6xxx"],
+    relevantSeries: ["Al-Mg Alloys", "Al-Mg-Si Alloys"],
     keyBenefits: ["Saltwater corrosion resistance", "Weldability", "Durability"],
     image: "/images/industries/marine.jpg"
   },
@@ -1053,7 +1055,7 @@ export const industries = [
     id: "construction",
     name: "Construction & Architecture",
     icon: "Building",
-    relevantSeries: ["6xxx", "3xxx", "1xxx"],
+    relevantSeries: ["Al-Mg-Si Alloys", "Al-Mn Alloys", "Pure Aluminium"],
     keyBenefits: ["Weather resistance", "Design flexibility", "Low maintenance"],
     image: "/images/industries/construction.jpg"
   },
@@ -1061,7 +1063,7 @@ export const industries = [
     id: "electrical",
     name: "Electrical & Electronics",
     icon: "Zap",
-    relevantSeries: ["1xxx", "8xxx", "6xxx"],
+    relevantSeries: ["Pure Aluminium", "Specialty Alloys", "Al-Mg-Si Alloys"],
     keyBenefits: ["High conductivity", "Heat dissipation", "EMI shielding"],
     image: "/images/industries/electrical.jpg"
   },
@@ -1069,7 +1071,7 @@ export const industries = [
     id: "food",
     name: "Food & Pharmaceutical",
     icon: "Utensils",
-    relevantSeries: ["1xxx", "3xxx", "5xxx"],
+    relevantSeries: ["Pure Aluminium", "Al-Mn Alloys", "Al-Mg Alloys"],
     keyBenefits: ["FDA compliance", "Easy cleaning", "Non-toxic properties"],
     image: "/images/industries/food.jpg"
   },
@@ -1077,7 +1079,7 @@ export const industries = [
     id: "chemical",
     name: "Chemical Processing",
     icon: "FlaskRound",
-    relevantSeries: ["1xxx", "3xxx", "5xxx"],
+    relevantSeries: ["Pure Aluminium", "Al-Mn Alloys", "Al-Mg Alloys"],
     keyBenefits: ["Chemical resistance", "Temperature stability", "Process compatibility"],
     image: "/images/industries/chemical.jpg"
   },
@@ -1085,7 +1087,7 @@ export const industries = [
     id: "sports",
     name: "Sports & Recreation",
     icon: "Trophy",
-    relevantSeries: ["6xxx", "7xxx", "2xxx"],
+    relevantSeries: ["Al-Mg-Si Alloys", "Al-Zn Alloys", "Al-Cu Alloys"],
     keyBenefits: ["Lightweight performance", "Durability", "Design flexibility"],
     image: "/images/industries/sports.jpg"
   }
@@ -1098,7 +1100,7 @@ export const heroSlides = [
     subtitle: "Leading supplier of high-quality aluminum products across 8 different series",
     ctaText: "Explore Products",
     ctaLink: "/products",
-    backgroundImage: "/images/hero/hero-slide-1.png"
+    backgroundImage: "/images/hero/hero-slide-1.jpg"
   },
   {
     id: 2,
@@ -1106,7 +1108,7 @@ export const heroSlides = [
     subtitle: "Comprehensive aluminum solutions from pure aluminum to high-strength aerospace alloys",
     ctaText: "View Catalog",
     ctaLink: "/products",
-    backgroundImage: "/images/hero/hero-slide-2.png"
+    backgroundImage: "/images/hero/hero-slide-2.jpg"
   },
   {
     id: 3,
