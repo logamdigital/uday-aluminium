@@ -7,6 +7,11 @@ const nextConfig = {
         destination: "/products/aluminium-alloy-wires",
         permanent: true,
       },
+      {
+        source: "/products/aluminium-wire-mesh-fine-wires",
+        destination: "/products/aluminium-wire-mesh",
+        permanent: true,
+      },
     ];
   },
 };
