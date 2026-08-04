@@ -36,7 +36,7 @@ export const productPages = {
       "Aluminium alloy wire range covering EC Grade 1350 (61% IACS min) plus 5052, 5154, 6101, 6201 and 6351 grades — corrosion-resistant and high-strength options for electrical, braiding, mesh, fastener and conductor stranding applications.",
     tagline:
       "EC Grade 1350 plus 5052, 5154, 6101, 6201 and 6351 alloy wire — conductivity, corrosion resistance and strength in one range.",
-    image: "/images/series/Archive/5154 alloy wire mesh.png",
+    image: "/alumium alloy wire.jpeg",
     applications: alloyWiresApplications,
     inquiryProductLabel: "Aluminium Alloy Wires",
   },

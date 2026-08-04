@@ -314,7 +314,7 @@ export const productSeries = [
     meshSpecs: true,
     name: "Aluminium Wire Mesh",
     subtitle: "5154 Alloy & Powder Coated Mesh Solutions",
-    mainProperty: "Lightweight woven aluminium mesh with excellent corrosion resistance, high electrical conductivity, and easy formability — one-third the weight of steel",
+    mainProperty: "Lightweight woven aluminium mesh with excellent corrosion resistance, highly durable, and easy formability — one-third the weight of steel",
     examples: ["5154 Mesh", "Powder Coated Mesh"],
     applications: [
       "Filtration & screening",
@@ -373,7 +373,7 @@ export const productSeries = [
     weldability: "Good",
     heatTreatable: true,
     process: [
-      { step: 1, title: "Billet Preparation", description: "EC1350/6101 aluminium billets are preheated in a gas-fired tunnel furnace to 450–500 °C for uniform temperature distribution." },
+      { step: 1, title: "Melting & Refining", description: "High-purity aluminum ingots are melted in a furnace, and the required alloying elements are added to achieve the desired composition. The molten metal is then refined through fluxing, degassing, grain refinement, and ceramic filtration to remove impurities, dissolved gases, and inclusions, ensuring a clean, homogeneous melt ready for casting." },
       { step: 2, title: "Continuous Casting & Rolling (CCR)", description: "Molten metal is cast via a twin-belt caster and immediately hot-rolled in-line (Properzi/CCR process) for energy-efficient rod production." },
       { step: 3, title: "Hot Rolling", description: "A continuous multi-stand rolling mill reduces the rod diameter from the cast cross-section to 6–12 mm in multiple passes at 400–480 °C." },
       { step: 4, title: "Quench & Temper", description: "Water quench immediately after the final roll pass achieves T1 temper, locking in conductivity and providing a clean, bright surface." },
@@ -638,7 +638,7 @@ export const productSeries = [
       "Marine-grade rivets",
       "General cold-heading applications"
     ],
-    image: "/images/series/Archive/rivet wire.png",
+    image: "/Rivets wire.jpeg",
     warnings: null,
     strength: "Low-Medium",
     corrosion: "Good",
@@ -943,15 +943,15 @@ export const productSeries = [
 
 /* ── Homepage Products (curated product categories for homepage showcase) ── */
 export const homepageProducts = [
-  {
-    id: "al-alloy-wires",
-    name: "Aluminium & AL Alloy Wires",
-    subtitle: "Pure Al & Alloy Wire Solutions",
-    description: "Premium aluminium and aluminium alloy wires for electrical, industrial and specialised applications across all standard grades.",
-    image: "/images/series/Archive/alloy wire road.jpeg",
-    link: "/products",
-    tag: "Core Product"
-  },
+  // {
+  //   id: "al-alloy-wires",
+  //   name: "Aluminium & AL Alloy Wires",
+  //   subtitle: "Pure Al & Alloy Wire Solutions",
+  //   description: "Premium aluminium and aluminium alloy wires for electrical, industrial and specialised applications across all standard grades.",
+  //   image: "/images/series/Archive/alloy wire road.jpeg",
+  //   link: "/products",
+  //   tag: "Core Product"
+  // },
   {
     id: "wire-mesh-home",
     name: "5154 Alloy Wire Mesh",
