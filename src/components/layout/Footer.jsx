@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MapPin, Phone, Mail, Clock, Linkedin, Twitter, Facebook } from "lucide-react";
+import { MapPin, Mail, Clock, Linkedin, Twitter, Facebook } from "lucide-react";
 
 const quickLinks = [
   { name: "About Us", href: "/about" },
@@ -100,14 +100,6 @@ export default function Footer() {
                     Taluka: Nadiad, District: Kheda,<br />
                     Gujarat – 387230
                   </p>
-                </div>
-              </div>
-
-              <div className="flex items-center space-x-3">
-                <Phone className="h-5 w-5 text-brand-accent" />
-                <div>
-                  <a href="tel:+911234567890" className="block text-sm text-gray-300 hover:text-white transition-colors">+91 12345 67890</a>
-                  <a href="tel:+910987654321" className="block text-sm text-gray-300 hover:text-white transition-colors">+91 09876 54321</a>
                 </div>
               </div>
 
