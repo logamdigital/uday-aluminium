@@ -81,14 +81,14 @@ const officeLocations = [
   {
     name: "Head Office & Manufacturing",
     address: companyAddress,
-    phone: "+91 81056 40430",
+    phone: "+91 85200 78906",
     email: "purchase@udayaluminium.com",
     hours: "Monday - Saturday: 9:00 AM - 6:00 PM"
   },
   {
     name: "Sales & Technical Support",
     address: companyAddress,
-    phone: "+91 81056 40430",
+    phone: "+91 85200 78906",
     email: "sales@udayaluminium.com",
     hours: "Monday - Friday: 8:30 AM - 7:00 PM"
   }
@@ -605,7 +605,7 @@ function ContactPageInner() {
                       </div>
                       <div>
                         <h4 className="font-semibold text-brand-primary mb-1">Phone</h4>
-                        <a href="tel:+918105640430" className="block text-gray-600 hover:text-brand-accent transition-colors">+91 81056 40430</a>
+                        <a href="tel:+918520078906" className="block text-gray-600 hover:text-brand-accent transition-colors">+91 85200 78906</a>
                         <p className="text-sm text-gray-500 mt-1">24/7 Technical Support</p>
                       </div>
                     </div>

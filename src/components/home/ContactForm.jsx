@@ -366,8 +366,8 @@ export default function ContactForm() {
                   {
                     icon: Phone,
                     title: "Phone",
-                    lines: ["+91 81056 40430"],
-                    hrefs: ["tel:+918105640430"],
+                    lines: ["+91 85200 78906"],
+                    hrefs: ["tel:+918520078906"],
                   },
                   {
                     icon: Mail,
